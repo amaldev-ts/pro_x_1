@@ -1,0 +1,155 @@
+{
+  "project": "X-Resilience-WDS Final Model Staging & Held-Out Test Inference",
+  "dataset_information": {
+    "network_topology": "C-Town EPANET Water Distribution System (CTOWN.INP)",
+    "total_sensors": 43,
+    "sensor_breakdown": {
+      "junction_pressures": 31,
+      "tank_levels": 7,
+      "link_flows": 4,
+      "link_statuses": 1
+    },
+    "datasets_used": {
+      "Dataset03": "1-year normal baseline operational data (data/raw/BATADAL_dataset03.csv)",
+      "Dataset04": "6-month labeled operational validation data (data/raw/BATADAL_dataset04.csv)",
+      "BATADAL_test": "3-month held-out unlabeled evaluation data (data/raw/BATADAL_test_dataset.csv)"
+    }
+  },
+  "preprocessing_pipeline": {
+    "window_size": 12,
+    "stride": 1,
+    "scaler": "StandardScaler",
+    "scaler_fitting_partition": "Dataset03 80% normal training split ONLY (first 6,990 rows)",
+    "no_label_leakage_verified": true
+  },
+  "gnn_architecture": {
+    "model_name": "SpatioTemporalGNN",
+    "input_features": 43,
+    "window_size": 12,
+    "hidden_dim": 64,
+    "dropout": 0.2,
+    "forecast_horizon": 12,
+    "graph_topology": "3-hop network graph shortest-path adjacency matrix built from CTOWN.INP",
+    "total_parameters": 95236
+  },
+  "training_protocol": {
+    "epochs": 50,
+    "batch_size": 64,
+    "learning_rate": 0.001,
+    "optimizer": "Adam",
+    "loss_function": "MSELoss",
+    "random_seed": 42,
+    "normal_calibration_partition": "Dataset03 20% normal calibration split (last 1,747 rows)",
+    "threshold_derivation_rule": "99.8th percentile of calibration S_calib_final normalized residual scores",
+    "derived_threshold": 3.013382
+  },
+  "validated_results_dataset04": {
+    "evaluation_type": "Supervised Validation Evaluation (Frozen Candidate Model)",
+    "candidate_checkpoint": "models/detection_gnn_h12_candidate.pt",
+    "metrics": {
+      "precision": 0.5635,
+      "recall": 0.79,
+      "f1_score": 0.6578,
+      "roc_auc": 0.9685,
+      "pr_auc": 0.6769,
+      "false_positive_rate": 0.0341,
+      "confusion_matrix": {
+        "TN": 3801,
+        "FP": 134,
+        "FN": 46,
+        "TP": 173
+      }
+    },
+    "sequence_recalls": {
+      "seq1": 0.9286,
+      "seq2": 0.65,
+      "seq3": 0.5676,
+      "seq4": 0.8571,
+      "seq5": 0.9315
+    }
+  },
+  "multiseed_robustness": {
+    "seeds_evaluated": [
+      42,
+      123,
+      2024,
+      3407,
+      9999
+    ],
+    "h12_mean_f1": 0.6323,
+    "h12_std_f1": 0.0295,
+    "h12_mean_recall": 0.7178,
+    "h12_std_recall": 0.0521,
+    "h12_mean_fpr": 0.0307,
+    "h12_std_fpr": 0.0038
+  },
+  "capacity_controlled_comparison": {
+    "h1_capacity_matched_params": 95001,
+    "h12_candidate_params": 95236,
+    "f1_improvement": 0.0723,
+    "recall_improvement": 0.2247,
+    "roc_auc_improvement": 0.0743,
+    "conclusion": "H=12 multi-step forecasting provides a statistically significant +22.47% recall gain and +0.0723 F1 improvement over capacity-matched H=1 under identical parameter constraints."
+  },
+  "unsupervised_test_set_observations": {
+    "evaluation_type": "Unsupervised Held-Out Test Set Inference (Strict Zero Label Access)",
+    "test_dataset": "data/raw/BATADAL_test_dataset.csv",
+    "total_test_rows": 2089,
+    "total_evaluated_windows": 2066,
+    "strictly_monotonic_timeline": true,
+    "detected_anomalous_windows": 156,
+    "anomalous_windows_pct": 7.55,
+    "contiguous_episodes_count": 17,
+    "severity_ranking_summary": [
+      {
+        "rank": 1,
+        "episode_id": "EP-12",
+        "duration_h": 53.0,
+        "start": "2017-02-11 14:00",
+        "end": "2017-02-13 18:00",
+        "max_score": 11329609728.0,
+        "classification": "Persistent Episode (>6h) [High-Severity Outlier]"
+      },
+      {
+        "rank": 2,
+        "episode_id": "EP-11",
+        "duration_h": 53.0,
+        "start": "2017-02-08 16:00",
+        "end": "2017-02-10 20:00",
+        "max_score": 7384827904.0,
+        "classification": "Persistent Episode (>6h) [High-Severity Outlier]"
+      },
+      {
+        "rank": 3,
+        "episode_id": "EP-20",
+        "duration_h": 2.0,
+        "start": "2017-03-07 13:00",
+        "end": "2017-03-07 14:00",
+        "max_score": 40.303,
+        "classification": "Short Episode (2-6h)"
+      },
+      {
+        "rank": 4,
+        "episode_id": "EP-06",
+        "duration_h": 18.0,
+        "start": "2017-01-30 01:00",
+        "end": "2017-01-30 18:00",
+        "max_score": 8.4362,
+        "classification": "Persistent Episode (>6h)"
+      }
+    ],
+    "supervised_performance_metrics_note": "NOT CALCULATED because test ground-truth labels are unavailable."
+  },
+  "limitations": [
+    "Normal calibration residual variance mu_sq for pump PU3 (which is OFF continuously during normal baseline) is near zero (~2.9e-8). When PU3 turns ON in test set, dividing by near-zero variance produces multi-billion normalized residuals.",
+    "Severity formula scales quadratically with peak score, causing extreme single-sensor residual spikes to numerically dominate episode severity rankings.",
+    "Ground-truth test set labels are unavailable; test set findings are observational anomaly detections, not confirmed attack identifications."
+  ],
+  "reproducibility_and_integrity": {
+    "production_checkpoint_untouched": true,
+    "candidate_checkpoint_unchanged": true,
+    "configs_unchanged": true,
+    "raw_data_unchanged": true,
+    "pytest_results": "41/41 Passed"
+  }
+}

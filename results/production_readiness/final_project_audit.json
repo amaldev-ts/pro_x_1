@@ -1,0 +1,56 @@
+{
+  "audit_timestamp": "2026-09-14T19:36:30Z",
+  "project_name": "X-Resilience-WDS",
+  "packaging_status": "COMPLETE",
+  "production_model": {
+    "architecture": "SpatioTemporalGNN",
+    "forecast_horizon": 12,
+    "checkpoint_path": "models/detection_gnn.pt",
+    "sha256": "8e85de2b871ff49bb0894f2eb97e3d9fd6087151e8f0ba7ee35006f890a93667",
+    "status": "PROMOTED_PRODUCTION"
+  },
+  "rollback_backup": {
+    "checkpoint_path": "models/backups/detection_gnn_pre_h12_promotion_20260914_192026.pt",
+    "sha256": "056284e983baf988d962e4d56d7ea7528c4638173f081c418ec9f6ce907d9e64",
+    "original_model": "H=1 SpatioTemporalGNN"
+  },
+  "dataset04_validation_metrics": {
+    "precision": 0.5635,
+    "recall": 0.7900,
+    "f1_score": 0.6578,
+    "roc_auc": 0.9685,
+    "pr_auc": 0.6769,
+    "fpr": 0.0341,
+    "true_negatives": 3801,
+    "false_positives": 134,
+    "false_negatives": 46,
+    "true_positives": 173
+  },
+  "held_out_test_statistics": {
+    "raw_rows": 2089,
+    "evaluated_h12_windows": 2066,
+    "anomalous_windows": 156,
+    "anomaly_window_rate": 0.0755,
+    "contiguous_episodes": 17,
+    "timeline_start": "2017-01-04 12:00:00",
+    "timeline_end": "2017-03-31 13:00:00"
+  },
+  "test_suite_status": "48 PASSED, 0 FAILED (100% PASS)",
+  "dashboard_status": "OPERATIONAL_STREAMLIT_LIVE_PORT_8501",
+  "documentation_status": "COMPLETE_ACADEMIC_SUBMISSION_READY",
+  "reproducibility_status": "VERIFIED_EXACT_WINDOWS_COMMANDS",
+  "data_integrity": {
+    "raw_dataset03_sha256": "8ca6cb851242254d2605b5a53ba3ba5009e2213a545d65396615f1ce0b426e1b",
+    "raw_dataset04_sha256": "4746beab2cfcdb5e68c7fa197a7522aecb70189d61dcc3eb1f870d2ce387068b",
+    "raw_test_dataset_sha256": "184dfc1581df52193b2acb79164f7ce094f2bb00b1bc2e3c2e70050095065fa5",
+    "config_sha256": "fe88ac78daf2fef10c476d91bc35e361f586d35b5d8de7c1f6a27fc925160900",
+    "status": "ALL_UNCHANGED"
+  },
+  "known_limitations": [
+    "PU3 pump near-zero baseline variance causes high z-score state-transition amplification during test episodes",
+    "H=12 exhibits higher FPR (0.0341) and lower Precision (0.5635) than H=1 baseline (0.0195 FPR) under capacity control",
+    "BATADAL dataset is computer simulation-generated (EPANET), not physical field utility measurements"
+  ],
+  "cleanup_actions": "Zero research files removed; all 24 scratch reproducible audit scripts retained.",
+  "final_recommendation": "C. SUITABLE FOR ACADEMIC PRESENTATION AND BENCHMARK SUBMISSION"
+}

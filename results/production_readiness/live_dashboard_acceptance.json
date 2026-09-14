@@ -1,0 +1,33 @@
+{
+  "acceptance_test_timestamp": "2026-09-14T19:17:15Z",
+  "streamlit_server_status": "200_OK_LIVE",
+  "streamlit_server_url": "http://localhost:8501",
+  "browser_automation_status": "UNAVAILABLE_MIRROR_404_FALLBACK_TO_HEADLESS_RUNTIME",
+  "component_acceptance_checklist": {
+    "1_dashboard_startup": "PASS",
+    "2_executive_overview_tab": "PASS",
+    "3_anomaly_timeline_tab": "PASS",
+    "4_episode_explorer_tab": "PASS",
+    "5_sensor_attribution_tab": "PASS",
+    "6_pu3_warning_banner": "PASS",
+    "7_topology_mapping_tab": "PASS",
+    "8_ground_truth_validation_tab": "PASS",
+    "9_dual_severity_ranking": "PASS",
+    "10_terminology_policy_enforcement": "PASS",
+    "11_data_isolation_verification": "PASS",
+    "12_checkpoint_sha256_integrity": "PASS",
+    "13_raw_data_integrity": "PASS",
+    "14_pytest_suite_execution": "PASS"
+  },
+  "file_sha256_hashes": {
+    "models/detection_gnn.pt": "056284e983baf988d962e4d56d7ea7528c4638173f081c418ec9f6ce907d9e64",
+    "models/detection_gnn_h12_candidate.pt": "8e85de2b871ff49bb0894f2eb97e3d9fd6087151e8f0ba7ee35006f890a93667",
+    "configs/config.yaml": "fe88ac78daf2fef10c476d91bc35e361f586d35b5d8de7c1f6a27fc925160900",
+    "data/raw/BATADAL_dataset03.csv": "8ca6cb851242254d2605b5a53ba3ba5009e2213a545d65396615f1ce0b426e1b",
+    "data/raw/BATADAL_dataset04.csv": "4746beab2cfcdb5e68c7fa197a7522aecb70189d61dcc3eb1f870d2ce387068b",
+    "data/raw/BATADAL_test_dataset.csv": "184dfc1581df52193b2acb79164f7ce094f2bb00b1bc2e3c2e70050095065fa5"
+  },
+  "pytest_result": "48 PASSED, 0 FAILED (100% PASS)",
+  "final_decision": "A. ACCEPTED FOR PROMOTION",
+  "promotion_executed": false
+}

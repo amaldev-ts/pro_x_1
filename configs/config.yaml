@@ -1,0 +1,82 @@
+# X-Resilience-WDS configuration
+# ALL values under "provisional" blocks are NOT calibrated against any experiment.
+# They exist so the pipeline is runnable end-to-end; replace with calibrated
+# values once real BATADAL-labeled experiments are run.
+
+paths:
+  inp_file: "data/raw/CTOWN.INP"
+  processed_dir: "data/processed"
+  mock_dir: "data/mock"
+  models_dir: "models"
+  results_dir: "results"
+  logs_dir: "logs"
+
+random_seed: 42
+
+zoning:
+  method: "dma"                # CTOWN.INP already encodes 5 real DMA
+                                 # (District Metered Area) zones via its
+                                 # junction demand-pattern names
+                                 # (DMA1_pat..DMA5_pat). This is genuine
+                                 # network data, not an approximation --
+                                 # preferred over louvain/leiden.
+  resolution: 1.0                # only used if method is louvain/leiden
+  note: >
+    LightEdge-IDS's exact zoning scheme is not specified in the supplied
+    project documents, but CTOWN.INP itself carries real DMA zone labels
+    that are a defensible ground truth. louvain/leiden remain available as
+    a fallback graph-community method for networks without DMA tags.
+
+detection:
+  model_name: "spatio_temporal_gnn"     # LightEdge-IDS-inspired prototype
+  data_path: "data/raw/BATADAL_dataset.csv"   # Target path for single combined dataset
+  train_path: "data/raw/BATADAL_dataset03.csv" # Real BATADAL 1-year normal baseline training set
+  val_path: "data/raw/BATADAL_dataset04.csv"   # Real BATADAL 6-month labeled validation set
+  test_path: "data/raw/BATADAL_test_dataset.csv" # Real BATADAL 3-month evaluation test set
+  timestamp_col: "DATETIME"
+  label_col: "ATT_FLAG"        # Actual BATADAL label column
+  window_size: 12
+  stride: 1
+  scaler_type: "standard"      # 'standard' or 'minmax'
+  train_ratio: 0.7
+  val_ratio: 0.15
+  test_ratio: 0.15
+  hidden_dim: 64
+  batch_size: 32
+  epochs: 20
+  learning_rate: 0.001
+  dropout: 0.2
+  threshold_percentile: 99.5
+  allow_synthetic_training: false # STRICT GATING: Refuse to train on synthetic data for research results
+
+explainability:
+  shap_background_samples: 100
+  lime_num_features: 10
+
+impact:
+  # provisional CPIS weights - NOT calibrated
+  weights:
+    pressure_impact: 0.3
+    flow_impact: 0.3
+    service_disruption: 0.25
+    infrastructure_criticality: 0.15
+  severity_thresholds:        # provisional, must be calibrated
+    low: 0.25
+    moderate: 0.5
+    high: 0.75
+    # >= high -> critical
+
+recovery:
+  # provisional weighted-scoring weights - NOT calibrated
+  weights:
+    service_continuity: 0.3
+    hydraulic_stability: 0.25
+    recovery_time: 0.2        # penalty (w3)
+    operational_cost: 0.1     # penalty (w4)
+    criticality_protection: 0.15
+  candidate_actions:
+    - valve_isolation
+    - pump_switching
+    - flow_rerouting
+    - zone_containment
+    - emergency_adjustment

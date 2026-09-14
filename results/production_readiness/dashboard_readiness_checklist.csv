@@ -1,0 +1,16 @@
+category,status,evidence,risk_level
+Data Integrity,PASS,"Raw CSV headers stripped, -999 normalized, zero NaN/Inf.",LOW
+Timestamp Integrity,WARN,Original loader used default dateutil parsing causing 6 backwards date jumps; fixed via format='%d/%m/%y %H' in corrected script.,MEDIUM
+Preprocessing,PASS,StandardScaler fitted strictly on 80% Dataset03 train split; zero label leakage.,LOW
+Model Integrity,PASS,"Frozen H=12 SpatioTemporalGNN (95,236 params); SHA256 verified before/after.",LOW
+Threshold Integrity,PASS,Operational threshold fixed at tau_99.8 = 3.013382 from Dataset03 normal calib split.,LOW
+Inference Alignment,PASS,"Windowing (W=12, H=12), graph adjacency, and calibration factors match training 100%.",LOW
+Numerical Stability,WARN,Pump PU3 baseline inactivity (mu_sq ~ 2.9e-8) produces multi-billion scores (10^10) when PU3 turns ON in test set.,MEDIUM
+Episode Construction,PASS,17 true contiguous anomaly episodes derived on strictly monotonic timeline.,LOW
+Severity Calculation,WARN,Current formula scales quadratically with peak score; single extreme PU3 residual spikes dominate top severity ranks.,LOW
+Sensor Attribution,PASS,"Correctly separates P_, L_, F_, S_ sensors and ranks residual increases.",LOW
+Topology Mapping,PASS,"Sensors mapped to C-Town junctions, tanks, and pumps/valves via NetworkX graph.",LOW
+Explainability,PASS,"Clear attribution of elevated sensors, duration, start/end timestamps, and spatial DMA context.",LOW
+Dashboard Readiness,FAIL,Streamlit dashboard codebase under dashboard/ is empty (Phase 8 not yet built).,HIGH
+Reproducibility,PASS,"Deterministic seeds, explicit scripts, JSON/CSV reports, and exact checksums.",LOW
+Artifact Integrity,PASS,Production model models/detection_gnn.pt untouched; raw data and configs unchanged.,LOW

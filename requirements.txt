@@ -1,0 +1,21 @@
+# X-Resilience-WDS — Requirements
+# Phase 1a (Network Layer) & Phase 1b (Detection Backbone) requirements.
+
+wntr>=1.5.0
+networkx>=3.6
+pandas>=2.0
+numpy>=2.0
+matplotlib>=3.10
+python-louvain>=0.16
+pyyaml>=6.0
+pytest>=8.0
+scikit-learn>=1.4.0
+torch>=2.0.0
+
+# Phase 8 (Dashboard UI) requirements
+streamlit>=1.30.0
+plotly>=5.18.0
+
+# Optional (only needed if you switch zoning.method to "leiden" in config.yaml):
+# python-igraph
+# leidenalg

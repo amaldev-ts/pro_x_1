@@ -1,0 +1,75 @@
+{
+  "Region 1 (DMA 1)": {
+    "dma_id": 1,
+    "sensor_count": 24,
+    "sensors": [
+      "L_T1",
+      "L_T2",
+      "F_PU1",
+      "S_PU1",
+      "F_PU2",
+      "S_PU2",
+      "F_PU3",
+      "S_PU3",
+      "F_PU6",
+      "S_PU6",
+      "F_PU7",
+      "S_PU7",
+      "F_PU8",
+      "S_PU8",
+      "F_V2",
+      "S_V2",
+      "P_J280",
+      "P_J269",
+      "P_J289",
+      "P_J415",
+      "P_J302",
+      "P_J307",
+      "P_J14",
+      "P_J422"
+    ]
+  },
+  "Region 2 (DMA 2)": {
+    "dma_id": 2,
+    "sensor_count": 1,
+    "sensors": [
+      "L_T4"
+    ]
+  },
+  "Region 3 (DMA 3)": {
+    "dma_id": 3,
+    "sensor_count": 7,
+    "sensors": [
+      "L_T3",
+      "F_PU4",
+      "S_PU4",
+      "F_PU5",
+      "S_PU5",
+      "P_J300",
+      "P_J256"
+    ]
+  },
+  "Region 4 (DMA 4)": {
+    "dma_id": 4,
+    "sensor_count": 7,
+    "sensors": [
+      "L_T6",
+      "L_T7",
+      "F_PU10",
+      "S_PU10",
+      "F_PU11",
+      "S_PU11",
+      "P_J317"
+    ]
+  },
+  "Region 5 (DMA 5)": {
+    "dma_id": 5,
+    "sensor_count": 4,
+    "sensors": [
+      "L_T5",
+      "F_PU9",
+      "S_PU9",
+      "P_J306"
+    ]
+  }
+}

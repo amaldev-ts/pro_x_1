@@ -1,0 +1,863 @@
+{
+  "sequence3_info": {
+    "start": "2016-10-30T19:00:00.000000",
+    "end": "2016-01-11T07:00:00.000000",
+    "length_hours": 37
+  },
+  "calibration_baseline_stats": {
+    "Instantaneous Residual (Z)": {
+      "global_mean": 0.9995487332344055,
+      "global_median": 0.7175205945968628,
+      "global_std": 1.8134219646453857,
+      "global_p95": 2.4363787174224854,
+      "global_p99": 3.7594404220581055,
+      "global_p99_5": 4.898279666900635
+    },
+    "Abs Residual Delta (|dZ|)": {
+      "global_mean": 1.319838285446167,
+      "global_median": 1.0063802003860474,
+      "global_std": 2.4047040939331055,
+      "global_p95": 3.0274839401245117,
+      "global_p99": 4.7932915687561035,
+      "global_p99_5": 5.631106376647949
+    },
+    "Residual Acceleration (|accel|)": {
+      "global_mean": 2.365255355834961,
+      "global_median": 1.82818603515625,
+      "global_std": 4.073797225952148,
+      "global_p95": 5.14575719833374,
+      "global_p99": 8.293217658996582,
+      "global_p99_5": 10.406105041503906
+    },
+    "3h Rolling Mean": {
+      "global_mean": 0.9996031454168985,
+      "global_median": 0.8410463367420986,
+      "global_std": 1.2004383068830309,
+      "global_p95": 1.9418806842589078,
+      "global_p99": 2.868863159106805,
+      "global_p99_5": 3.676809576914651
+    },
+    "6h Rolling Mean": {
+      "global_mean": 0.9997653099219133,
+      "global_median": 0.8770903818631288,
+      "global_std": 0.8704074421359533,
+      "global_p95": 1.6863696372282453,
+      "global_p99": 2.379530351853639,
+      "global_p99_5": 2.551782006274451
+    },
+    "12h Rolling Mean": {
+      "global_mean": 1.0002203909996235,
+      "global_median": 0.9125929028814744,
+      "global_std": 0.6154054732777821,
+      "global_p95": 1.4797520952412326,
+      "global_p99": 1.780938653358705,
+      "global_p99_5": 7.683075396516832
+    },
+    "3h Rolling Std": {
+      "global_mean": 1.1300743367410548,
+      "global_median": 0.9138322634386676,
+      "global_std": 1.7503632109940273,
+      "global_p95": 2.3168071241117376,
+      "global_p99": 3.566542174833733,
+      "global_p99_5": 4.309741378387057
+    },
+    "6h Rolling Std": {
+      "global_mean": 1.458146812507842,
+      "global_median": 1.255049306232027,
+      "global_std": 1.7769306347350997,
+      "global_p95": 2.530523797880318,
+      "global_p99": 3.770589660950261,
+      "global_p99_5": 5.130928226412923
+    },
+    "12h Rolling Std": {
+      "global_mean": 1.7744002061359296,
+      "global_median": 1.5212950468382664,
+      "global_std": 1.755178728577723,
+      "global_p95": 2.695271896592249,
+      "global_p99": 4.291861218461658,
+      "global_p99_5": 21.646780901280273
+    }
+  },
+  "norm_vs_seq3_comparison": {
+    "Instantaneous Residual (Z)": {
+      "calib_mean": 0.9995487332344055,
+      "seq3_mean": 2.853222131729126,
+      "mean_ratio": 2.854510248791352,
+      "calib_p95": 2.4363787174224854,
+      "calib_p99": 3.7594404220581055,
+      "seq3_pct_above_p95": 24.324324324324326,
+      "seq3_pct_above_p99": 13.513513513513514
+    },
+    "Abs Residual Delta (|dZ|)": {
+      "calib_mean": 1.319838285446167,
+      "seq3_mean": 3.057189702987671,
+      "mean_ratio": 2.3163365645139113,
+      "calib_p95": 3.0274839401245117,
+      "calib_p99": 4.7932915687561035,
+      "seq3_pct_above_p95": 21.62162162162162,
+      "seq3_pct_above_p99": 16.216216216216218
+    },
+    "Residual Acceleration (|accel|)": {
+      "calib_mean": 2.365255355834961,
+      "seq3_mean": 5.415878772735596,
+      "mean_ratio": 2.28976492389173,
+      "calib_p95": 5.14575719833374,
+      "calib_p99": 8.293217658996582,
+      "seq3_pct_above_p95": 27.027027027027028,
+      "seq3_pct_above_p99": 13.513513513513514
+    },
+    "3h Rolling Mean": {
+      "calib_mean": 0.9996031454168985,
+      "seq3_mean": 2.967252536338531,
+      "mean_ratio": 2.9684305419194046,
+      "calib_p95": 1.9418806842589078,
+      "calib_p99": 2.868863159106805,
+      "seq3_pct_above_p95": 37.83783783783784,
+      "seq3_pct_above_p99": 24.324324324324326
+    },
+    "6h Rolling Mean": {
+      "calib_mean": 0.9997653099219133,
+      "seq3_mean": 3.2456216982979558,
+      "mean_ratio": 3.2463835598452797,
+      "calib_p95": 1.6863696372282453,
+      "calib_p99": 2.379530351853639,
+      "seq3_pct_above_p95": 51.35135135135135,
+      "seq3_pct_above_p99": 35.13513513513514
+    },
+    "12h Rolling Mean": {
+      "calib_mean": 1.0002203909996235,
+      "seq3_mean": 3.7578047607294547,
+      "mean_ratio": 3.756976719304958,
+      "calib_p95": 1.4797520952412326,
+      "calib_p99": 1.780938653358705,
+      "seq3_pct_above_p95": 75.67567567567568,
+      "seq3_pct_above_p99": 72.97297297297297
+    },
+    "3h Rolling Std": {
+      "calib_mean": 1.1300743367410548,
+      "seq3_mean": 2.7800481733451017,
+      "mean_ratio": 2.460057766431293,
+      "calib_p95": 2.3168071241117376,
+      "calib_p99": 3.566542174833733,
+      "seq3_pct_above_p95": 27.027027027027028,
+      "seq3_pct_above_p99": 16.216216216216218
+    },
+    "6h Rolling Std": {
+      "calib_mean": 1.458146812507842,
+      "seq3_mean": 4.214911119077812,
+      "mean_ratio": 2.8905944545616182,
+      "calib_p95": 2.530523797880318,
+      "calib_p99": 3.770589660950261,
+      "seq3_pct_above_p95": 40.54054054054054,
+      "seq3_pct_above_p99": 32.432432432432435
+    },
+    "12h Rolling Std": {
+      "calib_mean": 1.7744002061359296,
+      "seq3_mean": 6.496372661598494,
+      "mean_ratio": 3.661165391281058,
+      "calib_p95": 2.695271896592249,
+      "calib_p99": 4.291861218461658,
+      "seq3_pct_above_p95": 72.97297297297297,
+      "seq3_pct_above_p99": 59.45945945945946
+    }
+  },
+  "top15_persistence_seq3": [
+    {
+      "sensor": "P_J280",
+      "max_p95_run_hours": 13,
+      "max_p99_run_hours": 5,
+      "seq3_mean_normalized_residual": 6.304409980773926
+    },
+    {
+      "sensor": "L_T1",
+      "max_p95_run_hours": 11,
+      "max_p99_run_hours": 11,
+      "seq3_mean_normalized_residual": 4.9303436279296875
+    },
+    {
+      "sensor": "L_T2",
+      "max_p95_run_hours": 8,
+      "max_p99_run_hours": 4,
+      "seq3_mean_normalized_residual": 3.346792459487915
+    },
+    {
+      "sensor": "F_V2",
+      "max_p95_run_hours": 6,
+      "max_p99_run_hours": 0,
+      "seq3_mean_normalized_residual": 1.9615055322647095
+    },
+    {
+      "sensor": "P_J14",
+      "max_p95_run_hours": 5,
+      "max_p99_run_hours": 3,
+      "seq3_mean_normalized_residual": 17.7264347076416
+    },
+    {
+      "sensor": "P_J302",
+      "max_p95_run_hours": 5,
+      "max_p99_run_hours": 4,
+      "seq3_mean_normalized_residual": 12.155313491821289
+    },
+    {
+      "sensor": "P_J307",
+      "max_p95_run_hours": 5,
+      "max_p99_run_hours": 4,
+      "seq3_mean_normalized_residual": 11.957015991210938
+    },
+    {
+      "sensor": "F_PU7",
+      "max_p95_run_hours": 4,
+      "max_p99_run_hours": 1,
+      "seq3_mean_normalized_residual": 1.5460240840911865
+    },
+    {
+      "sensor": "S_PU7",
+      "max_p95_run_hours": 4,
+      "max_p99_run_hours": 1,
+      "seq3_mean_normalized_residual": 1.5456827878952026
+    },
+    {
+      "sensor": "S_PU3",
+      "max_p95_run_hours": 3,
+      "max_p99_run_hours": 3,
+      "seq3_mean_normalized_residual": 2.6824958324432373
+    },
+    {
+      "sensor": "F_PU3",
+      "max_p95_run_hours": 3,
+      "max_p99_run_hours": 3,
+      "seq3_mean_normalized_residual": 2.6176929473876953
+    },
+    {
+      "sensor": "F_PU9",
+      "max_p95_run_hours": 3,
+      "max_p99_run_hours": 3,
+      "seq3_mean_normalized_residual": 2.5593068599700928
+    },
+    {
+      "sensor": "S_PU5",
+      "max_p95_run_hours": 3,
+      "max_p99_run_hours": 1,
+      "seq3_mean_normalized_residual": 2.2496626377105713
+    },
+    {
+      "sensor": "S_PU11",
+      "max_p95_run_hours": 3,
+      "max_p99_run_hours": 1,
+      "seq3_mean_normalized_residual": 1.9808069467544556
+    },
+    {
+      "sensor": "L_T3",
+      "max_p95_run_hours": 3,
+      "max_p99_run_hours": 1,
+      "seq3_mean_normalized_residual": 1.9600269794464111
+    }
+  ],
+  "transition_analysis_top10": [
+    {
+      "sensor": "L_T5",
+      "pre_attack_mean": 0.8615743517875671,
+      "first6_attack_mean": 1.0778703689575195,
+      "delta_first6": 0.2162960171699524,
+      "full_seq3_mean": 1.6278469562530518,
+      "delta_full_seq3": 0.7662726044654846,
+      "variance_change": 1.2915273904800415
+    },
+    {
+      "sensor": "L_T4",
+      "pre_attack_mean": 0.8981449007987976,
+      "first6_attack_mean": 1.2875465154647827,
+      "delta_first6": 0.3894016146659851,
+      "full_seq3_mean": 1.4683177471160889,
+      "delta_full_seq3": 0.5701728463172913,
+      "variance_change": 2.2684342861175537
+    },
+    {
+      "sensor": "P_J269",
+      "pre_attack_mean": 0.860297679901123,
+      "first6_attack_mean": 5.280190944671631,
+      "delta_first6": 4.419893264770508,
+      "full_seq3_mean": 1.4029544591903687,
+      "delta_full_seq3": 0.5426567792892456,
+      "variance_change": 21.60107421875
+    },
+    {
+      "sensor": "F_PU1",
+      "pre_attack_mean": 0.8995166420936584,
+      "first6_attack_mean": 5.176746845245361,
+      "delta_first6": 4.277230262756348,
+      "full_seq3_mean": 1.3902795314788818,
+      "delta_full_seq3": 0.4907628893852234,
+      "variance_change": 20.766952514648438
+    },
+    {
+      "sensor": "F_PU6",
+      "pre_attack_mean": 0.017540080472826958,
+      "first6_attack_mean": 0.023934729397296906,
+      "delta_first6": 0.006394648924469948,
+      "full_seq3_mean": 0.07078742235898972,
+      "delta_full_seq3": 0.05324734002351761,
+      "variance_change": 0.016596481204032898
+    },
+    {
+      "sensor": "S_PU6",
+      "pre_attack_mean": 0.015253442339599133,
+      "first6_attack_mean": 0.021392012014985085,
+      "delta_first6": 0.006138569675385952,
+      "full_seq3_mean": 0.06546362489461899,
+      "delta_full_seq3": 0.05021018162369728,
+      "variance_change": 0.014157108962535858
+    },
+    {
+      "sensor": "F_PU4",
+      "pre_attack_mean": 1.4198881387710571,
+      "first6_attack_mean": 2.7295188903808594,
+      "delta_first6": 1.3096307516098022,
+      "full_seq3_mean": 1.3878065347671509,
+      "delta_full_seq3": -0.03208160400390625,
+      "variance_change": 4.911540985107422
+    },
+    {
+      "sensor": "S_PU4",
+      "pre_attack_mean": 1.4098833799362183,
+      "first6_attack_mean": 2.3560948371887207,
+      "delta_first6": 0.9462114572525024,
+      "full_seq3_mean": 1.3250510692596436,
+      "delta_full_seq3": -0.08483231067657471,
+      "variance_change": 4.565990924835205
+    },
+    {
+      "sensor": "P_J256",
+      "pre_attack_mean": 1.5435513257980347,
+      "first6_attack_mean": 2.756106376647949,
+      "delta_first6": 1.2125550508499146,
+      "full_seq3_mean": 1.4043622016906738,
+      "delta_full_seq3": -0.13918912410736084,
+      "variance_change": 1.366340160369873
+    },
+    {
+      "sensor": "L_T3",
+      "pre_attack_mean": 2.356379747390747,
+      "first6_attack_mean": 1.6888184547424316,
+      "delta_first6": -0.6675612926483154,
+      "full_seq3_mean": 1.9600269794464111,
+      "delta_full_seq3": -0.39635276794433594,
+      "variance_change": 3.7608582973480225
+    }
+  ],
+  "top7_sensor_correlation": {
+    "P_J14": {
+      "P_J14": 1.0,
+      "P_J302": 0.8808649168553881,
+      "P_J307": 0.8792076567447202,
+      "P_J280": 0.7621166532417623,
+      "L_T1": -0.000262675719592242,
+      "L_T2": 0.13347910539559854,
+      "P_J306": 0.6238913562300099
+    },
+    "P_J302": {
+      "P_J14": 0.8808649168553881,
+      "P_J302": 1.0,
+      "P_J307": 0.9999827067826017,
+      "P_J280": 0.6713851766131596,
+      "L_T1": -0.08019291362390117,
+      "L_T2": 0.042024228867457394,
+      "P_J306": 0.34505293033934664
+    },
+    "P_J307": {
+      "P_J14": 0.8792076567447201,
+      "P_J302": 0.9999827067826017,
+      "P_J307": 1.0,
+      "P_J280": 0.6695663344313186,
+      "L_T1": -0.08154285156767592,
+      "L_T2": 0.04206268829466593,
+      "P_J306": 0.3448524781783191
+    },
+    "P_J280": {
+      "P_J14": 0.7621166532417623,
+      "P_J302": 0.6713851766131594,
+      "P_J307": 0.6695663344313186,
+      "P_J280": 1.0,
+      "L_T1": 0.3644197861064679,
+      "L_T2": -0.004662938740190975,
+      "P_J306": 0.3959385265040668
+    },
+    "L_T1": {
+      "P_J14": -0.00026267571959224194,
+      "P_J302": -0.08019291362390119,
+      "P_J307": -0.08154285156767592,
+      "P_J280": 0.3644197861064679,
+      "L_T1": 0.9999999999999999,
+      "L_T2": -0.02003778084960344,
+      "P_J306": 0.04337486085368431
+    },
+    "L_T2": {
+      "P_J14": 0.13347910539559854,
+      "P_J302": 0.0420242288674574,
+      "P_J307": 0.042062688294665924,
+      "P_J280": -0.004662938740190975,
+      "L_T1": -0.02003778084960344,
+      "L_T2": 1.0,
+      "P_J306": 0.3461448390538758
+    },
+    "P_J306": {
+      "P_J14": 0.6238913562300099,
+      "P_J302": 0.3450529303393466,
+      "P_J307": 0.3448524781783191,
+      "P_J280": 0.3959385265040668,
+      "L_T1": 0.04337486085368431,
+      "L_T2": 0.3461448390538758,
+      "P_J306": 1.0
+    }
+  },
+  "diagnostic_candidate_evaluations": {
+    "A. Global Instantaneous Residual": {
+      "threshold_99_5": 4.898279666900635,
+      "metrics": {
+        "metric_category": "DETECTION_METRICS",
+        "threshold": 4.898279666900635,
+        "samples": 4165,
+        "attack_samples": 219,
+        "precision": 0.57847533632287,
+        "recall": 0.589041095890411,
+        "f1_score": 0.583710407239819,
+        "roc_auc": 0.8792303401861198,
+        "pr_auc": 0.5382192824551503,
+        "false_positive_rate": 0.02382159148504815,
+        "confusion_matrix": {
+          "TN": 3852,
+          "FP": 94,
+          "FN": 90,
+          "TP": 129
+        },
+        "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
+      },
+      "sequences": {
+        "Seq1": {
+          "length": 42,
+          "tp": 36,
+          "fn": 6,
+          "recall": 0.8571428571428571,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq2": {
+          "length": 60,
+          "tp": 14,
+          "fn": 46,
+          "recall": 0.23333333333333334,
+          "delay_hours": 3,
+          "delay_str": "3 h"
+        },
+        "Seq3": {
+          "length": 37,
+          "tp": 4,
+          "fn": 33,
+          "recall": 0.10810810810810811,
+          "delay_hours": 1,
+          "delay_str": "1 h"
+        },
+        "Seq4": {
+          "length": 7,
+          "tp": 5,
+          "fn": 2,
+          "recall": 0.7142857142857143,
+          "delay_hours": 1,
+          "delay_str": "1 h"
+        },
+        "Seq5": {
+          "length": 73,
+          "tp": 70,
+          "fn": 3,
+          "recall": 0.958904109589041,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        }
+      }
+    },
+    "B. Global 3-Hour Rolling Mean": {
+      "threshold_99_5": 3.676809576914651,
+      "metrics": {
+        "metric_category": "DETECTION_METRICS",
+        "threshold": 3.676809576914651,
+        "samples": 4165,
+        "attack_samples": 219,
+        "precision": 0.5653846153846154,
+        "recall": 0.6712328767123288,
+        "f1_score": 0.6137787056367432,
+        "roc_auc": 0.8980749247258075,
+        "pr_auc": 0.5717419018654903,
+        "false_positive_rate": 0.02863659401926001,
+        "confusion_matrix": {
+          "TN": 3833,
+          "FP": 113,
+          "FN": 72,
+          "TP": 147
+        },
+        "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
+      },
+      "sequences": {
+        "Seq1": {
+          "length": 42,
+          "tp": 42,
+          "fn": 0,
+          "recall": 1.0,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq2": {
+          "length": 60,
+          "tp": 20,
+          "fn": 40,
+          "recall": 0.3333333333333333,
+          "delay_hours": 3,
+          "delay_str": "3 h"
+        },
+        "Seq3": {
+          "length": 37,
+          "tp": 7,
+          "fn": 30,
+          "recall": 0.1891891891891892,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq4": {
+          "length": 7,
+          "tp": 5,
+          "fn": 2,
+          "recall": 0.7142857142857143,
+          "delay_hours": 2,
+          "delay_str": "2 h"
+        },
+        "Seq5": {
+          "length": 73,
+          "tp": 73,
+          "fn": 0,
+          "recall": 1.0,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        }
+      }
+    },
+    "C. Global 6-Hour Rolling Mean": {
+      "threshold_99_5": 2.551782006274451,
+      "metrics": {
+        "metric_category": "DETECTION_METRICS",
+        "threshold": 2.551782006274451,
+        "samples": 4165,
+        "attack_samples": 219,
+        "precision": 0.4308093994778068,
+        "recall": 0.7534246575342466,
+        "f1_score": 0.5481727574750831,
+        "roc_auc": 0.9263146079377532,
+        "pr_auc": 0.6069261886172628,
+        "false_positive_rate": 0.055245818550430814,
+        "confusion_matrix": {
+          "TN": 3728,
+          "FP": 218,
+          "FN": 54,
+          "TP": 165
+        },
+        "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
+      },
+      "sequences": {
+        "Seq1": {
+          "length": 42,
+          "tp": 42,
+          "fn": 0,
+          "recall": 1.0,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq2": {
+          "length": 60,
+          "tp": 30,
+          "fn": 30,
+          "recall": 0.5,
+          "delay_hours": 2,
+          "delay_str": "2 h"
+        },
+        "Seq3": {
+          "length": 37,
+          "tp": 13,
+          "fn": 24,
+          "recall": 0.35135135135135137,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq4": {
+          "length": 7,
+          "tp": 7,
+          "fn": 0,
+          "recall": 1.0,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq5": {
+          "length": 73,
+          "tp": 73,
+          "fn": 0,
+          "recall": 1.0,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        }
+      }
+    },
+    "D. Global 12-Hour Rolling Mean": {
+      "threshold_99_5": 7.683075396516832,
+      "metrics": {
+        "metric_category": "DETECTION_METRICS",
+        "threshold": 7.683075396516832,
+        "samples": 4165,
+        "attack_samples": 219,
+        "precision": 0.5098039215686274,
+        "recall": 0.593607305936073,
+        "f1_score": 0.5485232067510548,
+        "roc_auc": 0.9542800408251116,
+        "pr_auc": 0.6076037132570674,
+        "false_positive_rate": 0.03167764825139382,
+        "confusion_matrix": {
+          "TN": 3821,
+          "FP": 125,
+          "FN": 89,
+          "TP": 130
+        },
+        "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
+      },
+      "sequences": {
+        "Seq1": {
+          "length": 42,
+          "tp": 42,
+          "fn": 0,
+          "recall": 1.0,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq2": {
+          "length": 60,
+          "tp": 8,
+          "fn": 52,
+          "recall": 0.13333333333333333,
+          "delay_hours": 52,
+          "delay_str": "52 h"
+        },
+        "Seq3": {
+          "length": 37,
+          "tp": 0,
+          "fn": 37,
+          "recall": 0.0,
+          "delay_hours": null,
+          "delay_str": "not detected"
+        },
+        "Seq4": {
+          "length": 7,
+          "tp": 7,
+          "fn": 0,
+          "recall": 1.0,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq5": {
+          "length": 73,
+          "tp": 73,
+          "fn": 0,
+          "recall": 1.0,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        }
+      }
+    },
+    "E. Global Abs Residual Change": {
+      "threshold_99_5": 5.631106376647949,
+      "metrics": {
+        "metric_category": "DETECTION_METRICS",
+        "threshold": 5.631106376647949,
+        "samples": 4165,
+        "attack_samples": 219,
+        "precision": 0.5662100456621004,
+        "recall": 0.5662100456621004,
+        "f1_score": 0.5662100456621004,
+        "roc_auc": 0.8562106705362577,
+        "pr_auc": 0.4574695112566496,
+        "false_positive_rate": 0.0240750126710593,
+        "confusion_matrix": {
+          "TN": 3851,
+          "FP": 95,
+          "FN": 95,
+          "TP": 124
+        },
+        "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
+      },
+      "sequences": {
+        "Seq1": {
+          "length": 42,
+          "tp": 39,
+          "fn": 3,
+          "recall": 0.9285714285714286,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq2": {
+          "length": 60,
+          "tp": 9,
+          "fn": 51,
+          "recall": 0.15,
+          "delay_hours": 4,
+          "delay_str": "4 h"
+        },
+        "Seq3": {
+          "length": 37,
+          "tp": 4,
+          "fn": 33,
+          "recall": 0.10810810810810811,
+          "delay_hours": 17,
+          "delay_str": "17 h"
+        },
+        "Seq4": {
+          "length": 7,
+          "tp": 3,
+          "fn": 4,
+          "recall": 0.42857142857142855,
+          "delay_hours": 1,
+          "delay_str": "1 h"
+        },
+        "Seq5": {
+          "length": 73,
+          "tp": 69,
+          "fn": 4,
+          "recall": 0.9452054794520548,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        }
+      }
+    },
+    "F. Global Residual Acceleration": {
+      "threshold_99_5": 10.406105041503906,
+      "metrics": {
+        "metric_category": "DETECTION_METRICS",
+        "threshold": 10.406105041503906,
+        "samples": 4165,
+        "attack_samples": 219,
+        "precision": 0.5534883720930233,
+        "recall": 0.54337899543379,
+        "f1_score": 0.5483870967741935,
+        "roc_auc": 0.8537401032662403,
+        "pr_auc": 0.4643803765979834,
+        "false_positive_rate": 0.024328433857070453,
+        "confusion_matrix": {
+          "TN": 3850,
+          "FP": 96,
+          "FN": 100,
+          "TP": 119
+        },
+        "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
+      },
+      "sequences": {
+        "Seq1": {
+          "length": 42,
+          "tp": 39,
+          "fn": 3,
+          "recall": 0.9285714285714286,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq2": {
+          "length": 60,
+          "tp": 5,
+          "fn": 55,
+          "recall": 0.08333333333333333,
+          "delay_hours": 48,
+          "delay_str": "48 h"
+        },
+        "Seq3": {
+          "length": 37,
+          "tp": 5,
+          "fn": 32,
+          "recall": 0.13513513513513514,
+          "delay_hours": 17,
+          "delay_str": "17 h"
+        },
+        "Seq4": {
+          "length": 7,
+          "tp": 2,
+          "fn": 5,
+          "recall": 0.2857142857142857,
+          "delay_hours": 4,
+          "delay_str": "4 h"
+        },
+        "Seq5": {
+          "length": 73,
+          "tp": 68,
+          "fn": 5,
+          "recall": 0.9315068493150684,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        }
+      }
+    },
+    "G. Temporal Persistence Score (>=3h >p95)": {
+      "threshold_99_5": 0.06976744186046512,
+      "metrics": {
+        "metric_category": "DETECTION_METRICS",
+        "threshold": 0.06976744186046512,
+        "samples": 4165,
+        "attack_samples": 219,
+        "precision": 0.4981549815498155,
+        "recall": 0.6164383561643836,
+        "f1_score": 0.5510204081632653,
+        "roc_auc": 0.8718452533864707,
+        "pr_auc": 0.5739213861476586,
+        "false_positive_rate": 0.03446528129751647,
+        "confusion_matrix": {
+          "TN": 3810,
+          "FP": 136,
+          "FN": 84,
+          "TP": 135
+        },
+        "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
+      },
+      "sequences": {
+        "Seq1": {
+          "length": 42,
+          "tp": 36,
+          "fn": 6,
+          "recall": 0.8571428571428571,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq2": {
+          "length": 60,
+          "tp": 23,
+          "fn": 37,
+          "recall": 0.38333333333333336,
+          "delay_hours": 2,
+          "delay_str": "2 h"
+        },
+        "Seq3": {
+          "length": 37,
+          "tp": 3,
+          "fn": 34,
+          "recall": 0.08108108108108109,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq4": {
+          "length": 7,
+          "tp": 4,
+          "fn": 3,
+          "recall": 0.5714285714285714,
+          "delay_hours": 3,
+          "delay_str": "3 h"
+        },
+        "Seq5": {
+          "length": 73,
+          "tp": 69,
+          "fn": 4,
+          "recall": 0.9452054794520548,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        }
+      }
+    }
+  }
+}

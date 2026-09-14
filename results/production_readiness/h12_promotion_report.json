@@ -1,0 +1,18 @@
+{
+  "promotion_timestamp": "20260914_192026",
+  "backup_path": "C:\\Users\\newuser\\Downloads\\pro_X\\X-Resilience-WDS\\models\\backups\\detection_gnn_pre_h12_promotion_20260914_192026.pt",
+  "original_production_sha256": "056284e983baf988d962e4d56d7ea7528c4638173f081c418ec9f6ce907d9e64",
+  "candidate_sha256": "8e85de2b871ff49bb0894f2eb97e3d9fd6087151e8f0ba7ee35006f890a93667",
+  "final_production_sha256": "8e85de2b871ff49bb0894f2eb97e3d9fd6087151e8f0ba7ee35006f890a93667",
+  "backup_sha256": "056284e983baf988d962e4d56d7ea7528c4638173f081c418ec9f6ce907d9e64",
+  "candidate_post_promotion_sha256": "8e85de2b871ff49bb0894f2eb97e3d9fd6087151e8f0ba7ee35006f890a93667",
+  "config_sha256": "fe88ac78daf2fef10c476d91bc35e361f586d35b5d8de7c1f6a27fc925160900",
+  "raw_dataset03_sha256": "8ca6cb851242254d2605b5a53ba3ba5009e2213a545d65396615f1ce0b426e1b",
+  "raw_dataset04_sha256": "4746beab2cfcdb5e68c7fa197a7522aecb70189d61dcc3eb1f870d2ce387068b",
+  "raw_test_dataset_sha256": "184dfc1581df52193b2acb79164f7ce094f2bb00b1bc2e3c2e70050095065fa5",
+  "checkpoint_load_result": "PASS (Loaded H=12 model successfully)",
+  "model_architecture": "SpatioTemporalGNN",
+  "forecast_horizon": 12,
+  "threshold_tau": 3.013382,
+  "status": "PROMOTION SUCCESSFUL"
+}

@@ -1,0 +1,63 @@
+{
+  "audit_name": "Final Production-Readiness Review",
+  "project": "X-Resilience-WDS",
+  "decision": "C. NOT READY — FIX REQUIRED",
+  "candidate_checkpoint": "models/detection_gnn_h12_candidate.pt",
+  "production_checkpoint": "models/detection_gnn.pt",
+  "summary_metrics": {
+    "dataset04_validation": {
+      "precision": 0.5635,
+      "recall": 0.7900,
+      "f1_score": 0.6578,
+      "roc_auc": 0.9685,
+      "pr_auc": 0.6769,
+      "false_positive_rate": 0.0341,
+      "confusion_matrix": {"TN": 3801, "FP": 134, "FN": 46, "TP": 173}
+    },
+    "test_set_observations": {
+      "total_windows": 2066,
+      "anomalous_windows": 156,
+      "contiguous_episodes": 17
+    }
+  },
+  "pu3_assessment": {
+    "selected_option": "D. Maintain Two Scores (Statistical Anomaly Score & Operational State-Transition Score)",
+    "scientific_validity": "Pump PU3 is OFF continuously during normal baseline training (variance mu_sq ~ 2.9e-8). When PU3 turns ON in test set, dividing by near-zero variance yields normalized residual Z ~ 4.87e11. This is a mathematically valid state-transition signal, not corrupted data.",
+    "dashboard_recommendation": "The raw statistical score should be preserved for mathematical integrity, while the production dashboard displays a Log-Scaled or Variance-Floored score to prevent single-sensor operational switches from eclipsing localized hydraulic anomalies."
+  },
+  "severity_assessment": {
+    "current_formula": "Severity = Mean_Score * sqrt(Duration_Hours) * (1 + Peak_Score / tau)",
+    "numerical_limitation": "Current formula scales quadratically with peak score, causing extreme single-sensor residual spikes (~10^11) to produce severity scores of ~10^19-10^20, dominating the ranking.",
+    "proposed_dashboard_formula": "Severity_Log = log10(1 + Mean_Score) * sqrt(Duration_Hours) * (1 + log10(1 + Peak_Score / tau))"
+  },
+  "required_fixes": [
+    {
+      "priority": "HIGH",
+      "problem": "Timestamp parsing in BATADALDatasetLoader uses default pd.to_datetime without format='%d/%m/%y %H' or dayfirst=True, causing non-monotonic date ordering when day <= 12.",
+      "affected_file": "src/detection/dataset_loader.py",
+      "affected_function_line": "BATADALDatasetLoader.load_csv() (Line 85)",
+      "proposed_fix": "Update line 85 to pd.to_datetime(df[self.timestamp_col], dayfirst=True, format='%d/%m/%y %H', errors='coerce')",
+      "retraining_required": false,
+      "expected_impact": "Ensures all future automated inference pipelines parse timestamps monotonically without requiring wrapper scripts."
+    },
+    {
+      "priority": "HIGH",
+      "problem": "Streamlit dashboard codebase under dashboard/ is empty (Phase 8 not yet implemented).",
+      "affected_file": "dashboard/app.py (to be created)",
+      "affected_function_line": "Phase 8 Streamlit UI",
+      "proposed_fix": "Build Streamlit UI incorporating timeline, topology graph, episode tables, and non-alarmist terminology.",
+      "retraining_required": false,
+      "expected_impact": "Enables operators to visually inspect detections and topology context."
+    }
+  ],
+  "integrity_verification": {
+    "production_checkpoint_hash": "056284e983ba...",
+    "candidate_checkpoint_hash": "8e85de2b871f...",
+    "production_checkpoint_untouched": true,
+    "candidate_checkpoint_unchanged": true,
+    "configs_unchanged": true,
+    "raw_data_unchanged": true,
+    "test_labels_unaccessed": true,
+    "pytest_result": "41/41 Passed"
+  }
+}

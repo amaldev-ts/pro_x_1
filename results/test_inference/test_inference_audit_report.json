@@ -1,0 +1,70 @@
+{
+  "audit_name": "Quality/Sanity Audit of H=12 Held-Out Test Inference Results",
+  "candidate_checkpoint": "models/detection_gnn_h12_candidate.pt",
+  "production_checkpoint": "models/detection_gnn.pt",
+  "test_dataset": "data/raw/BATADAL_test_dataset.csv",
+  "locked_threshold": 3.013382,
+  "audit_summary": {
+    "item_A_timestamp_integrity": "FAIL",
+    "item_B_episode_construction": "FAIL",
+    "item_C_numerical_stability": "PASS",
+    "item_D_preprocessing_consistency": "PASS",
+    "item_E_sensor_attribution": "PASS",
+    "item_F_severity_calculation": "PASS",
+    "item_G_system_integrity": "PASS",
+    "item_H_pytest_result": "PASS (41/41 Passed)"
+  },
+  "detailed_findings": {
+    "item_A_timestamp_integrity": {
+      "status": "FAIL",
+      "discrepancy": "Original inference parsed timestamps without explicit format '%d/%m/%y %H' or dayfirst=True, causing pandas dateutil fallback to guess MM/DD/YY for dates with day <= 12 and DD/MM/YY for day > 12. This produced 6 backwards timestamp jumps (e.g. EP-12: 2017-11-02 to 2017-02-13).",
+      "root_cause": "Line 85 of src/detection/dataset_loader.py invoked pd.to_datetime(df['DATETIME']) without explicit format or dayfirst=True.",
+      "corrected_behavior": "Parsing with format='%d/%m/%y %H' confirms 2,089 raw rows, 2,066 H=12 windows, strictly monotonic dates from 2017-01-04 00:00 to 2017-04-01 00:00 with zero missing/duplicate timestamps.",
+      "affects_scientific_validity": false,
+      "scientific_impact_note": "Model forecasting outputs and anomaly scores are mathematically identical; only the calendar label formatting was distorted."
+    },
+    "item_B_episode_construction": {
+      "status": "FAIL",
+      "discrepancy": "Original report grouped contiguous anomaly windows using the scrambled default timestamp ordering, artificially splitting contiguous attack blocks across date jump boundaries into 23 pseudo-episodes.",
+      "root_cause": "Episode extraction was performed on non-monotonic timestamp strings produced by default date parsing.",
+      "corrected_behavior": "Re-extracting contiguous anomalous windows on the strictly monotonic timeline yields 17 true contiguous episodes (e.g. EP-11: 2017-02-08 16:00 to 2017-02-10 20:00 [53h], EP-12: 2017-02-11 14:00 to 2017-02-13 18:00 [53h]).",
+      "affects_scientific_validity": false
+    },
+    "item_C_numerical_stability": {
+      "status": "PASS",
+      "finding": "Peak anomaly score of ~1.13e10 (at row 943, 2017-02-12 07:00) is a legitimate physical/model anomaly signal, NOT a numerical bug.",
+      "investigation_details": "Raw data for F_PU3 and S_PU3 contains 0 NaNs, 0 infs, 0 -999 sentinels. During normal baseline training (Dataset03), pump PU3 is OFF (F_PU3 = 0.0), yielding near-zero baseline variance mu_sq[11] = 2.9e-8. When PU3 turns ON in the test set (F_PU3 = 86.49 L/s), dividing squared error (14,294.26) by 2.9e-8 produces Z = 4.87e11.",
+      "documented_limitation": "Dividing by near-zero normal baseline variance amplifies operational state transitions into multi-billion normalized residuals."
+    },
+    "item_D_preprocessing_consistency": {
+      "status": "PASS",
+      "finding": "Inference pipeline uses exact same feature ordering (43 sensors), StandardScaler (fitted strictly on 80% Dataset03 train split), 3-hop graph adjacency, H=12 windowing, and calibration normalization factors as final H=12 training."
+    },
+    "item_E_sensor_attribution": {
+      "status": "PASS",
+      "finding": "Sensor names correspond 1-to-1 with feature columns, residuals are computed correctly, rankings are properly sorted, and topology node mappings match CTOWN.INP graph nodes."
+    },
+    "item_F_severity_calculation": {
+      "status": "PASS",
+      "finding": "Severity formula (Mean * sqrt(Duration) * (1 + Max/tau)) is implemented exactly as documented. Independent recalculation confirms 100% agreement.",
+      "documented_limitation": "Extreme single-sensor residual spikes (~10^11) in EP-11 and EP-12 cause severity scores (~10^19) to numerically dominate the ranking of all other episodes."
+    },
+    "item_G_system_integrity": {
+      "status": "PASS",
+      "details": {
+        "candidate_checkpoint_hash": "8e85de2b871f...",
+        "production_checkpoint_hash": "056284e983ba...",
+        "production_checkpoint_untouched": true,
+        "candidate_checkpoint_unchanged": true,
+        "config_unchanged": true,
+        "raw_data_unchanged": true,
+        "test_dataset_unaccessed_labels": true
+      }
+    },
+    "item_H_pytest_result": {
+      "status": "PASS",
+      "summary": "41 of 41 unit tests passed successfully in 18.37 seconds."
+    }
+  },
+  "corrected_artifacts_path": "results/test_inference/corrected/"
+}

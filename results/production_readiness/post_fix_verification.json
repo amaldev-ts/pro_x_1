@@ -1,0 +1,25 @@
+{
+  "verification_timestamp": "2026-09-14T17:36:30Z",
+  "audit_results": {
+    "1_timestamp_fix": "PASS",
+    "2_regression_tests": "PASS",
+    "3_dashboard_application": "PASS",
+    "4_raw_score_preservation": "PASS",
+    "5_threshold_preservation": "PASS",
+    "6_production_checkpoint": "UNCHANGED",
+    "7_candidate_checkpoint": "UNCHANGED",
+    "8_config_file": "UNCHANGED",
+    "9_raw_data": "UNCHANGED",
+    "10_test_labels": "NOT_ACCESSED",
+    "11_pytest_result": "47 PASSED, 0 FAILED (100% PASS)"
+  },
+  "file_integrity_hashes": {
+    "models/detection_gnn.pt": "056284e983baf988d962e4d56d7ea7528c4638173f081c418ec9f6ce907d9e64",
+    "models/detection_gnn_h12_candidate.pt": "8e85de2b871ff49bb0894f2eb97e3d9fd6087151e8f0ba7ee35006f890a93667",
+    "configs/config.yaml": "fe88ac78daf2fef10c476d91bc35e361f586d35b5d8de7c1f6a27fc925160900",
+    "data/raw/BATADAL_dataset03.csv": "8ca6cb851242254d2605b5a53ba3ba5009e2213a545d65396615f1ce0b426e1b",
+    "data/raw/BATADAL_dataset04.csv": "4746beab2cfcdb5e68c7fa197a7522aecb70189d61dcc3eb1f870d2ce387068b",
+    "data/raw/BATADAL_test_dataset.csv": "184dfc1581df52193b2acb79164f7ce094f2bb00b1bc2e3c2e70050095065fa5"
+  },
+  "post_fix_status": "ALL_FIXES_VERIFIED_READY_FOR_PROMOTION_APPROVAL"
+}

@@ -1,0 +1,357 @@
+{
+  "Global Mean MSE": {
+    "method": "Global Mean MSE",
+    "threshold_99_5": 0.7030527591705322,
+    "calibration_scores_stats": {
+      "mean": 0.1509626805782318,
+      "std": 0.5404447317123413,
+      "p99_5": 0.7030527591705322,
+      "max": 21.776138305664062
+    },
+    "validation_metrics": {
+      "metric_category": "DETECTION_METRICS",
+      "threshold": 0.7030527591705322,
+      "samples": 4165,
+      "attack_samples": 219,
+      "precision": 0.5311203319502075,
+      "recall": 0.5844748858447488,
+      "f1_score": 0.5565217391304348,
+      "roc_auc": 0.869066877735271,
+      "pr_auc": 0.5359000157256052,
+      "false_positive_rate": 0.02863659401926001,
+      "confusion_matrix": {
+        "TN": 3833,
+        "FP": 113,
+        "FN": 91,
+        "TP": 128
+      },
+      "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
+    },
+    "sequence_recalls": {
+      "Sequence_1": {
+        "length_hours": 42,
+        "tp": 37,
+        "fn": 5,
+        "recall": 0.8809523809523809
+      },
+      "Sequence_2": {
+        "length_hours": 60,
+        "tp": 12,
+        "fn": 48,
+        "recall": 0.2
+      },
+      "Sequence_3": {
+        "length_hours": 37,
+        "tp": 4,
+        "fn": 33,
+        "recall": 0.10810810810810811
+      },
+      "Sequence_4": {
+        "length_hours": 7,
+        "tp": 5,
+        "fn": 2,
+        "recall": 0.7142857142857143
+      },
+      "Sequence_5": {
+        "length_hours": 73,
+        "tp": 70,
+        "fn": 3,
+        "recall": 0.958904109589041
+      }
+    },
+    "seq2_recall": 0.2,
+    "seq3_recall": 0.10810810810810811,
+    "score_distribution": {
+      "normal_mean": 0.4820388853549957,
+      "normal_median": 0.1073865070939064,
+      "normal_p95": 0.5891500115394592,
+      "attack_mean": 17.520244598388672,
+      "attack_median": 1.0511540174484253,
+      "attack_p95": 86.72940063476562
+    }
+  },
+  "Top-3 Mean MSE": {
+    "method": "Top-3 Mean MSE",
+    "threshold_99_5": 6.268070697784424,
+    "calibration_scores_stats": {
+      "mean": 1.244385004043579,
+      "std": 7.568054676055908,
+      "p99_5": 6.268070697784424,
+      "max": 309.9566650390625
+    },
+    "validation_metrics": {
+      "metric_category": "DETECTION_METRICS",
+      "threshold": 6.268070697784424,
+      "samples": 4165,
+      "attack_samples": 219,
+      "precision": 0.49572649572649574,
+      "recall": 0.5296803652968036,
+      "f1_score": 0.5121412803532008,
+      "roc_auc": 0.8554411495833015,
+      "pr_auc": 0.49619853151363635,
+      "false_positive_rate": 0.029903699949315764,
+      "confusion_matrix": {
+        "TN": 3828,
+        "FP": 118,
+        "FN": 103,
+        "TP": 116
+      },
+      "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
+    },
+    "sequence_recalls": {
+      "Sequence_1": {
+        "length_hours": 42,
+        "tp": 34,
+        "fn": 8,
+        "recall": 0.8095238095238095
+      },
+      "Sequence_2": {
+        "length_hours": 60,
+        "tp": 9,
+        "fn": 51,
+        "recall": 0.15
+      },
+      "Sequence_3": {
+        "length_hours": 37,
+        "tp": 3,
+        "fn": 34,
+        "recall": 0.08108108108108109
+      },
+      "Sequence_4": {
+        "length_hours": 7,
+        "tp": 6,
+        "fn": 1,
+        "recall": 0.8571428571428571
+      },
+      "Sequence_5": {
+        "length_hours": 73,
+        "tp": 64,
+        "fn": 9,
+        "recall": 0.8767123287671232
+      }
+    },
+    "seq2_recall": 0.15,
+    "seq3_recall": 0.08108108108108109,
+    "score_distribution": {
+      "normal_mean": 5.6669602394104,
+      "normal_median": 0.7442556619644165,
+      "normal_p95": 4.963034152984619,
+      "attack_mean": 240.7986297607422,
+      "attack_median": 7.318626403808594,
+      "attack_p95": 1231.9140625
+    }
+  },
+  "Top-5 Mean MSE": {
+    "method": "Top-5 Mean MSE",
+    "threshold_99_5": 4.551156997680664,
+    "calibration_scores_stats": {
+      "mean": 0.9364408254623413,
+      "std": 4.5753631591796875,
+      "p99_5": 4.551156997680664,
+      "max": 186.44290161132812
+    },
+    "validation_metrics": {
+      "metric_category": "DETECTION_METRICS",
+      "threshold": 4.551156997680664,
+      "samples": 4165,
+      "attack_samples": 219,
+      "precision": 0.5211864406779662,
+      "recall": 0.5616438356164384,
+      "f1_score": 0.5406593406593406,
+      "roc_auc": 0.8596671503655513,
+      "pr_auc": 0.5106939410204051,
+      "false_positive_rate": 0.02863659401926001,
+      "confusion_matrix": {
+        "TN": 3833,
+        "FP": 113,
+        "FN": 96,
+        "TP": 123
+      },
+      "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
+    },
+    "sequence_recalls": {
+      "Sequence_1": {
+        "length_hours": 42,
+        "tp": 36,
+        "fn": 6,
+        "recall": 0.8571428571428571
+      },
+      "Sequence_2": {
+        "length_hours": 60,
+        "tp": 11,
+        "fn": 49,
+        "recall": 0.18333333333333332
+      },
+      "Sequence_3": {
+        "length_hours": 37,
+        "tp": 3,
+        "fn": 34,
+        "recall": 0.08108108108108109
+      },
+      "Sequence_4": {
+        "length_hours": 7,
+        "tp": 6,
+        "fn": 1,
+        "recall": 0.8571428571428571
+      },
+      "Sequence_5": {
+        "length_hours": 73,
+        "tp": 67,
+        "fn": 6,
+        "recall": 0.9178082191780822
+      }
+    },
+    "seq2_recall": 0.18333333333333332,
+    "seq3_recall": 0.08108108108108109,
+    "score_distribution": {
+      "normal_mean": 3.6496269702911377,
+      "normal_median": 0.6054699420928955,
+      "normal_p95": 3.7705681324005127,
+      "attack_mean": 146.5135040283203,
+      "attack_median": 5.83980655670166,
+      "attack_p95": 741.042724609375
+    }
+  },
+  "Top-10 Mean MSE": {
+    "method": "Top-10 Mean MSE",
+    "threshold_99_5": 2.803865909576416,
+    "calibration_scores_stats": {
+      "mean": 0.5765029788017273,
+      "std": 2.3107221126556396,
+      "p99_5": 2.803865909576416,
+      "max": 93.48987579345703
+    },
+    "validation_metrics": {
+      "metric_category": "DETECTION_METRICS",
+      "threshold": 2.803865909576416,
+      "samples": 4165,
+      "attack_samples": 219,
+      "precision": 0.5321888412017167,
+      "recall": 0.5662100456621004,
+      "f1_score": 0.5486725663716814,
+      "roc_auc": 0.8648154191169835,
+      "pr_auc": 0.5227786263530998,
+      "false_positive_rate": 0.027622909275215407,
+      "confusion_matrix": {
+        "TN": 3837,
+        "FP": 109,
+        "FN": 95,
+        "TP": 124
+      },
+      "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
+    },
+    "sequence_recalls": {
+      "Sequence_1": {
+        "length_hours": 42,
+        "tp": 36,
+        "fn": 6,
+        "recall": 0.8571428571428571
+      },
+      "Sequence_2": {
+        "length_hours": 60,
+        "tp": 11,
+        "fn": 49,
+        "recall": 0.18333333333333332
+      },
+      "Sequence_3": {
+        "length_hours": 37,
+        "tp": 3,
+        "fn": 34,
+        "recall": 0.08108108108108109
+      },
+      "Sequence_4": {
+        "length_hours": 7,
+        "tp": 5,
+        "fn": 2,
+        "recall": 0.7142857142857143
+      },
+      "Sequence_5": {
+        "length_hours": 73,
+        "tp": 69,
+        "fn": 4,
+        "recall": 0.9452054794520548
+      }
+    },
+    "seq2_recall": 0.18333333333333332,
+    "seq3_recall": 0.08108108108108109,
+    "score_distribution": {
+      "normal_mean": 1.9734046459197998,
+      "normal_median": 0.3924977779388428,
+      "normal_p95": 2.2588448524475098,
+      "attack_mean": 74.34110260009766,
+      "attack_median": 3.9229722023010254,
+      "attack_p95": 371.97491455078125
+    }
+  },
+  "Maximum Sensor MSE": {
+    "method": "Maximum Sensor MSE",
+    "threshold_99_5": 7.086470603942871,
+    "calibration_scores_stats": {
+      "mean": 1.5749735832214355,
+      "std": 11.246657371520996,
+      "p99_5": 7.086470603942871,
+      "max": 462.09246826171875
+    },
+    "validation_metrics": {
+      "metric_category": "DETECTION_METRICS",
+      "threshold": 7.086470603942871,
+      "samples": 4165,
+      "attack_samples": 219,
+      "precision": 0.44881889763779526,
+      "recall": 0.5205479452054794,
+      "f1_score": 0.4820295983086681,
+      "roc_auc": 0.8494319431040508,
+      "pr_auc": 0.4889410550358132,
+      "false_positive_rate": 0.035478966041561075,
+      "confusion_matrix": {
+        "TN": 3806,
+        "FP": 140,
+        "FN": 105,
+        "TP": 114
+      },
+      "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
+    },
+    "sequence_recalls": {
+      "Sequence_1": {
+        "length_hours": 42,
+        "tp": 33,
+        "fn": 9,
+        "recall": 0.7857142857142857
+      },
+      "Sequence_2": {
+        "length_hours": 60,
+        "tp": 7,
+        "fn": 53,
+        "recall": 0.11666666666666667
+      },
+      "Sequence_3": {
+        "length_hours": 37,
+        "tp": 3,
+        "fn": 34,
+        "recall": 0.08108108108108109
+      },
+      "Sequence_4": {
+        "length_hours": 7,
+        "tp": 6,
+        "fn": 1,
+        "recall": 0.8571428571428571
+      },
+      "Sequence_5": {
+        "length_hours": 73,
+        "tp": 65,
+        "fn": 8,
+        "recall": 0.8904109589041096
+      }
+    },
+    "seq2_recall": 0.11666666666666667,
+    "seq3_recall": 0.08108108108108109,
+    "score_distribution": {
+      "normal_mean": 9.041810989379883,
+      "normal_median": 0.9855172038078308,
+      "normal_p95": 6.006595611572266,
+      "attack_mean": 429.4461669921875,
+      "attack_median": 8.630684852600098,
+      "attack_p95": 1965.4197998046875
+    }
+  }
+}

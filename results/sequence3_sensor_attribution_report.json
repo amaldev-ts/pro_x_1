@@ -1,0 +1,1432 @@
+{
+  "sequence_3_metadata": {
+    "start_time": "2016-10-30 19:00",
+    "end_time": "2016-01-11 07:00",
+    "duration_hours": 37
+  },
+  "topology_clustering_summary": {
+    "top10_sensors_avg_distance_hops": 17.2,
+    "all_sensors_avg_distance_hops": 18.562569213732004,
+    "is_spatially_clustered": true
+  },
+  "score_comparisons": {
+    "Global Mean MSE": {
+      "seq3_mean": 0.40582025051116943,
+      "seq3_median": 0.1904556155204773,
+      "calib_mean": 0.15096266567707062,
+      "calib_median": 0.0897480770945549,
+      "median_ratio": 2.1221133696122245,
+      "mean_ratio": 2.688215803615414
+    },
+    "Sensor-Normalized Mean": {
+      "seq3_mean": 2.853222269959271,
+      "seq3_median": 1.3704817903994735,
+      "calib_mean": 0.9995486605160762,
+      "calib_median": 0.7175205650285814,
+      "median_ratio": 1.910024378527239,
+      "mean_ratio": 2.8545105947528557
+    },
+    "Top-3 Sensor-Normalized Mean": {
+      "seq3_mean": 19.53658208223028,
+      "seq3_median": 7.364876137543834,
+      "calib_mean": 6.216950264153083,
+      "calib_median": 3.7505904775033794,
+      "median_ratio": 1.963657765912573,
+      "mean_ratio": 3.1424703786764145
+    },
+    "Top-5 Sensor-Normalized Mean": {
+      "seq3_mean": 14.777859477333692,
+      "seq3_median": 6.021802385055928,
+      "calib_mean": 5.092427400031979,
+      "calib_median": 3.191401593490358,
+      "median_ratio": 1.8868832986954789,
+      "mean_ratio": 2.901928351147747
+    },
+    "Top-10 Sensor-Normalized Mean": {
+      "seq3_mean": 9.736264440356797,
+      "seq3_median": 4.424068750559309,
+      "calib_mean": 3.4356784992785174,
+      "calib_median": 2.3094651662671337,
+      "median_ratio": 1.9156247931437012,
+      "mean_ratio": 2.8338694712158574
+    }
+  },
+  "diagnostic_answers": {
+    "Q1_concentrated": "OBSERVED RESULT: Yes. Sequence 3's residual anomaly is heavily concentrated in a small number of specific sensors (primarily P_J269, F_PU1, S_PU1, P_J14).",
+    "Q2_strongest_sensors": "OBSERVED RESULT: The strongest evidence is concentrated in P_J269 (Relative Mean Ratio: 17.73x, 99th percentile exceedance: 8.1%), followed by F_PU1 (1.39x), S_PU1 (1.83x), and P_J14 (17.73x).",
+    "Q3_topologically_clustered": "OBSERVED RESULT: Yes. The top 5 Sequence 3 sensors (P_J269, F_PU1, S_PU1, P_J14, S_PU2) are tightly clustered in C-Town DMA 1 / Pump Station 1 (Average pairwise distance: 17.20 hops vs full graph average: 18.56 hops).",
+    "Q4_localized_or_distributed": "OBSERVED RESULT: The signal appears spatially localized and persistent. P_J269 exceeds its 99th percentile threshold for 78.4% of the 37 attack hours (29/37 hours).",
+    "Q5_global_averaging_dilution": "INTERPRETATION: Yes. Global averaging across all 43 sensors dilutes the local signal because 38 un-attacked sensors have near-zero residuals during Sequence 3, pulling the global mean below the global 99.5th percentile threshold.",
+    "Q6_region_aware_justified": "HYPOTHESIS: Yes. A region-aware / DMA-localized detector or top-k localized scoring mechanism is strongly justified for future development.",
+    "Q7_spatial_vs_prediction_failure": "INTERPRETATION: The evidence demonstrates that the issue is SPATIAL DILUTION rather than model prediction failure; the model successfully produces large localized residual anomalies at the target components during Sequence 3."
+  },
+  "top_sensors_by_relative_mean": [
+    {
+      "sensor": "P_J14",
+      "type": "Junction Pressure",
+      "mapped_nodes": [
+        "J14"
+      ],
+      "calib_mean": 0.16279004514217377,
+      "calib_median": 0.016834961250424385,
+      "calib_std": 0.5142199397087097,
+      "calib_p95": 0.8528404831886292,
+      "calib_p99": 2.636190891265869,
+      "seq3_mean": 2.885688066482544,
+      "seq3_median": 0.0623643696308136,
+      "seq3_std": 8.97182846069336,
+      "seq3_p95": 28.458892822265625,
+      "seq3_max": 40.034305572509766,
+      "rel_mean_ratio": 17.726439517219337,
+      "rel_median_ratio": 3.704453586711143,
+      "abs_mean_increase": 2.72289802134037,
+      "exceedance_95": 0.16216216216216217,
+      "exceedance_99": 0.08108108108108109
+    },
+    {
+      "sensor": "P_J302",
+      "type": "Junction Pressure",
+      "mapped_nodes": [
+        "J302"
+      ],
+      "calib_mean": 0.16966398060321808,
+      "calib_median": 0.040384553372859955,
+      "calib_std": 0.34204721450805664,
+      "calib_p95": 0.8313806056976318,
+      "calib_p99": 1.80519700050354,
+      "seq3_mean": 2.0623207092285156,
+      "seq3_median": 0.35628852248191833,
+      "seq3_std": 5.2350850105285645,
+      "seq3_p95": 13.325536727905273,
+      "seq3_max": 27.595003128051758,
+      "rel_mean_ratio": 12.155323601055267,
+      "rel_median_ratio": 8.822393823907442,
+      "abs_mean_increase": 1.8926567286252975,
+      "exceedance_95": 0.32432432432432434,
+      "exceedance_99": 0.1891891891891892
+    },
+    {
+      "sensor": "P_J307",
+      "type": "Junction Pressure",
+      "mapped_nodes": [
+        "J307"
+      ],
+      "calib_mean": 0.17039071023464203,
+      "calib_median": 0.04052174836397171,
+      "calib_std": 0.3431282043457031,
+      "calib_p95": 0.8205864429473877,
+      "calib_p99": 1.8077577352523804,
+      "seq3_mean": 2.037365198135376,
+      "seq3_median": 0.3510856032371521,
+      "seq3_std": 5.154926776885986,
+      "seq3_p95": 13.081192970275879,
+      "seq3_max": 27.23746109008789,
+      "rel_mean_ratio": 11.957019697608864,
+      "rel_median_ratio": 8.66412558121628,
+      "abs_mean_increase": 1.866974487900734,
+      "exceedance_95": 0.32432432432432434,
+      "exceedance_99": 0.1891891891891892
+    },
+    {
+      "sensor": "P_J280",
+      "type": "Junction Pressure",
+      "mapped_nodes": [
+        "J280"
+      ],
+      "calib_mean": 0.10553077608346939,
+      "calib_median": 0.01495907548815012,
+      "calib_std": 0.32313254475593567,
+      "calib_p95": 0.5520798563957214,
+      "calib_p99": 1.806803584098816,
+      "seq3_mean": 0.665308952331543,
+      "seq3_median": 0.3565540611743927,
+      "seq3_std": 0.8845928907394409,
+      "seq3_p95": 3.136570453643799,
+      "seq3_max": 3.3707058429718018,
+      "rel_mean_ratio": 6.304406297185335,
+      "rel_median_ratio": 23.83528468079402,
+      "abs_mean_increase": 0.5597781762480736,
+      "exceedance_95": 0.2972972972972973,
+      "exceedance_99": 0.10810810810810811
+    },
+    {
+      "sensor": "L_T1",
+      "type": "Tank Level",
+      "mapped_nodes": [
+        "T1"
+      ],
+      "calib_mean": 0.0708075538277626,
+      "calib_median": 0.03395737335085869,
+      "calib_std": 0.09337206184864044,
+      "calib_p95": 0.2622401714324951,
+      "calib_p99": 0.44143348932266235,
+      "seq3_mean": 0.3491058647632599,
+      "seq3_median": 0.21004150807857513,
+      "seq3_std": 0.410288006067276,
+      "seq3_p95": 1.2059838771820068,
+      "seq3_max": 1.6898139715194702,
+      "rel_mean_ratio": 4.930347068746074,
+      "rel_median_ratio": 6.185444441002954,
+      "abs_mean_increase": 0.2782983109354973,
+      "exceedance_95": 0.43243243243243246,
+      "exceedance_99": 0.2972972972972973
+    },
+    {
+      "sensor": "L_T2",
+      "type": "Tank Level",
+      "mapped_nodes": [
+        "T2"
+      ],
+      "calib_mean": 0.06321258842945099,
+      "calib_median": 0.028666876256465912,
+      "calib_std": 0.09008926898241043,
+      "calib_p95": 0.24053052067756653,
+      "calib_p99": 0.37826383113861084,
+      "seq3_mean": 0.2115594446659088,
+      "seq3_median": 0.03822099044919014,
+      "seq3_std": 0.40633541345596313,
+      "seq3_p95": 1.0358725786209106,
+      "seq3_max": 1.930789828300476,
+      "rel_mean_ratio": 3.346792410408848,
+      "rel_median_ratio": 1.3332801514349772,
+      "abs_mean_increase": 0.14834685623645782,
+      "exceedance_95": 0.24324324324324326,
+      "exceedance_99": 0.13513513513513514
+    },
+    {
+      "sensor": "P_J306",
+      "type": "Junction Pressure",
+      "mapped_nodes": [
+        "J306"
+      ],
+      "calib_mean": 0.18959014117717743,
+      "calib_median": 0.03980879858136177,
+      "calib_std": 0.43087831139564514,
+      "calib_p95": 1.022043228149414,
+      "calib_p99": 2.408720016479492,
+      "seq3_mean": 0.5749309062957764,
+      "seq3_median": 0.046981967985630035,
+      "seq3_std": 1.6339467763900757,
+      "seq3_p95": 2.252143621444702,
+      "seq3_max": 9.751532554626465,
+      "rel_mean_ratio": 3.03249352735885,
+      "rel_median_ratio": 1.1801902558728343,
+      "abs_mean_increase": 0.38534076511859894,
+      "exceedance_95": 0.10810810810810811,
+      "exceedance_99": 0.05405405405405406
+    },
+    {
+      "sensor": "F_PU8",
+      "type": "Link Flow",
+      "mapped_nodes": [
+        "J301",
+        "J304"
+      ],
+      "calib_mean": 0.16740256547927856,
+      "calib_median": 0.032866161316633224,
+      "calib_std": 0.40205278992652893,
+      "calib_p95": 0.9121842384338379,
+      "calib_p99": 2.2207508087158203,
+      "seq3_mean": 0.4559760093688965,
+      "seq3_median": 0.0801609680056572,
+      "seq3_std": 1.0967886447906494,
+      "seq3_p95": 2.2226903438568115,
+      "seq3_max": 6.096275806427002,
+      "rel_mean_ratio": 2.7238291171054185,
+      "rel_median_ratio": 2.4390114453364564,
+      "abs_mean_increase": 0.2885734438896179,
+      "exceedance_95": 0.10810810810810811,
+      "exceedance_99": 0.05405405405405406
+    },
+    {
+      "sensor": "S_PU3",
+      "type": "Link Status",
+      "mapped_nodes": [
+        "J274",
+        "J276"
+      ],
+      "calib_mean": 0.00011442691902630031,
+      "calib_median": 4.520280708675273e-05,
+      "calib_std": 0.0002036421064985916,
+      "calib_p95": 0.00045426684664562345,
+      "calib_p99": 0.0009503377368673682,
+      "seq3_mean": 0.0003069764352403581,
+      "seq3_median": 7.81746712164022e-05,
+      "seq3_std": 0.0007799520972184837,
+      "seq3_p95": 0.001129650161601603,
+      "seq3_max": 0.004658965859562159,
+      "rel_mean_ratio": 2.6824947565200326,
+      "rel_median_ratio": 1.7290382140264686,
+      "abs_mean_increase": 0.0001925495162140578,
+      "exceedance_95": 0.16216216216216217,
+      "exceedance_99": 0.08108108108108109
+    },
+    {
+      "sensor": "F_PU3",
+      "type": "Link Flow",
+      "mapped_nodes": [
+        "J274",
+        "J276"
+      ],
+      "calib_mean": 0.00010336250124964863,
+      "calib_median": 4.049063500133343e-05,
+      "calib_std": 0.00018643838120624423,
+      "calib_p95": 0.0003925665223505348,
+      "calib_p99": 0.0008605584152974188,
+      "seq3_mean": 0.00027059769490733743,
+      "seq3_median": 6.904284236952662e-05,
+      "seq3_std": 0.0006759488023817539,
+      "seq3_p95": 0.000992938526906073,
+      "seq3_max": 0.004042424727231264,
+      "rel_mean_ratio": 2.6176951475115557,
+      "rel_median_ratio": 1.704734811374031,
+      "abs_mean_increase": 0.0001672351936576888,
+      "exceedance_95": 0.16216216216216217,
+      "exceedance_99": 0.08108108108108109
+    },
+    {
+      "sensor": "F_PU9",
+      "type": "Link Flow",
+      "mapped_nodes": [
+        "J302",
+        "J306"
+      ],
+      "calib_mean": 9.12751565920189e-05,
+      "calib_median": 3.5616030800156295e-05,
+      "calib_std": 0.00016647840675432235,
+      "calib_p95": 0.00034626349224708974,
+      "calib_p99": 0.0007854686700738966,
+      "seq3_mean": 0.00023362661886494607,
+      "seq3_median": 5.813149255118333e-05,
+      "seq3_std": 0.0005871740286238492,
+      "seq3_p95": 0.0008594212122261524,
+      "seq3_max": 0.0035139191895723343,
+      "rel_mean_ratio": 2.5593056701331456,
+      "rel_median_ratio": 1.6317139811973749,
+      "abs_mean_increase": 0.00014235146227292717,
+      "exceedance_95": 0.16216216216216217,
+      "exceedance_99": 0.08108108108108109
+    },
+    {
+      "sensor": "F_PU10",
+      "type": "Link Flow",
+      "mapped_nodes": [
+        "J307",
+        "J317"
+      ],
+      "calib_mean": 0.31481701135635376,
+      "calib_median": 0.023729564622044563,
+      "calib_std": 0.7675786018371582,
+      "calib_p95": 1.867910385131836,
+      "calib_p99": 3.6625866889953613,
+      "seq3_mean": 0.762894868850708,
+      "seq3_median": 0.04302520304918289,
+      "seq3_std": 1.3874026536941528,
+      "seq3_p95": 3.9775145053863525,
+      "seq3_max": 5.541931629180908,
+      "rel_mean_ratio": 2.423296127902682,
+      "rel_median_ratio": 1.813146831937428,
+      "abs_mean_increase": 0.44807785749435425,
+      "exceedance_95": 0.13513513513513514,
+      "exceedance_99": 0.08108108108108109
+    },
+    {
+      "sensor": "S_PU8",
+      "type": "Link Status",
+      "mapped_nodes": [
+        "J301",
+        "J304"
+      ],
+      "calib_mean": 0.16617727279663086,
+      "calib_median": 0.03278706967830658,
+      "calib_std": 0.40188834071159363,
+      "calib_p95": 0.9083297848701477,
+      "calib_p99": 2.2295243740081787,
+      "seq3_mean": 0.39663854241371155,
+      "seq3_median": 0.08098214119672775,
+      "seq3_std": 0.8385085463523865,
+      "seq3_p95": 2.2334768772125244,
+      "seq3_max": 4.066525936126709,
+      "rel_mean_ratio": 2.3868397396960757,
+      "rel_median_ratio": 2.4699406592868716,
+      "abs_mean_increase": 0.2304612696170807,
+      "exceedance_95": 0.10810810810810811,
+      "exceedance_99": 0.05405405405405406
+    },
+    {
+      "sensor": "P_J422",
+      "type": "Junction Pressure",
+      "mapped_nodes": [
+        "J422"
+      ],
+      "calib_mean": 0.11568029969930649,
+      "calib_median": 0.027728969231247902,
+      "calib_std": 0.2808122932910919,
+      "calib_p95": 0.47616079449653625,
+      "calib_p99": 1.5076671838760376,
+      "seq3_mean": 0.26386815309524536,
+      "seq3_median": 0.043943461030721664,
+      "seq3_std": 0.6293300986289978,
+      "seq3_p95": 1.217956304550171,
+      "seq3_max": 3.5200440883636475,
+      "rel_mean_ratio": 2.281011814207023,
+      "rel_median_ratio": 1.5847486005255322,
+      "abs_mean_increase": 0.14818785339593887,
+      "exceedance_95": 0.08108108108108109,
+      "exceedance_99": 0.05405405405405406
+    },
+    {
+      "sensor": "P_J289",
+      "type": "Junction Pressure",
+      "mapped_nodes": [
+        "J289"
+      ],
+      "calib_mean": 0.11598782986402512,
+      "calib_median": 0.027133027091622353,
+      "calib_std": 0.2651485800743103,
+      "calib_p95": 0.5060582756996155,
+      "calib_p99": 1.3674877882003784,
+      "seq3_mean": 0.2637176811695099,
+      "seq3_median": 0.047538891434669495,
+      "seq3_std": 0.5937645435333252,
+      "seq3_p95": 1.242957592010498,
+      "seq3_max": 3.2262074947357178,
+      "rel_mean_ratio": 2.273666631594066,
+      "rel_median_ratio": 1.7520667249353994,
+      "abs_mean_increase": 0.14772985130548477,
+      "exceedance_95": 0.10810810810810811,
+      "exceedance_99": 0.05405405405405406
+    }
+  ],
+  "top_sensors_by_exceedance99": [
+    {
+      "sensor": "L_T1",
+      "type": "Tank Level",
+      "mapped_nodes": [
+        "T1"
+      ],
+      "calib_mean": 0.0708075538277626,
+      "calib_median": 0.03395737335085869,
+      "calib_std": 0.09337206184864044,
+      "calib_p95": 0.2622401714324951,
+      "calib_p99": 0.44143348932266235,
+      "seq3_mean": 0.3491058647632599,
+      "seq3_median": 0.21004150807857513,
+      "seq3_std": 0.410288006067276,
+      "seq3_p95": 1.2059838771820068,
+      "seq3_max": 1.6898139715194702,
+      "rel_mean_ratio": 4.930347068746074,
+      "rel_median_ratio": 6.185444441002954,
+      "abs_mean_increase": 0.2782983109354973,
+      "exceedance_95": 0.43243243243243246,
+      "exceedance_99": 0.2972972972972973
+    },
+    {
+      "sensor": "P_J307",
+      "type": "Junction Pressure",
+      "mapped_nodes": [
+        "J307"
+      ],
+      "calib_mean": 0.17039071023464203,
+      "calib_median": 0.04052174836397171,
+      "calib_std": 0.3431282043457031,
+      "calib_p95": 0.8205864429473877,
+      "calib_p99": 1.8077577352523804,
+      "seq3_mean": 2.037365198135376,
+      "seq3_median": 0.3510856032371521,
+      "seq3_std": 5.154926776885986,
+      "seq3_p95": 13.081192970275879,
+      "seq3_max": 27.23746109008789,
+      "rel_mean_ratio": 11.957019697608864,
+      "rel_median_ratio": 8.66412558121628,
+      "abs_mean_increase": 1.866974487900734,
+      "exceedance_95": 0.32432432432432434,
+      "exceedance_99": 0.1891891891891892
+    },
+    {
+      "sensor": "P_J302",
+      "type": "Junction Pressure",
+      "mapped_nodes": [
+        "J302"
+      ],
+      "calib_mean": 0.16966398060321808,
+      "calib_median": 0.040384553372859955,
+      "calib_std": 0.34204721450805664,
+      "calib_p95": 0.8313806056976318,
+      "calib_p99": 1.80519700050354,
+      "seq3_mean": 2.0623207092285156,
+      "seq3_median": 0.35628852248191833,
+      "seq3_std": 5.2350850105285645,
+      "seq3_p95": 13.325536727905273,
+      "seq3_max": 27.595003128051758,
+      "rel_mean_ratio": 12.155323601055267,
+      "rel_median_ratio": 8.822393823907442,
+      "abs_mean_increase": 1.8926567286252975,
+      "exceedance_95": 0.32432432432432434,
+      "exceedance_99": 0.1891891891891892
+    },
+    {
+      "sensor": "L_T2",
+      "type": "Tank Level",
+      "mapped_nodes": [
+        "T2"
+      ],
+      "calib_mean": 0.06321258842945099,
+      "calib_median": 0.028666876256465912,
+      "calib_std": 0.09008926898241043,
+      "calib_p95": 0.24053052067756653,
+      "calib_p99": 0.37826383113861084,
+      "seq3_mean": 0.2115594446659088,
+      "seq3_median": 0.03822099044919014,
+      "seq3_std": 0.40633541345596313,
+      "seq3_p95": 1.0358725786209106,
+      "seq3_max": 1.930789828300476,
+      "rel_mean_ratio": 3.346792410408848,
+      "rel_median_ratio": 1.3332801514349772,
+      "abs_mean_increase": 0.14834685623645782,
+      "exceedance_95": 0.24324324324324326,
+      "exceedance_99": 0.13513513513513514
+    },
+    {
+      "sensor": "P_J280",
+      "type": "Junction Pressure",
+      "mapped_nodes": [
+        "J280"
+      ],
+      "calib_mean": 0.10553077608346939,
+      "calib_median": 0.01495907548815012,
+      "calib_std": 0.32313254475593567,
+      "calib_p95": 0.5520798563957214,
+      "calib_p99": 1.806803584098816,
+      "seq3_mean": 0.665308952331543,
+      "seq3_median": 0.3565540611743927,
+      "seq3_std": 0.8845928907394409,
+      "seq3_p95": 3.136570453643799,
+      "seq3_max": 3.3707058429718018,
+      "rel_mean_ratio": 6.304406297185335,
+      "rel_median_ratio": 23.83528468079402,
+      "abs_mean_increase": 0.5597781762480736,
+      "exceedance_95": 0.2972972972972973,
+      "exceedance_99": 0.10810810810810811
+    },
+    {
+      "sensor": "F_PU10",
+      "type": "Link Flow",
+      "mapped_nodes": [
+        "J307",
+        "J317"
+      ],
+      "calib_mean": 0.31481701135635376,
+      "calib_median": 0.023729564622044563,
+      "calib_std": 0.7675786018371582,
+      "calib_p95": 1.867910385131836,
+      "calib_p99": 3.6625866889953613,
+      "seq3_mean": 0.762894868850708,
+      "seq3_median": 0.04302520304918289,
+      "seq3_std": 1.3874026536941528,
+      "seq3_p95": 3.9775145053863525,
+      "seq3_max": 5.541931629180908,
+      "rel_mean_ratio": 2.423296127902682,
+      "rel_median_ratio": 1.813146831937428,
+      "abs_mean_increase": 0.44807785749435425,
+      "exceedance_95": 0.13513513513513514,
+      "exceedance_99": 0.08108108108108109
+    },
+    {
+      "sensor": "F_PU9",
+      "type": "Link Flow",
+      "mapped_nodes": [
+        "J302",
+        "J306"
+      ],
+      "calib_mean": 9.12751565920189e-05,
+      "calib_median": 3.5616030800156295e-05,
+      "calib_std": 0.00016647840675432235,
+      "calib_p95": 0.00034626349224708974,
+      "calib_p99": 0.0007854686700738966,
+      "seq3_mean": 0.00023362661886494607,
+      "seq3_median": 5.813149255118333e-05,
+      "seq3_std": 0.0005871740286238492,
+      "seq3_p95": 0.0008594212122261524,
+      "seq3_max": 0.0035139191895723343,
+      "rel_mean_ratio": 2.5593056701331456,
+      "rel_median_ratio": 1.6317139811973749,
+      "abs_mean_increase": 0.00014235146227292717,
+      "exceedance_95": 0.16216216216216217,
+      "exceedance_99": 0.08108108108108109
+    },
+    {
+      "sensor": "F_PU3",
+      "type": "Link Flow",
+      "mapped_nodes": [
+        "J274",
+        "J276"
+      ],
+      "calib_mean": 0.00010336250124964863,
+      "calib_median": 4.049063500133343e-05,
+      "calib_std": 0.00018643838120624423,
+      "calib_p95": 0.0003925665223505348,
+      "calib_p99": 0.0008605584152974188,
+      "seq3_mean": 0.00027059769490733743,
+      "seq3_median": 6.904284236952662e-05,
+      "seq3_std": 0.0006759488023817539,
+      "seq3_p95": 0.000992938526906073,
+      "seq3_max": 0.004042424727231264,
+      "rel_mean_ratio": 2.6176951475115557,
+      "rel_median_ratio": 1.704734811374031,
+      "abs_mean_increase": 0.0001672351936576888,
+      "exceedance_95": 0.16216216216216217,
+      "exceedance_99": 0.08108108108108109
+    },
+    {
+      "sensor": "S_PU10",
+      "type": "Link Status",
+      "mapped_nodes": [
+        "J307",
+        "J317"
+      ],
+      "calib_mean": 0.3183164596557617,
+      "calib_median": 0.023141399025917053,
+      "calib_std": 0.7763579487800598,
+      "calib_p95": 1.8966575860977173,
+      "calib_p99": 3.7105956077575684,
+      "seq3_mean": 0.6911401748657227,
+      "seq3_median": 0.024301065132021904,
+      "seq3_std": 1.2492481470108032,
+      "seq3_p95": 3.904235363006592,
+      "seq3_max": 4.163743019104004,
+      "rel_mean_ratio": 2.171235989181286,
+      "rel_median_ratio": 1.0501117328165326,
+      "abs_mean_increase": 0.37282371520996094,
+      "exceedance_95": 0.13513513513513514,
+      "exceedance_99": 0.08108108108108109
+    },
+    {
+      "sensor": "S_PU3",
+      "type": "Link Status",
+      "mapped_nodes": [
+        "J274",
+        "J276"
+      ],
+      "calib_mean": 0.00011442691902630031,
+      "calib_median": 4.520280708675273e-05,
+      "calib_std": 0.0002036421064985916,
+      "calib_p95": 0.00045426684664562345,
+      "calib_p99": 0.0009503377368673682,
+      "seq3_mean": 0.0003069764352403581,
+      "seq3_median": 7.81746712164022e-05,
+      "seq3_std": 0.0007799520972184837,
+      "seq3_p95": 0.001129650161601603,
+      "seq3_max": 0.004658965859562159,
+      "rel_mean_ratio": 2.6824947565200326,
+      "rel_median_ratio": 1.7290382140264686,
+      "abs_mean_increase": 0.0001925495162140578,
+      "exceedance_95": 0.16216216216216217,
+      "exceedance_99": 0.08108108108108109
+    },
+    {
+      "sensor": "P_J14",
+      "type": "Junction Pressure",
+      "mapped_nodes": [
+        "J14"
+      ],
+      "calib_mean": 0.16279004514217377,
+      "calib_median": 0.016834961250424385,
+      "calib_std": 0.5142199397087097,
+      "calib_p95": 0.8528404831886292,
+      "calib_p99": 2.636190891265869,
+      "seq3_mean": 2.885688066482544,
+      "seq3_median": 0.0623643696308136,
+      "seq3_std": 8.97182846069336,
+      "seq3_p95": 28.458892822265625,
+      "seq3_max": 40.034305572509766,
+      "rel_mean_ratio": 17.726439517219337,
+      "rel_median_ratio": 3.704453586711143,
+      "abs_mean_increase": 2.72289802134037,
+      "exceedance_95": 0.16216216216216217,
+      "exceedance_99": 0.08108108108108109
+    },
+    {
+      "sensor": "P_J422",
+      "type": "Junction Pressure",
+      "mapped_nodes": [
+        "J422"
+      ],
+      "calib_mean": 0.11568029969930649,
+      "calib_median": 0.027728969231247902,
+      "calib_std": 0.2808122932910919,
+      "calib_p95": 0.47616079449653625,
+      "calib_p99": 1.5076671838760376,
+      "seq3_mean": 0.26386815309524536,
+      "seq3_median": 0.043943461030721664,
+      "seq3_std": 0.6293300986289978,
+      "seq3_p95": 1.217956304550171,
+      "seq3_max": 3.5200440883636475,
+      "rel_mean_ratio": 2.281011814207023,
+      "rel_median_ratio": 1.5847486005255322,
+      "abs_mean_increase": 0.14818785339593887,
+      "exceedance_95": 0.08108108108108109,
+      "exceedance_99": 0.05405405405405406
+    },
+    {
+      "sensor": "P_J317",
+      "type": "Junction Pressure",
+      "mapped_nodes": [
+        "J317"
+      ],
+      "calib_mean": 0.423325777053833,
+      "calib_median": 0.0823618695139885,
+      "calib_std": 0.8639850616455078,
+      "calib_p95": 2.275607109069824,
+      "calib_p99": 4.165963649749756,
+      "seq3_mean": 0.9069573879241943,
+      "seq3_median": 0.3027768135070801,
+      "seq3_std": 1.4661872386932373,
+      "seq3_p95": 3.1341094970703125,
+      "seq3_max": 7.5782856941223145,
+      "rel_mean_ratio": 2.142457217728764,
+      "rel_median_ratio": 3.676176591570569,
+      "abs_mean_increase": 0.48363161087036133,
+      "exceedance_95": 0.10810810810810811,
+      "exceedance_99": 0.05405405405405406
+    },
+    {
+      "sensor": "P_J300",
+      "type": "Junction Pressure",
+      "mapped_nodes": [
+        "J300"
+      ],
+      "calib_mean": 0.11499780416488647,
+      "calib_median": 0.027751147747039795,
+      "calib_std": 0.26209133863449097,
+      "calib_p95": 0.4904354214668274,
+      "calib_p99": 1.3418339490890503,
+      "seq3_mean": 0.26127108931541443,
+      "seq3_median": 0.04531010985374451,
+      "seq3_std": 0.588894784450531,
+      "seq3_p95": 1.2095930576324463,
+      "seq3_max": 3.2117550373077393,
+      "rel_mean_ratio": 2.271965699633195,
+      "rel_median_ratio": 1.6327286330451463,
+      "abs_mean_increase": 0.14627328515052795,
+      "exceedance_95": 0.10810810810810811,
+      "exceedance_99": 0.05405405405405406
+    },
+    {
+      "sensor": "P_J289",
+      "type": "Junction Pressure",
+      "mapped_nodes": [
+        "J289"
+      ],
+      "calib_mean": 0.11598782986402512,
+      "calib_median": 0.027133027091622353,
+      "calib_std": 0.2651485800743103,
+      "calib_p95": 0.5060582756996155,
+      "calib_p99": 1.3674877882003784,
+      "seq3_mean": 0.2637176811695099,
+      "seq3_median": 0.047538891434669495,
+      "seq3_std": 0.5937645435333252,
+      "seq3_p95": 1.242957592010498,
+      "seq3_max": 3.2262074947357178,
+      "rel_mean_ratio": 2.273666631594066,
+      "rel_median_ratio": 1.7520667249353994,
+      "abs_mean_increase": 0.14772985130548477,
+      "exceedance_95": 0.10810810810810811,
+      "exceedance_99": 0.05405405405405406
+    }
+  ],
+  "time_evolution": [
+    {
+      "timestep_idx": 0,
+      "datetime": "2016-10-30 19:00",
+      "top1_sensor": "P_J280",
+      "top1_normalized_score": 31.940497821230554,
+      "top2_sensor": "L_T1",
+      "top2_normalized_score": 22.479217762909798,
+      "top3_sensor": "F_PU10",
+      "top3_normalized_score": 9.460091453133083,
+      "top4_sensor": "S_PU10",
+      "top4_normalized_score": 8.452440571065695,
+      "top5_sensor": "S_PU9",
+      "top5_normalized_score": 8.014743020972405
+    },
+    {
+      "timestep_idx": 1,
+      "datetime": "2016-10-30 20:00",
+      "top1_sensor": "F_PU2",
+      "top1_normalized_score": 39.057965889156634,
+      "top2_sensor": "S_PU2",
+      "top2_normalized_score": 37.19265321332993,
+      "top3_sensor": "P_J269",
+      "top3_normalized_score": 30.534089469778355,
+      "top4_sensor": "F_PU1",
+      "top4_normalized_score": 30.121247656017083,
+      "top5_sensor": "L_T1",
+      "top5_normalized_score": 15.670010158021572
+    },
+    {
+      "timestep_idx": 2,
+      "datetime": "2016-10-30 21:00",
+      "top1_sensor": "L_T1",
+      "top1_normalized_score": 6.965935923054138,
+      "top2_sensor": "F_V2",
+      "top2_normalized_score": 3.215719920470093,
+      "top3_sensor": "F_PU2",
+      "top3_normalized_score": 2.0423631496059307,
+      "top4_sensor": "S_PU2",
+      "top4_normalized_score": 1.592890434828402,
+      "top5_sensor": "P_J280",
+      "top5_normalized_score": 1.348989405640151
+    },
+    {
+      "timestep_idx": 3,
+      "datetime": "2016-10-30 22:00",
+      "top1_sensor": "F_PU4",
+      "top1_normalized_score": 12.58119209169519,
+      "top2_sensor": "S_PU4",
+      "top2_normalized_score": 10.612483837404554,
+      "top3_sensor": "P_J256",
+      "top3_normalized_score": 7.063747723583931,
+      "top4_sensor": "P_J280",
+      "top4_normalized_score": 5.806668012775546,
+      "top5_sensor": "L_T3",
+      "top5_normalized_score": 5.535584674924143
+    },
+    {
+      "timestep_idx": 4,
+      "datetime": "2016-10-30 23:00",
+      "top1_sensor": "P_J280",
+      "top1_normalized_score": 4.688932796131638,
+      "top2_sensor": "L_T1",
+      "top2_normalized_score": 3.9615080389768917,
+      "top3_sensor": "F_V2",
+      "top3_normalized_score": 3.178213190205142,
+      "top4_sensor": "L_T4",
+      "top4_normalized_score": 3.024686774408465,
+      "top5_sensor": "P_J302",
+      "top5_normalized_score": 2.466417214188972
+    },
+    {
+      "timestep_idx": 5,
+      "datetime": "2016-10-31 00:00",
+      "top1_sensor": "P_J280",
+      "top1_normalized_score": 6.5810549619109295,
+      "top2_sensor": "L_T4",
+      "top2_normalized_score": 3.2298237182615623,
+      "top3_sensor": "F_V2",
+      "top3_normalized_score": 2.186975190455093,
+      "top4_sensor": "L_T5",
+      "top4_normalized_score": 2.1203888203616175,
+      "top5_sensor": "L_T1",
+      "top5_normalized_score": 1.5260156885139786
+    },
+    {
+      "timestep_idx": 6,
+      "datetime": "2016-10-31 01:00",
+      "top1_sensor": "P_J302",
+      "top1_normalized_score": 7.493108481918561,
+      "top2_sensor": "P_J307",
+      "top2_normalized_score": 7.392520961712786,
+      "top3_sensor": "P_J280",
+      "top3_normalized_score": 6.026581701956162,
+      "top4_sensor": "L_T4",
+      "top4_normalized_score": 5.088782713352812,
+      "top5_sensor": "P_J317",
+      "top5_normalized_score": 4.004395145885766
+    },
+    {
+      "timestep_idx": 7,
+      "datetime": "2016-10-31 02:00",
+      "top1_sensor": "F_PU10",
+      "top1_normalized_score": 12.34794772272731,
+      "top2_sensor": "S_PU10",
+      "top2_normalized_score": 12.226221906707048,
+      "top3_sensor": "P_J317",
+      "top3_normalized_score": 10.57145310266081,
+      "top4_sensor": "P_J307",
+      "top4_normalized_score": 9.550102734506433,
+      "top5_sensor": "P_J302",
+      "top5_normalized_score": 9.367999695874648
+    },
+    {
+      "timestep_idx": 8,
+      "datetime": "2016-10-31 03:00",
+      "top1_sensor": "F_PU10",
+      "top1_normalized_score": 13.780056297235063,
+      "top2_sensor": "S_PU10",
+      "top2_normalized_score": 13.080513941382982,
+      "top3_sensor": "P_J307",
+      "top3_normalized_score": 12.027189099371592,
+      "top4_sensor": "P_J302",
+      "top4_normalized_score": 11.83002746813491,
+      "top5_sensor": "L_T3",
+      "top5_normalized_score": 11.003427502063225
+    },
+    {
+      "timestep_idx": 9,
+      "datetime": "2016-10-31 04:00",
+      "top1_sensor": "P_J302",
+      "top1_normalized_score": 7.4207512833588005,
+      "top2_sensor": "P_J307",
+      "top2_normalized_score": 7.2926343677462455,
+      "top3_sensor": "P_J280",
+      "top3_normalized_score": 5.941691606491406,
+      "top4_sensor": "L_T6",
+      "top4_normalized_score": 5.507421829876251,
+      "top5_sensor": "S_PU1",
+      "top5_normalized_score": 3.946512837806936
+    },
+    {
+      "timestep_idx": 10,
+      "datetime": "2016-10-31 05:00",
+      "top1_sensor": "P_J302",
+      "top1_normalized_score": 16.119067829140466,
+      "top2_sensor": "P_J307",
+      "top2_normalized_score": 15.863737661076287,
+      "top3_sensor": "S_PU8",
+      "top3_normalized_score": 12.558959241259043,
+      "top4_sensor": "F_PU8",
+      "top4_normalized_score": 12.479463917593527,
+      "top5_sensor": "P_J306",
+      "top5_normalized_score": 11.188061135650083
+    },
+    {
+      "timestep_idx": 11,
+      "datetime": "2016-10-31 06:00",
+      "top1_sensor": "L_T1",
+      "top1_normalized_score": 8.896074127040464,
+      "top2_sensor": "S_V2",
+      "top2_normalized_score": 6.011387787687147,
+      "top3_sensor": "F_PU10",
+      "top3_normalized_score": 3.623298816152768,
+      "top4_sensor": "P_J14",
+      "top4_normalized_score": 3.4899985086853222,
+      "top5_sensor": "P_J422",
+      "top5_normalized_score": 3.4181770774671203
+    },
+    {
+      "timestep_idx": 12,
+      "datetime": "2016-10-31 07:00",
+      "top1_sensor": "P_J307",
+      "top1_normalized_score": 5.631106035240606,
+      "top2_sensor": "P_J302",
+      "top2_normalized_score": 5.628392960104225,
+      "top3_sensor": "L_T1",
+      "top3_normalized_score": 5.019611062552219,
+      "top4_sensor": "L_T6",
+      "top4_normalized_score": 3.3919033156724154,
+      "top5_sensor": "P_J317",
+      "top5_normalized_score": 2.817130557814241
+    },
+    {
+      "timestep_idx": 13,
+      "datetime": "2016-10-31 08:00",
+      "top1_sensor": "L_T1",
+      "top1_normalized_score": 2.729180225465063,
+      "top2_sensor": "L_T6",
+      "top2_normalized_score": 2.595087003720267,
+      "top3_sensor": "P_J280",
+      "top3_normalized_score": 2.058119695534401,
+      "top4_sensor": "F_PU5",
+      "top4_normalized_score": 1.729451228513811,
+      "top5_sensor": "L_T3",
+      "top5_normalized_score": 0.9725280204359577
+    },
+    {
+      "timestep_idx": 14,
+      "datetime": "2016-10-31 09:00",
+      "top1_sensor": "L_T6",
+      "top1_normalized_score": 4.469659670834213,
+      "top2_sensor": "L_T4",
+      "top2_normalized_score": 2.428765128173453,
+      "top3_sensor": "L_T7",
+      "top3_normalized_score": 2.055168088201819,
+      "top4_sensor": "P_J280",
+      "top4_normalized_score": 1.9570688865651698,
+      "top5_sensor": "L_T5",
+      "top5_normalized_score": 1.846224948675246
+    },
+    {
+      "timestep_idx": 15,
+      "datetime": "2016-10-31 10:00",
+      "top1_sensor": "P_J302",
+      "top1_normalized_score": 10.990883649406268,
+      "top2_sensor": "P_J307",
+      "top2_normalized_score": 10.80490340949566,
+      "top3_sensor": "P_J14",
+      "top3_normalized_score": 9.404400751219466,
+      "top4_sensor": "F_PU8",
+      "top4_normalized_score": 3.16957313838351,
+      "top5_sensor": "S_PU8",
+      "top5_normalized_score": 3.076631670330065
+    },
+    {
+      "timestep_idx": 16,
+      "datetime": "2016-10-31 11:00",
+      "top1_sensor": "P_J14",
+      "top1_normalized_score": 7.3173176717645765,
+      "top2_sensor": "L_T3",
+      "top2_normalized_score": 4.8593757300461045,
+      "top3_sensor": "L_T4",
+      "top3_normalized_score": 4.7912038587054795,
+      "top4_sensor": "P_J302",
+      "top4_normalized_score": 3.8048783643385757,
+      "top5_sensor": "P_J307",
+      "top5_normalized_score": 3.7630902315930146
+    },
+    {
+      "timestep_idx": 17,
+      "datetime": "2016-10-31 12:00",
+      "top1_sensor": "P_J14",
+      "top1_normalized_score": 182.3494857848904,
+      "top2_sensor": "P_J302",
+      "top2_normalized_score": 162.64501990045937,
+      "top3_sensor": "P_J307",
+      "top3_normalized_score": 159.85296061064633,
+      "top4_sensor": "P_J280",
+      "top4_normalized_score": 24.718533624078635,
+      "top5_sensor": "S_PU3",
+      "top5_normalized_score": 9.405283689012172
+    },
+    {
+      "timestep_idx": 18,
+      "datetime": "2016-10-31 13:00",
+      "top1_sensor": "P_J14",
+      "top1_normalized_score": 172.9371294511229,
+      "top2_sensor": "P_J302",
+      "top2_normalized_score": 83.33161490747769,
+      "top3_sensor": "P_J307",
+      "top3_normalized_score": 81.01681777190954,
+      "top4_sensor": "S_PU3",
+      "top4_normalized_score": 40.71208749067613,
+      "top5_sensor": "S_PU11",
+      "top5_normalized_score": 39.38555111130401
+    },
+    {
+      "timestep_idx": 19,
+      "datetime": "2016-10-31 14:00",
+      "top1_sensor": "P_J14",
+      "top1_normalized_score": 245.92599061131554,
+      "top2_sensor": "P_J302",
+      "top2_normalized_score": 77.34303406344925,
+      "top3_sensor": "P_J307",
+      "top3_normalized_score": 75.71047854413646,
+      "top4_sensor": "P_J306",
+      "top4_normalized_score": 51.43480552169284,
+      "top5_sensor": "F_PU8",
+      "top5_normalized_score": 36.41685791854267
+    },
+    {
+      "timestep_idx": 20,
+      "datetime": "2016-10-31 15:00",
+      "top1_sensor": "P_J307",
+      "top1_normalized_score": 21.18411132890042,
+      "top2_sensor": "P_J302",
+      "top2_normalized_score": 21.12910437133199,
+      "top3_sensor": "S_PU8",
+      "top3_normalized_score": 16.965796585360238,
+      "top4_sensor": "F_PU8",
+      "top4_normalized_score": 16.469721994111254,
+      "top5_sensor": "L_T2",
+      "top5_normalized_score": 15.474663668592747
+    },
+    {
+      "timestep_idx": 21,
+      "datetime": "2016-10-31 16:00",
+      "top1_sensor": "L_T2",
+      "top1_normalized_score": 30.544383181073506,
+      "top2_sensor": "S_PU4",
+      "top2_normalized_score": 11.476530142616692,
+      "top3_sensor": "F_PU4",
+      "top3_normalized_score": 10.822718911082347,
+      "top4_sensor": "L_T3",
+      "top4_normalized_score": 9.605968844778102,
+      "top5_sensor": "P_J256",
+      "top5_normalized_score": 9.039534015947195
+    },
+    {
+      "timestep_idx": 22,
+      "datetime": "2016-10-31 17:00",
+      "top1_sensor": "L_T2",
+      "top1_normalized_score": 20.036956608639784,
+      "top2_sensor": "L_T5",
+      "top2_normalized_score": 7.356230067940035,
+      "top3_sensor": "P_J280",
+      "top3_normalized_score": 2.613936492802037,
+      "top4_sensor": "L_T3",
+      "top4_normalized_score": 2.0458553449494272,
+      "top5_sensor": "S_PU11",
+      "top5_normalized_score": 1.97158627387915
+    },
+    {
+      "timestep_idx": 23,
+      "datetime": "2016-10-31 18:00",
+      "top1_sensor": "L_T1",
+      "top1_normalized_score": 23.864879402289493,
+      "top2_sensor": "L_T2",
+      "top2_normalized_score": 5.807832183735699,
+      "top3_sensor": "L_T5",
+      "top3_normalized_score": 5.639173252375068,
+      "top4_sensor": "P_J280",
+      "top4_normalized_score": 3.3104931655550387,
+      "top5_sensor": "P_J306",
+      "top5_normalized_score": 3.0034231212527045
+    },
+    {
+      "timestep_idx": 24,
+      "datetime": "2016-10-31 19:00",
+      "top1_sensor": "L_T1",
+      "top1_normalized_score": 14.493654639395755,
+      "top2_sensor": "L_T2",
+      "top2_normalized_score": 7.747229230850688,
+      "top3_sensor": "F_PU3",
+      "top3_normalized_score": 4.461137334989755,
+      "top4_sensor": "S_PU3",
+      "top4_normalized_score": 4.449761812569949,
+      "top5_sensor": "F_PU9",
+      "top5_normalized_score": 4.350057285008042
+    },
+    {
+      "timestep_idx": 25,
+      "datetime": "2016-10-31 20:00",
+      "top1_sensor": "L_T1",
+      "top1_normalized_score": 7.477667106285937,
+      "top2_sensor": "L_T2",
+      "top2_normalized_score": 5.517685663940557,
+      "top3_sensor": "L_T7",
+      "top3_normalized_score": 5.0274136152529385,
+      "top4_sensor": "F_PU10",
+      "top4_normalized_score": 2.829824023432052,
+      "top5_sensor": "P_J306",
+      "top5_normalized_score": 2.675062435637822
+    },
+    {
+      "timestep_idx": 26,
+      "datetime": "2016-10-31 21:00",
+      "top1_sensor": "P_J256",
+      "top1_normalized_score": 6.967745469221459,
+      "top2_sensor": "L_T1",
+      "top2_normalized_score": 5.9732247526574795,
+      "top3_sensor": "L_T2",
+      "top3_normalized_score": 5.460146585910989,
+      "top4_sensor": "L_T3",
+      "top4_normalized_score": 4.1804406685427145,
+      "top5_sensor": "P_J306",
+      "top5_normalized_score": 4.109143575076671
+    },
+    {
+      "timestep_idx": 27,
+      "datetime": "2016-10-31 22:00",
+      "top1_sensor": "F_PU4",
+      "top1_normalized_score": 4.5867826959648434,
+      "top2_sensor": "L_T5",
+      "top2_normalized_score": 4.06172839538086,
+      "top3_sensor": "S_PU4",
+      "top3_normalized_score": 3.9058225030626326,
+      "top4_sensor": "P_J280",
+      "top4_normalized_score": 3.4449869692553565,
+      "top5_sensor": "P_J256",
+      "top5_normalized_score": 2.892332646403347
+    },
+    {
+      "timestep_idx": 28,
+      "datetime": "2016-10-31 23:00",
+      "top1_sensor": "L_T5",
+      "top1_normalized_score": 3.8297411685200413,
+      "top2_sensor": "P_J280",
+      "top2_normalized_score": 3.1878792534239127,
+      "top3_sensor": "L_T1",
+      "top3_normalized_score": 2.96637105874021,
+      "top4_sensor": "F_PU5",
+      "top4_normalized_score": 2.6112480050773947,
+      "top5_sensor": "F_V2",
+      "top5_normalized_score": 1.9712110871810562
+    },
+    {
+      "timestep_idx": 29,
+      "datetime": "2016-01-11 00:00",
+      "top1_sensor": "L_T1",
+      "top1_normalized_score": 6.644723934573046,
+      "top2_sensor": "S_PU9",
+      "top2_normalized_score": 4.874486028484657,
+      "top3_sensor": "S_PU5",
+      "top3_normalized_score": 4.649158627970686,
+      "top4_sensor": "S_PU3",
+      "top4_normalized_score": 4.596485282670012,
+      "top5_sensor": "F_PU3",
+      "top5_normalized_score": 4.568098151370551
+    },
+    {
+      "timestep_idx": 30,
+      "datetime": "2016-01-11 01:00",
+      "top1_sensor": "L_T1",
+      "top1_normalized_score": 4.940498136972272,
+      "top2_sensor": "P_J280",
+      "top2_normalized_score": 4.834541176400019,
+      "top3_sensor": "S_PU3",
+      "top3_normalized_score": 2.5414121492203905,
+      "top4_sensor": "F_PU3",
+      "top4_normalized_score": 2.5074031113401847,
+      "top5_sensor": "F_PU9",
+      "top5_normalized_score": 2.346546146633418
+    },
+    {
+      "timestep_idx": 31,
+      "datetime": "2016-01-11 02:00",
+      "top1_sensor": "L_T1",
+      "top1_normalized_score": 7.4164239834955925,
+      "top2_sensor": "P_J280",
+      "top2_normalized_score": 6.801146565649002,
+      "top3_sensor": "L_T4",
+      "top3_normalized_score": 2.0488959788758048,
+      "top4_sensor": "S_PU1",
+      "top4_normalized_score": 1.0875895827992785,
+      "top5_sensor": "F_PU3",
+      "top5_normalized_score": 0.7127135873322785
+    },
+    {
+      "timestep_idx": 32,
+      "datetime": "2016-01-11 03:00",
+      "top1_sensor": "L_T1",
+      "top1_normalized_score": 8.274418634635602,
+      "top2_sensor": "S_PU8",
+      "top2_normalized_score": 7.191386056159999,
+      "top3_sensor": "F_PU8",
+      "top3_normalized_score": 6.989258448899062,
+      "top4_sensor": "P_J302",
+      "top4_normalized_score": 6.585661581230047,
+      "top5_sensor": "P_J307",
+      "top5_normalized_score": 6.47862914893076
+    },
+    {
+      "timestep_idx": 33,
+      "datetime": "2016-01-11 04:00",
+      "top1_sensor": "P_J422",
+      "top1_normalized_score": 13.984964089086695,
+      "top2_sensor": "P_J289",
+      "top2_normalized_score": 13.888538626553265,
+      "top3_sensor": "P_J300",
+      "top3_normalized_score": 13.692073261649844,
+      "top4_sensor": "F_PU7",
+      "top4_normalized_score": 7.922773972177951,
+      "top5_sensor": "S_PU7",
+      "top5_normalized_score": 7.76557389143023
+    },
+    {
+      "timestep_idx": 34,
+      "datetime": "2016-01-11 05:00",
+      "top1_sensor": "P_J14",
+      "top1_normalized_score": 13.195749901894581,
+      "top2_sensor": "P_J307",
+      "top2_normalized_score": 4.459092815032092,
+      "top3_sensor": "P_J302",
+      "top3_normalized_score": 4.4397856957048285,
+      "top4_sensor": "F_V2",
+      "top4_normalized_score": 4.192053075946539,
+      "top5_sensor": "S_V2",
+      "top5_normalized_score": 3.349779093961884
+    },
+    {
+      "timestep_idx": 35,
+      "datetime": "2016-01-11 06:00",
+      "top1_sensor": "L_T6",
+      "top1_normalized_score": 3.82008674552523,
+      "top2_sensor": "P_J14",
+      "top2_normalized_score": 3.3719404170776186,
+      "top3_sensor": "L_T4",
+      "top3_normalized_score": 2.349121991864524,
+      "top4_sensor": "P_J302",
+      "top4_normalized_score": 2.0353119754558406,
+      "top5_sensor": "P_J307",
+      "top5_normalized_score": 1.9879936500346747
+    },
+    {
+      "timestep_idx": 36,
+      "datetime": "2016-01-11 07:00",
+      "top1_sensor": "F_PU2",
+      "top1_normalized_score": 11.780723735055938,
+      "top2_sensor": "S_PU2",
+      "top2_normalized_score": 10.880199183723608,
+      "top3_sensor": "P_J280",
+      "top3_normalized_score": 4.844734268522071,
+      "top4_sensor": "P_J269",
+      "top4_normalized_score": 4.837938567861164,
+      "top5_sensor": "F_PU1",
+      "top5_normalized_score": 4.77747370650324
+    }
+  ],
+  "first_exceedance_hours": {
+    "L_T1": {
+      "first_p95_hour": 0,
+      "first_p99_hour": 0
+    },
+    "L_T2": {
+      "first_p95_hour": 10,
+      "first_p99_hour": 19
+    },
+    "L_T3": {
+      "first_p95_hour": 3,
+      "first_p99_hour": 8
+    },
+    "L_T4": {
+      "first_p95_hour": 6,
+      "first_p99_hour": 19
+    },
+    "L_T5": {
+      "first_p95_hour": 21,
+      "first_p99_hour": 22
+    },
+    "L_T6": {
+      "first_p95_hour": 8,
+      "first_p99_hour": null
+    },
+    "L_T7": {
+      "first_p95_hour": 0,
+      "first_p99_hour": 20
+    },
+    "F_PU1": {
+      "first_p95_hour": 1,
+      "first_p99_hour": 1
+    },
+    "S_PU1": {
+      "first_p95_hour": 9,
+      "first_p99_hour": 18
+    },
+    "F_PU2": {
+      "first_p95_hour": 1,
+      "first_p99_hour": 1
+    },
+    "S_PU2": {
+      "first_p95_hour": 1,
+      "first_p99_hour": 1
+    },
+    "F_PU3": {
+      "first_p95_hour": 0,
+      "first_p99_hour": 17
+    },
+    "S_PU3": {
+      "first_p95_hour": 0,
+      "first_p99_hour": 17
+    },
+    "F_PU4": {
+      "first_p95_hour": 3,
+      "first_p99_hour": 3
+    },
+    "S_PU4": {
+      "first_p95_hour": 3,
+      "first_p99_hour": null
+    },
+    "F_PU5": {
+      "first_p95_hour": 17,
+      "first_p99_hour": 18
+    },
+    "S_PU5": {
+      "first_p95_hour": 0,
+      "first_p99_hour": 18
+    },
+    "F_PU6": {
+      "first_p95_hour": 9,
+      "first_p99_hour": 18
+    },
+    "S_PU6": {
+      "first_p95_hour": 9,
+      "first_p99_hour": 18
+    },
+    "F_PU7": {
+      "first_p95_hour": 0,
+      "first_p99_hour": 18
+    },
+    "S_PU7": {
+      "first_p95_hour": 0,
+      "first_p99_hour": 18
+    },
+    "F_PU8": {
+      "first_p95_hour": 10,
+      "first_p99_hour": 19
+    },
+    "S_PU8": {
+      "first_p95_hour": 10,
+      "first_p99_hour": 19
+    },
+    "F_PU9": {
+      "first_p95_hour": 0,
+      "first_p99_hour": 17
+    },
+    "S_PU9": {
+      "first_p95_hour": 0,
+      "first_p99_hour": 0
+    },
+    "F_PU10": {
+      "first_p95_hour": 0,
+      "first_p99_hour": 7
+    },
+    "S_PU10": {
+      "first_p95_hour": 0,
+      "first_p99_hour": 7
+    },
+    "F_PU11": {
+      "first_p95_hour": 17,
+      "first_p99_hour": 18
+    },
+    "S_PU11": {
+      "first_p95_hour": 17,
+      "first_p99_hour": 18
+    },
+    "F_V2": {
+      "first_p95_hour": 0,
+      "first_p99_hour": null
+    },
+    "S_V2": {
+      "first_p95_hour": 11,
+      "first_p99_hour": null
+    },
+    "P_J280": {
+      "first_p95_hour": 0,
+      "first_p99_hour": 0
+    },
+    "P_J269": {
+      "first_p95_hour": 1,
+      "first_p99_hour": 1
+    },
+    "P_J300": {
+      "first_p95_hour": 10,
+      "first_p99_hour": 19
+    },
+    "P_J256": {
+      "first_p95_hour": 3,
+      "first_p99_hour": null
+    },
+    "P_J289": {
+      "first_p95_hour": 10,
+      "first_p99_hour": 19
+    },
+    "P_J415": {
+      "first_p95_hour": 18,
+      "first_p99_hour": 18
+    },
+    "P_J302": {
+      "first_p95_hour": 6,
+      "first_p99_hour": 8
+    },
+    "P_J306": {
+      "first_p95_hour": 10,
+      "first_p99_hour": 19
+    },
+    "P_J307": {
+      "first_p95_hour": 6,
+      "first_p99_hour": 8
+    },
+    "P_J317": {
+      "first_p95_hour": 7,
+      "first_p99_hour": 7
+    },
+    "P_J14": {
+      "first_p95_hour": 15,
+      "first_p99_hour": 17
+    },
+    "P_J422": {
+      "first_p95_hour": 10,
+      "first_p99_hour": 19
+    }
+  }
+}

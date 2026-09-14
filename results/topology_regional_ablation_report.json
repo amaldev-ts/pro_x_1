@@ -1,0 +1,819 @@
+{
+  "region_definitions": {
+    "Region 1 (DMA 1)": {
+      "dma_id": 1,
+      "sensor_count": 24,
+      "sensors": [
+        "L_T1",
+        "L_T2",
+        "F_PU1",
+        "S_PU1",
+        "F_PU2",
+        "S_PU2",
+        "F_PU3",
+        "S_PU3",
+        "F_PU6",
+        "S_PU6",
+        "F_PU7",
+        "S_PU7",
+        "F_PU8",
+        "S_PU8",
+        "F_V2",
+        "S_V2",
+        "P_J280",
+        "P_J269",
+        "P_J289",
+        "P_J415",
+        "P_J302",
+        "P_J307",
+        "P_J14",
+        "P_J422"
+      ]
+    },
+    "Region 2 (DMA 2)": {
+      "dma_id": 2,
+      "sensor_count": 1,
+      "sensors": [
+        "L_T4"
+      ]
+    },
+    "Region 3 (DMA 3)": {
+      "dma_id": 3,
+      "sensor_count": 7,
+      "sensors": [
+        "L_T3",
+        "F_PU4",
+        "S_PU4",
+        "F_PU5",
+        "S_PU5",
+        "P_J300",
+        "P_J256"
+      ]
+    },
+    "Region 4 (DMA 4)": {
+      "dma_id": 4,
+      "sensor_count": 7,
+      "sensors": [
+        "L_T6",
+        "L_T7",
+        "F_PU10",
+        "S_PU10",
+        "F_PU11",
+        "S_PU11",
+        "P_J317"
+      ]
+    },
+    "Region 5 (DMA 5)": {
+      "dma_id": 5,
+      "sensor_count": 4,
+      "sensors": [
+        "L_T5",
+        "F_PU9",
+        "S_PU9",
+        "P_J306"
+      ]
+    }
+  },
+  "regional_thresholds_99_5": {
+    "Region 1 (DMA 1)": 5.917502450942981,
+    "Region 2 (DMA 2)": 6.989241647720333,
+    "Region 3 (DMA 3)": 6.999731349945066,
+    "Region 4 (DMA 4)": 8.3808099746704,
+    "Region 5 (DMA 5)": 6.691524076461792
+  },
+  "global_threshold_99_5": 4.898279666900635,
+  "diagnostic_methods": {
+    "Global-only Baseline": {
+      "metrics": {
+        "metric_category": "DETECTION_METRICS",
+        "threshold": 4.898279666900635,
+        "samples": 4165,
+        "attack_samples": 219,
+        "precision": 0.57847533632287,
+        "recall": 0.589041095890411,
+        "f1_score": 0.583710407239819,
+        "roc_auc": 0.8792303401861198,
+        "pr_auc": 0.5382192824551503,
+        "false_positive_rate": 0.02382159148504815,
+        "confusion_matrix": {
+          "TN": 3852,
+          "FP": 94,
+          "FN": 90,
+          "TP": 129
+        },
+        "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
+      },
+      "sequences": {
+        "Seq1": {
+          "length": 42,
+          "tp": 36,
+          "fn": 6,
+          "recall": 0.8571428571428571,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq2": {
+          "length": 60,
+          "tp": 14,
+          "fn": 46,
+          "recall": 0.23333333333333334,
+          "delay_hours": 3,
+          "delay_str": "3 h"
+        },
+        "Seq3": {
+          "length": 37,
+          "tp": 4,
+          "fn": 33,
+          "recall": 0.10810810810810811,
+          "delay_hours": 1,
+          "delay_str": "1 h"
+        },
+        "Seq4": {
+          "length": 7,
+          "tp": 5,
+          "fn": 2,
+          "recall": 0.7142857142857143,
+          "delay_hours": 1,
+          "delay_str": "1 h"
+        },
+        "Seq5": {
+          "length": 73,
+          "tp": 70,
+          "fn": 3,
+          "recall": 0.958904109589041,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        }
+      }
+    },
+    "Regional Maximum": {
+      "metrics": {
+        "metric_category": "DETECTION_METRICS",
+        "threshold": 1.0,
+        "samples": 4165,
+        "attack_samples": 219,
+        "precision": 0.3776595744680851,
+        "recall": 0.6484018264840182,
+        "f1_score": 0.4773109243697479,
+        "roc_auc": 0.8645446403154919,
+        "pr_auc": 0.5214119191431263,
+        "false_positive_rate": 0.059300557526609225,
+        "confusion_matrix": {
+          "TN": 3712,
+          "FP": 234,
+          "FN": 77,
+          "TP": 142
+        },
+        "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
+      },
+      "sequences": {
+        "Seq1": {
+          "length": 42,
+          "tp": 38,
+          "fn": 4,
+          "recall": 0.9047619047619048,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq2": {
+          "length": 60,
+          "tp": 20,
+          "fn": 40,
+          "recall": 0.3333333333333333,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq3": {
+          "length": 37,
+          "tp": 5,
+          "fn": 32,
+          "recall": 0.13513513513513514,
+          "delay_hours": 1,
+          "delay_str": "1 h"
+        },
+        "Seq4": {
+          "length": 7,
+          "tp": 7,
+          "fn": 0,
+          "recall": 1.0,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq5": {
+          "length": 73,
+          "tp": 72,
+          "fn": 1,
+          "recall": 0.9863013698630136,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        }
+      }
+    },
+    "Regional Exceedance Count (>=1)": {
+      "metrics": {
+        "metric_category": "DETECTION_METRICS",
+        "threshold": 1.0,
+        "samples": 4165,
+        "attack_samples": 219,
+        "precision": 0.3776595744680851,
+        "recall": 0.6484018264840182,
+        "f1_score": 0.4773109243697479,
+        "roc_auc": 0.8039549905458855,
+        "pr_auc": 0.41924361517881825,
+        "false_positive_rate": 0.059300557526609225,
+        "confusion_matrix": {
+          "TN": 3712,
+          "FP": 234,
+          "FN": 77,
+          "TP": 142
+        },
+        "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
+      },
+      "sequences": {
+        "Seq1": {
+          "length": 42,
+          "tp": 38,
+          "fn": 4,
+          "recall": 0.9047619047619048,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq2": {
+          "length": 60,
+          "tp": 20,
+          "fn": 40,
+          "recall": 0.3333333333333333,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq3": {
+          "length": 37,
+          "tp": 5,
+          "fn": 32,
+          "recall": 0.13513513513513514,
+          "delay_hours": 1,
+          "delay_str": "1 h"
+        },
+        "Seq4": {
+          "length": 7,
+          "tp": 7,
+          "fn": 0,
+          "recall": 1.0,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq5": {
+          "length": 73,
+          "tp": 72,
+          "fn": 1,
+          "recall": 0.9863013698630136,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        }
+      }
+    },
+    "Global OR Regional": {
+      "metrics": {
+        "metric_category": "DETECTION_METRICS",
+        "threshold": 1.0,
+        "samples": 4165,
+        "attack_samples": 219,
+        "precision": 0.3776595744680851,
+        "recall": 0.6484018264840182,
+        "f1_score": 0.4773109243697479,
+        "roc_auc": 0.8649947811436123,
+        "pr_auc": 0.5222969219601368,
+        "false_positive_rate": 0.059300557526609225,
+        "confusion_matrix": {
+          "TN": 3712,
+          "FP": 234,
+          "FN": 77,
+          "TP": 142
+        },
+        "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
+      },
+      "sequences": {
+        "Seq1": {
+          "length": 42,
+          "tp": 36,
+          "fn": 6,
+          "recall": 0.8571428571428571,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        },
+        "Seq2": {
+          "length": 60,
+          "tp": 14,
+          "fn": 46,
+          "recall": 0.23333333333333334,
+          "delay_hours": 3,
+          "delay_str": "3 h"
+        },
+        "Seq3": {
+          "length": 37,
+          "tp": 4,
+          "fn": 33,
+          "recall": 0.10810810810810811,
+          "delay_hours": 1,
+          "delay_str": "1 h"
+        },
+        "Seq4": {
+          "length": 7,
+          "tp": 5,
+          "fn": 2,
+          "recall": 0.7142857142857143,
+          "delay_hours": 1,
+          "delay_str": "1 h"
+        },
+        "Seq5": {
+          "length": 73,
+          "tp": 70,
+          "fn": 3,
+          "recall": 0.958904109589041,
+          "delay_hours": 0,
+          "delay_str": "0 h"
+        }
+      }
+    },
+    "Global AND Regional": {
+      "metrics": {
+        "metric_category": "DETECTION_METRICS",
+        "threshold": 1.0,
+        "samples": 4165,
+        "attack_samples": 219,
+        "precision": 0.57847533632287,
+        "recall": 0.589041095890411,
+        "f1_score": 0.583710407239819,
+        "roc_auc": 0.8790822218673554,
+        "pr_auc": 0.5374604887211499,
+        "false_positive_rate": 0.02382159148504815,
+        "confusion_matrix": {
+          "TN": 3852,
+          "FP": 94,
+          "FN": 90,
+          "TP": 129
+        },
+        "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
+      },
+      "sequences": {
+        "Seq1": {
+          "length": 42,
+          "tp": 0,
+          "fn": 42,
+          "recall": 0.0,
+          "delay_hours": null,
+          "delay_str": "not detected"
+        },
+        "Seq2": {
+          "length": 60,
+          "tp": 0,
+          "fn": 60,
+          "recall": 0.0,
+          "delay_hours": null,
+          "delay_str": "not detected"
+        },
+        "Seq3": {
+          "length": 37,
+          "tp": 0,
+          "fn": 37,
+          "recall": 0.0,
+          "delay_hours": null,
+          "delay_str": "not detected"
+        },
+        "Seq4": {
+          "length": 7,
+          "tp": 0,
+          "fn": 7,
+          "recall": 0.0,
+          "delay_hours": null,
+          "delay_str": "not detected"
+        },
+        "Seq5": {
+          "length": 73,
+          "tp": 0,
+          "fn": 73,
+          "recall": 0.0,
+          "delay_hours": null,
+          "delay_str": "not detected"
+        }
+      }
+    }
+  },
+  "sequence3_hourly_breakdown": [
+    {
+      "timestamp": "2016-10-30T19:00:00.000000",
+      "highest_region": "Region 4 (DMA 4)",
+      "second_region": "Region 1 (DMA 1)",
+      "highest_score": 4.5026,
+      "second_score": 3.9421,
+      "highest_threshold": 8.3808,
+      "exceeded": false,
+      "global_score": 3.6668,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-30T20:00:00.000000",
+      "highest_region": "Region 1 (DMA 1)",
+      "second_region": "Region 5 (DMA 5)",
+      "highest_score": 7.7679,
+      "second_score": 1.5875,
+      "highest_threshold": 5.9175,
+      "exceeded": true,
+      "global_score": 4.9801,
+      "global_exceeded": true
+    },
+    {
+      "timestamp": "2016-10-30T21:00:00.000000",
+      "highest_region": "Region 1 (DMA 1)",
+      "second_region": "Region 2 (DMA 2)",
+      "highest_score": 0.9368,
+      "second_score": 0.7374,
+      "highest_threshold": 5.9175,
+      "exceeded": false,
+      "global_score": 0.6713,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-30T22:00:00.000000",
+      "highest_region": "Region 3 (DMA 3)",
+      "second_region": "Region 2 (DMA 2)",
+      "highest_score": 5.1919,
+      "second_score": 0.6739,
+      "highest_threshold": 6.9997,
+      "exceeded": false,
+      "global_score": 1.3283,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-30T23:00:00.000000",
+      "highest_region": "Region 2 (DMA 2)",
+      "second_region": "Region 3 (DMA 3)",
+      "highest_score": 3.0247,
+      "second_score": 0.9991,
+      "highest_threshold": 6.9892,
+      "exceeded": false,
+      "global_score": 0.8989,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T00:00:00.000000",
+      "highest_region": "Region 2 (DMA 2)",
+      "second_region": "Region 1 (DMA 1)",
+      "highest_score": 3.2298,
+      "second_score": 0.62,
+      "highest_threshold": 6.9892,
+      "exceeded": false,
+      "global_score": 0.5501,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T01:00:00.000000",
+      "highest_region": "Region 2 (DMA 2)",
+      "second_region": "Region 1 (DMA 1)",
+      "highest_score": 5.0888,
+      "second_score": 1.3333,
+      "highest_threshold": 6.9892,
+      "exceeded": false,
+      "global_score": 1.1736,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T02:00:00.000000",
+      "highest_region": "Region 4 (DMA 4)",
+      "second_region": "Region 2 (DMA 2)",
+      "highest_score": 5.2734,
+      "second_score": 1.7408,
+      "highest_threshold": 8.3808,
+      "exceeded": false,
+      "global_score": 2.0701,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T03:00:00.000000",
+      "highest_region": "Region 4 (DMA 4)",
+      "second_region": "Region 3 (DMA 3)",
+      "highest_score": 6.3241,
+      "second_score": 2.7145,
+      "highest_threshold": 8.3808,
+      "exceeded": false,
+      "global_score": 2.5717,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T04:00:00.000000",
+      "highest_region": "Region 1 (DMA 1)",
+      "second_region": "Region 3 (DMA 3)",
+      "highest_score": 1.8645,
+      "second_score": 1.5553,
+      "highest_threshold": 5.9175,
+      "exceeded": false,
+      "global_score": 1.6566,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T05:00:00.000000",
+      "highest_region": "Region 1 (DMA 1)",
+      "second_region": "Region 5 (DMA 5)",
+      "highest_score": 4.7097,
+      "second_score": 3.6108,
+      "highest_threshold": 5.9175,
+      "exceeded": false,
+      "global_score": 3.5188,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T06:00:00.000000",
+      "highest_region": "Region 5 (DMA 5)",
+      "second_region": "Region 4 (DMA 4)",
+      "highest_score": 2.0824,
+      "second_score": 1.6405,
+      "highest_threshold": 6.6915,
+      "exceeded": false,
+      "global_score": 1.5912,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T07:00:00.000000",
+      "highest_region": "Region 4 (DMA 4)",
+      "second_region": "Region 1 (DMA 1)",
+      "highest_score": 2.2521,
+      "second_score": 0.8871,
+      "highest_threshold": 8.3808,
+      "exceeded": false,
+      "global_score": 0.9372,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T08:00:00.000000",
+      "highest_region": "Region 4 (DMA 4)",
+      "second_region": "Region 3 (DMA 3)",
+      "highest_score": 0.6188,
+      "second_score": 0.5575,
+      "highest_threshold": 8.3808,
+      "exceeded": false,
+      "global_score": 0.4581,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T09:00:00.000000",
+      "highest_region": "Region 2 (DMA 2)",
+      "second_region": "Region 4 (DMA 4)",
+      "highest_score": 2.4288,
+      "second_score": 1.0817,
+      "highest_threshold": 6.9892,
+      "exceeded": false,
+      "global_score": 0.4642,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T10:00:00.000000",
+      "highest_region": "Region 2 (DMA 2)",
+      "second_region": "Region 1 (DMA 1)",
+      "highest_score": 2.8507,
+      "second_score": 1.8822,
+      "highest_threshold": 6.9892,
+      "exceeded": false,
+      "global_score": 1.3705,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T11:00:00.000000",
+      "highest_region": "Region 2 (DMA 2)",
+      "second_region": "Region 3 (DMA 3)",
+      "highest_score": 4.7912,
+      "second_score": 2.12,
+      "highest_threshold": 6.9892,
+      "exceeded": false,
+      "global_score": 1.2024,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T12:00:00.000000",
+      "highest_region": "Region 1 (DMA 1)",
+      "second_region": "Region 5 (DMA 5)",
+      "highest_score": 23.7127,
+      "second_score": 3.6631,
+      "highest_threshold": 5.9175,
+      "exceeded": true,
+      "global_score": 14.3094,
+      "global_exceeded": true
+    },
+    {
+      "timestamp": "2016-10-31T13:00:00.000000",
+      "highest_region": "Region 1 (DMA 1)",
+      "second_region": "Region 4 (DMA 4)",
+      "highest_score": 22.5829,
+      "second_score": 18.0223,
+      "highest_threshold": 5.9175,
+      "exceeded": true,
+      "global_score": 18.7108,
+      "global_exceeded": true
+    },
+    {
+      "timestamp": "2016-10-31T14:00:00.000000",
+      "highest_region": "Region 1 (DMA 1)",
+      "second_region": "Region 5 (DMA 5)",
+      "highest_score": 25.7533,
+      "second_score": 16.5273,
+      "highest_threshold": 5.9175,
+      "exceeded": true,
+      "global_score": 17.6479,
+      "global_exceeded": true
+    },
+    {
+      "timestamp": "2016-10-31T15:00:00.000000",
+      "highest_region": "Region 2 (DMA 2)",
+      "second_region": "Region 4 (DMA 4)",
+      "highest_score": 6.078,
+      "second_score": 5.5212,
+      "highest_threshold": 6.9892,
+      "exceeded": false,
+      "global_score": 4.3966,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T16:00:00.000000",
+      "highest_region": "Region 3 (DMA 3)",
+      "second_region": "Region 5 (DMA 5)",
+      "highest_score": 7.2376,
+      "second_score": 2.5481,
+      "highest_threshold": 6.9997,
+      "exceeded": true,
+      "global_score": 2.9459,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T17:00:00.000000",
+      "highest_region": "Region 5 (DMA 5)",
+      "second_region": "Region 1 (DMA 1)",
+      "highest_score": 2.49,
+      "second_score": 1.301,
+      "highest_threshold": 6.6915,
+      "exceeded": false,
+      "global_score": 1.272,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T18:00:00.000000",
+      "highest_region": "Region 5 (DMA 5)",
+      "second_region": "Region 1 (DMA 1)",
+      "highest_score": 2.1807,
+      "second_score": 1.9212,
+      "highest_threshold": 6.6915,
+      "exceeded": false,
+      "global_score": 1.3773,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T19:00:00.000000",
+      "highest_region": "Region 5 (DMA 5)",
+      "second_region": "Region 1 (DMA 1)",
+      "highest_score": 2.6368,
+      "second_score": 1.9463,
+      "highest_threshold": 6.6915,
+      "exceeded": false,
+      "global_score": 1.7871,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T20:00:00.000000",
+      "highest_region": "Region 4 (DMA 4)",
+      "second_region": "Region 1 (DMA 1)",
+      "highest_score": 2.4122,
+      "second_score": 1.2687,
+      "highest_threshold": 8.3808,
+      "exceeded": false,
+      "global_score": 1.2982,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T21:00:00.000000",
+      "highest_region": "Region 5 (DMA 5)",
+      "second_region": "Region 3 (DMA 3)",
+      "highest_score": 2.4583,
+      "second_score": 2.1195,
+      "highest_threshold": 6.6915,
+      "exceeded": false,
+      "global_score": 1.3932,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T22:00:00.000000",
+      "highest_region": "Region 3 (DMA 3)",
+      "second_region": "Region 5 (DMA 5)",
+      "highest_score": 2.0798,
+      "second_score": 1.0386,
+      "highest_threshold": 6.9997,
+      "exceeded": false,
+      "global_score": 0.7413,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-10-31T23:00:00.000000",
+      "highest_region": "Region 5 (DMA 5)",
+      "second_region": "Region 1 (DMA 1)",
+      "highest_score": 1.1806,
+      "second_score": 0.7121,
+      "highest_threshold": 6.6915,
+      "exceeded": false,
+      "global_score": 0.6828,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-01-11T00:00:00.000000",
+      "highest_region": "Region 5 (DMA 5)",
+      "second_region": "Region 3 (DMA 3)",
+      "highest_score": 2.3901,
+      "second_score": 1.3523,
+      "highest_threshold": 6.6915,
+      "exceeded": false,
+      "global_score": 1.2502,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-01-11T01:00:00.000000",
+      "highest_region": "Region 5 (DMA 5)",
+      "second_region": "Region 1 (DMA 1)",
+      "highest_score": 1.2272,
+      "second_score": 0.7563,
+      "highest_threshold": 6.6915,
+      "exceeded": false,
+      "global_score": 0.6913,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-01-11T02:00:00.000000",
+      "highest_region": "Region 2 (DMA 2)",
+      "second_region": "Region 1 (DMA 1)",
+      "highest_score": 2.0489,
+      "second_score": 0.8226,
+      "highest_threshold": 6.9892,
+      "exceeded": false,
+      "global_score": 0.5995,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-01-11T03:00:00.000000",
+      "highest_region": "Region 1 (DMA 1)",
+      "second_region": "Region 5 (DMA 5)",
+      "highest_score": 2.448,
+      "second_score": 2.155,
+      "highest_threshold": 5.9175,
+      "exceeded": false,
+      "global_score": 1.8106,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-01-11T04:00:00.000000",
+      "highest_region": "Region 1 (DMA 1)",
+      "second_region": "Region 3 (DMA 3)",
+      "highest_score": 2.938,
+      "second_score": 2.253,
+      "highest_threshold": 5.9175,
+      "exceeded": false,
+      "global_score": 2.4068,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-01-11T05:00:00.000000",
+      "highest_region": "Region 1 (DMA 1)",
+      "second_region": "Region 4 (DMA 4)",
+      "highest_score": 1.5434,
+      "second_score": 0.5416,
+      "highest_threshold": 5.9175,
+      "exceeded": false,
+      "global_score": 1.0562,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-01-11T06:00:00.000000",
+      "highest_region": "Region 2 (DMA 2)",
+      "second_region": "Region 4 (DMA 4)",
+      "highest_score": 2.3491,
+      "second_score": 0.7103,
+      "highest_threshold": 6.9892,
+      "exceeded": false,
+      "global_score": 0.4887,
+      "global_exceeded": false
+    },
+    {
+      "timestamp": "2016-01-11T07:00:00.000000",
+      "highest_region": "Region 1 (DMA 1)",
+      "second_region": "Region 3 (DMA 3)",
+      "highest_score": 2.5625,
+      "second_score": 0.4389,
+      "highest_threshold": 5.9175,
+      "exceeded": false,
+      "global_score": 1.5933,
+      "global_exceeded": false
+    }
+  ],
+  "spatial_coherence_stats": {
+    "overall_mean_elevated_sensors": 1.2732292917166868,
+    "normal_mean_elevated_sensors": 0.8256462240243284,
+    "attack_mean_elevated_sensors": 9.337899543378995,
+    "seq3_mean_elevated_sensors": 2.4594594594594597,
+    "seq3_mean_coherence_ratio": 0.05719673161533627,
+    "seq3_max_regional_elevated_mean": 1.7837837837837838
+  }
+}
