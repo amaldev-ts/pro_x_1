@@ -149,10 +149,22 @@ def train_model(
 
     val_y_arr = val_df[val_label_col].values
 
-    # Construct forecasting sliding windows: X (B, W, F), Y_target (B, F)
-    X_train, Y_train, _ = preprocessor.create_forecasting_windows(train_X_arr)
-    X_calib, Y_calib, _ = preprocessor.create_forecasting_windows(calib_X_arr)
-    X_val, Y_val, val_y_lbls = preprocessor.create_forecasting_windows(val_X_arr, val_y_arr)
+    forecast_horizon = detection_cfg.get("forecast_horizon", 12)
+
+    # Construct forecasting sliding windows: X (B, W, F), Y_target (B, H, F)
+    X_train, Y_train, _ = preprocessor.create_forecasting_windows(
+        train_X_arr,
+        forecast_horizon=forecast_horizon,
+    )
+    X_calib, Y_calib, _ = preprocessor.create_forecasting_windows(
+        calib_X_arr,
+        forecast_horizon=forecast_horizon,
+    )
+    X_val, Y_val, val_y_lbls = preprocessor.create_forecasting_windows(
+        val_X_arr,
+        val_y_arr,
+        forecast_horizon=forecast_horizon,
+    )
 
     # Load C-Town NetworkX graph topology and construct 43x43 sensor adjacency matrix
     inp_file_path = config.get("paths", {}).get("inp_file", "data/raw/CTOWN.INP")
@@ -190,6 +202,7 @@ def train_model(
         window_size=window_size,
         hidden_dim=detection_cfg.get("hidden_dim", 64),
         dropout=detection_cfg.get("dropout", 0.2),
+        forecast_horizon=detection_cfg.get("forecast_horizon", 12),
     )
 
     optimizer = optim.Adam(model.parameters(), lr=detection_cfg.get("learning_rate", 0.001))
@@ -239,8 +252,8 @@ def train_model(
     with torch.no_grad():
         for c_x, c_y in calib_loader:
             c_preds = model(c_x, adj_matrix=adj_matrix)
-            # Sample MSE error vector per sample
-            sample_mse = torch.mean((c_preds - c_y) ** 2, dim=1).cpu().numpy()
+            # Aggregate the forecast error across all horizon steps and sensor features.
+            sample_mse = torch.mean((c_preds - c_y) ** 2, dim=(1, 2)).cpu().numpy()
             all_calib_scores.extend(sample_mse)
 
     calib_scores_arr = np.array(all_calib_scores)
@@ -257,7 +270,7 @@ def train_model(
     with torch.no_grad():
         for v_x, v_y in val_loader:
             v_preds = model(v_x, adj_matrix=adj_matrix)
-            sample_mse = torch.mean((v_preds - v_y) ** 2, dim=1).cpu().numpy()
+            sample_mse = torch.mean((v_preds - v_y) ** 2, dim=(1, 2)).cpu().numpy()
             all_val_scores.extend(sample_mse)
 
     val_scores_arr = np.array(all_val_scores)

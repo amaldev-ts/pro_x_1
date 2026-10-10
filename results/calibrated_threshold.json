@@ -1,8 +1,8 @@
 {
-  "threshold": 2.9699106216430664,
+  "threshold": 3.2949929237365723,
   "percentile": 99.5,
-  "num_calibration_samples": 2,
-  "calibration_score_mean": 2.860569477081299,
-  "calibration_score_std": 0.11044561862945557,
-  "calibration_score_max": 2.971014976501465
+  "num_calibration_samples": 1291,
+  "calibration_score_mean": 0.3347776532173157,
+  "calibration_score_std": 0.2957930564880371,
+  "calibration_score_max": 3.3488643169403076
 }

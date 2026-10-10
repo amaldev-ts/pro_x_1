@@ -36,6 +36,7 @@ detection:
   timestamp_col: "DATETIME"
   label_col: "ATT_FLAG"        # Actual BATADAL label column
   window_size: 12
+  forecast_horizon: 12
   stride: 1
   scaler_type: "standard"      # 'standard' or 'minmax'
   train_ratio: 0.7

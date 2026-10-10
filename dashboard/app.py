@@ -27,7 +27,6 @@ SUMMARY_FILE = ROOT_DIR / "results" / "final_results_summary.json"
 
 st.set_page_config(
     page_title="X-Resilience-WDS Operational Dashboard",
-    page_icon="🌊",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -129,7 +128,7 @@ def load_dashboard_data() -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dic
 
 
 def main():
-    st.title("🌊 X-Resilience-WDS: SpatioTemporalGNN Anomaly Dashboard")
+    st.title("X-Resilience-WDS: SpatioTemporalGNN Anomaly Dashboard")
     st.caption(TERMINOLOGY_POLICY_NOTICE)
 
     try:
@@ -140,7 +139,7 @@ def main():
         return
 
     # Sidebar Navigation & Filters
-    st.sidebar.header("🕹️ Dashboard Controls")
+    st.sidebar.header("Dashboard Controls")
     display_mode = st.sidebar.radio(
         "Timeline Y-Axis Display",
         options=["Log10(1 + Raw Score) [Default / Recommended]", "Raw Statistical Anomaly Score"],
@@ -163,13 +162,13 @@ def main():
     # Tabs Layout
     tab_overview, tab_timeline, tab_episodes, tab_attribution, tab_topology, tab_val, tab_demo = st.tabs(
         [
-            "📊 Executive Overview",
-            "📈 Anomaly Timeline",
-            "🔍 Episode Explorer & Severity",
-            "⚡ Sensor Attribution & PU3 Warning",
-            "🗺️ Topology & Region Mapping",
-            "🎯 Ground-Truth Validation",
-            "🎬 Live Demonstration / What-If Simulation",
+            "Executive Overview",
+            "Anomaly Timeline",
+            "Episode Explorer & Severity",
+            "Sensor Attribution & PU3 Warning",
+            "Topology & Region Mapping",
+            "Ground-Truth Validation",
+            "Live Demonstration / What-If Simulation",
         ]
     )
 
@@ -193,7 +192,7 @@ def main():
 
         st.markdown("---")
         st.info(
-            "📌 **Data Isolation Status**: Evaluation performed completely unsupervised on "
+            "**Data Isolation Status**: Evaluation performed completely unsupervised on "
             "`BATADAL_test_dataset.csv`. Zero test labels accessed. Threshold τ=3.013382 calibrated "
             "strictly on Dataset03 normal operational partition."
         )
@@ -256,7 +255,7 @@ def main():
 
         if not use_log:
             st.warning(
-                "⚠️ Raw statistical anomaly scores reach ~1.13e10 during pump PU3 activation episodes (EP-11, EP-12). "
+                "Raw statistical anomaly scores reach ~1.13e10 during pump PU3 activation episodes (EP-11, EP-12). "
                 "Switch to Log-Scaled Display in the sidebar for optimal visualization of lower-magnitude episodes."
             )
 
@@ -350,19 +349,66 @@ def main():
         st.subheader("C-Town Water Distribution Network Topology Mapping")
 
         st.markdown(
-            "Sensors are mapped to C-Town EPANET topological components (Pumps, Tanks, Junctions, Valves). "
-            "Attribution flags highlight statistical forecasting residual deviations, mapped to physical "
-            "**Topology-Associated Regions**."
+            "The map uses node coordinates, link endpoints, and DMA demand-pattern labels from the project's "
+            "`CTOWN.INP` network. Select a monitored sensor to locate its physical node or link."
         )
 
-        if component_map:
-            map_items = []
-            for comp, sens_list in list(component_map.items())[:20]:
-                map_items.append({"Topology Node / Component": comp, "Mapped Sensors": ", ".join(sens_list)})
-            st.dataframe(pd.DataFrame(map_items), use_container_width=True)
-            st.caption("Displaying partial component-to-sensor mapping interface.")
-        else:
-            st.info("Component sensor mapping artifact loaded.")
+        demo_pipe = load_demo_pipeline()
+        demo_pipe["component_map"] = component_map
+        selected_topology_sensor = st.selectbox(
+            "Locate monitored sensor",
+            options=demo_pipe["sensor_cols"],
+            key="topology_sensor",
+        )
+        topology_result = analyze_topology_and_impact(
+            demo_pipe["g"],
+            demo_pipe["net"],
+            selected_topology_sensor,
+            demo_pipe["sensor_nodes_map"],
+            component_map,
+            demo_pipe["dma_zones"],
+        )
+        st.plotly_chart(
+            build_ctown_topology_figure(
+                demo_pipe["g"],
+                demo_pipe["dma_zones"],
+                topology_result,
+                anomaly_detected=False,
+            ),
+            use_container_width=True,
+        )
+        st.info(
+            f"**{topology_result['comp_type']} {topology_result['comp_id']}** - "
+            f"{topology_result['dma_region']} · "
+            f"Connected nodes: {', '.join(topology_result['endpoints']) or 'not resolved'}"
+        )
+
+        sensor_mapping_rows = []
+        for sensor, nodes in demo_pipe["sensor_nodes_map"].items():
+            if sensor.startswith(("P_", "L_")):
+                component_id = sensor[2:]
+                component_type = "Junction" if sensor.startswith("P_") else "Tank"
+                region_nodes = [component_id]
+            else:
+                component_id = sensor[2:]
+                component_type = "Pump" if component_id.startswith("PU") else "Valve"
+                region_nodes = sorted(nodes)
+            zones = sorted({demo_pipe["dma_zones"].get(node, -1) for node in region_nodes if demo_pipe["dma_zones"].get(node, -1) > 0})
+            region = ", ".join(f"DMA {zone}" for zone in zones) if zones else "Unassigned"
+            location = component_id if component_type in {"Junction", "Tank"} else " - ".join(sorted(nodes))
+            sensor_mapping_rows.append(
+                {
+                    "Sensor": sensor,
+                    "Physical Component": f"{component_type} {component_id}",
+                    "C-Town Location": location,
+                    "DMA Region": region,
+                }
+            )
+        st.dataframe(pd.DataFrame(sensor_mapping_rows), use_container_width=True, hide_index=True)
+        st.caption(
+            "DMA colors come from CTOWN.INP demand patterns; untagged nodes inherit the nearest tagged zone "
+            "through the project's DMA zoning implementation."
+        )
 
     # TAB 6: GROUND-TRUTH VALIDATION
     with tab_val:
@@ -388,20 +434,19 @@ def main():
 
     # TAB 7: LIVE DEMONSTRATION / WHAT-IF SIMULATION
     with tab_demo:
-        st.subheader("🎬 Presentation Demo Mode: Multi-Component Anomaly Simulation & Explainable Incident Workflow")
+        st.subheader("Presentation Demo Mode: Multi-Component Anomaly Simulation & Explainable Incident Workflow")
 
         st.warning(
-            "⚠️ **DEMO MODE — Synthetic Anomaly Injection for Presentation Purposes**\n\n"
+            "**DEMO MODE — Synthetic Anomaly Injection for Presentation Purposes**\n\n"
             "This interactive simulation operates strictly on in-memory data copies using the promoted "
             "H=12 SpatioTemporalGNN model (`models/detection_gnn.pt`). "
             "Zero research artifacts, models, or raw datasets are modified."
         )
 
         col_iso1, col_iso2 = st.columns(2)
-        col_iso1.success("🔒 **Research Artifact Integrity**: PROTECTED (SHA-256 Verified)")
-        col_iso2.info("💾 **Demo Execution State**: IN-MEMORY ONLY")
+        col_iso1.success("**Research Artifact Integrity**: PROTECTED (SHA-256 Verified)")
+        col_iso2.info("**Demo Execution State**: IN-MEMORY ONLY")
 
-        demo_pipe = load_demo_pipeline()
         demo_pipe["component_map"] = component_map
         sensor_cols = demo_pipe["sensor_cols"]
 
@@ -435,13 +480,13 @@ def main():
         demo_selector_mode = st.radio(
             "Select Demonstration Mode",
             options=[
-                "🎯 Direct Monitored Sensor Anomaly Injection & Explainable Workflow",
-                "🌐 Physical EPANET Topology Component Inspection (Unsensed Nodes)",
+                "Direct Monitored Sensor Anomaly Injection & Explainable Workflow",
+                "Physical EPANET Topology Component Inspection (Unsensed Nodes)",
             ],
             index=0,
         )
 
-        if demo_selector_mode.startswith("🎯"):
+        if demo_selector_mode == "Direct Monitored Sensor Anomaly Injection & Explainable Workflow":
             st.subheader("One-Click Demonstration Presets")
             pcol1, pcol2, pcol3, pcol4, pcol5, pcol6 = st.columns(6)
 
@@ -544,8 +589,8 @@ def main():
             )
 
             btn_col1, btn_col2 = st.columns([1, 4])
-            run_sim = btn_col1.button("▶ RUN SIMULATION", type="primary")
-            reset_sim = btn_col2.button("↻ RESET DEMO")
+            run_sim = btn_col1.button("RUN SIMULATION", type="primary")
+            reset_sim = btn_col2.button("RESET DEMO")
 
             if reset_sim:
                 for k in ["demo_cat", "demo_sensor", "demo_dist_type", "demo_mag", "demo_dur", "sim_result"]:
@@ -638,6 +683,7 @@ def main():
                             target_col,
                             demo_pipe["sensor_nodes_map"],
                             component_map,
+                            demo_pipe["dma_zones"],
                         )
 
                         st.session_state["sim_result"] = {
@@ -664,11 +710,11 @@ def main():
 
                 # PART 1 — SCENARIO CLASSIFICATION
                 st.markdown("---")
-                st.markdown(f"### 📋 SIMULATED SCENARIO: `{scenario_title}`")
+                st.markdown(f"### SIMULATED SCENARIO: `{scenario_title}`")
                 st.caption("Scientific Terminology Policy: Simulated Attack Scenario / Operational Disturbance (Synthetic Demo Only)")
 
                 # PART 2 — INCIDENT INTERPRETATION
-                st.markdown("#### 🚨 INCIDENT INTERPRETATION")
+                st.markdown("#### INCIDENT INTERPRETATION")
 
                 icol1, icol2, icol3, icol4 = st.columns(4)
                 icol1.metric("Affected Component", topo_res["comp_id"])
@@ -681,9 +727,9 @@ def main():
                 mcol2.metric("Simulated Anomaly Score", f"{res['score_dist']:.4f}")
                 mcol3.metric("Operational Threshold (τ)", f"{THRESHOLD_TAU:.6f}")
                 if res["is_detected"]:
-                    mcol4.error("Model Response:\n🚨 STATISTICAL ANOMALY DETECTED")
+                    mcol4.error("Model Response:\n STATISTICAL ANOMALY DETECTED")
                 else:
-                    mcol4.success("Model Response:\n🟢 NORMAL / BELOW THRESHOLD")
+                    mcol4.success("Model Response:\n NORMAL / BELOW THRESHOLD")
 
                 st.info(
                     f"**Incident Overview**: The simulated disturbance caused the predicted {res['sel_category'].lower()} behavior "
@@ -742,7 +788,7 @@ def main():
 
                 # PART 3 — ROOT-CAUSE ANALYSIS
                 st.markdown("---")
-                st.subheader("🔍 Root-Cause Analysis")
+                st.subheader("Root-Cause Analysis")
 
                 rcol1, rcol2, rcol3 = st.columns(3)
                 with rcol1:
@@ -772,7 +818,16 @@ def main():
 
                 # PART 4 & PART 6 — TOPOLOGY-BASED ROOT CAUSE & OPERATIONAL REROUTING
                 st.markdown("---")
-                st.subheader("🗺️ Topology Impact Path & Potential Operational Rerouting")
+                st.subheader("Topology Impact Path & Potential Operational Rerouting")
+                st.plotly_chart(
+                    build_ctown_topology_figure(
+                        demo_pipe["g"],
+                        demo_pipe["dma_zones"],
+                        topo_res,
+                        anomaly_detected=res["is_detected"],
+                    ),
+                    use_container_width=True,
+                )
 
                 tcol1, tcol2 = st.columns(2)
                 with tcol1:
@@ -806,14 +861,14 @@ def main():
 
                 # PART 5 — RECOMMENDED MITIGATION
                 st.markdown("---")
-                st.subheader("🛡️ Recommended Operational Mitigation")
+                st.subheader("Recommended Operational Mitigation")
                 mitigations = get_operational_mitigation(res["sel_category"])
                 for m in mitigations:
                     st.write(f"- {m}")
 
                 # PART 7, 8, 9, 10 — XAI (SHAP & LIME)
                 st.markdown("---")
-                st.subheader("🧠 Explainable AI (XAI) Analysis: SHAP vs LIME")
+                st.subheader("Explainable AI (XAI) Analysis: SHAP vs LIME")
 
                 xcol1, xcol2 = st.columns(2)
 
@@ -868,7 +923,7 @@ def main():
 
                 # PART 11 — FINAL INCIDENT SUMMARY CARD
                 st.markdown("---")
-                st.subheader("📝 EXPLAINABLE INCIDENT SUMMARY CARD")
+                st.subheader("EXPLAINABLE INCIDENT SUMMARY CARD")
 
                 top_shap_str = ", ".join(xai_res["df_shap"]["Sensor"].head(3).tolist())
                 top_lime_str = ", ".join(xai_res["df_lime"]["Sensor"].head(3).tolist())
@@ -879,7 +934,7 @@ def main():
                     f"------------------------------------------------------------\n"
                     f"SIMULATED SCENARIO  : {scenario_title}\n"
                     f"AFFECTED COMPONENT  : {topo_res['comp_id']} ({res['target_col']})\n"
-                    f"MODEL RESULT        : {'🚨 Statistical Anomaly Detected' if res['is_detected'] else '🟢 Normal / Below Threshold'}\n"
+                    f"MODEL RESULT        : {'Statistical Anomaly Detected' if res['is_detected'] else ' Normal / Below Threshold'}\n"
                     f"ANOMALY SCORE       : {res['score_dist']:.4f} (Baseline: {res['score_norm']:.4f})\n"
                     f"THRESHOLD (τ)       : {THRESHOLD_TAU:.6f}\n"
                     f"PRIMARY EVIDENCE    : Sensor {res['target_col']} residual deviation + associated pressure/flow residual shifts\n"
@@ -910,10 +965,10 @@ def main():
             matching_direct_sensor = [s for s in sensor_cols if s == sel_topo_comp or sel_topo_comp in s]
 
             if matching_direct_sensor:
-                st.success(f"✅ Component `{sel_topo_comp}` is DIRECTLY MONITORED by sensor(s): `{matching_direct_sensor}`")
+                st.success(f" Component `{sel_topo_comp}` is DIRECTLY MONITORED by sensor(s): `{matching_direct_sensor}`")
             else:
                 st.warning(
-                    f"⚠️ **UNSENSED PHYSICAL TOPOLOGY COMPONENT DETECTED**\n\n"
+                    f"**UNSENSED PHYSICAL TOPOLOGY COMPONENT DETECTED**\n\n"
                     f"Direct anomaly detection is not available because component `{sel_topo_comp}` has no direct monitored sensor in the 43-sensor array."
                 )
 
@@ -937,6 +992,7 @@ def load_demo_pipeline():
     from src.detection.preprocessing import DataPreprocessor
     from src.network.ctown_loader import load_ctown_network
     from src.network.graph_builder import build_network_graph
+    from src.network.zoning import assign_zones
 
     config_path = ROOT_DIR / "configs" / "config.yaml"
     with open(config_path, "r") as f:
@@ -957,13 +1013,21 @@ def load_demo_pipeline():
 
     net = load_ctown_network(ROOT_DIR / config["paths"]["inp_file"])
     g = build_network_graph(net)
+    dma_zones = assign_zones(g, method="dma")
     adj_matrix = build_adjacency_matrix_from_graph(g, sensor_cols, max_hops=3)
     sensor_nodes_map = resolve_sensor_locations(g, sensor_cols)
 
     X_cal, Y_cal, _ = preprocessor.create_forecasting_windows(calib_X_arr, forecast_horizon=12)
 
     model_path = ROOT_DIR / "models" / "detection_gnn.pt"
-    model = SpatioTemporalGNN(in_features=len(sensor_cols), window_size=12, hidden_dim=64, dropout=0.2, forecast_horizon=12)
+    forecast_horizon = int(config.get("detection", {}).get("forecast_horizon", 12))
+    model = SpatioTemporalGNN(
+        in_features=len(sensor_cols),
+        window_size=12,
+        hidden_dim=64,
+        dropout=0.2,
+        forecast_horizon=forecast_horizon,
+    )
     model.load_state_dict(torch.load(model_path, weights_only=True))
     model.eval()
 
@@ -985,6 +1049,7 @@ def load_demo_pipeline():
         "mu_sq_h": mu_sq_h,
         "sensor_cols": sensor_cols,
         "sensor_nodes_map": sensor_nodes_map,
+        "dma_zones": dma_zones,
         "normal_window_raw": normal_window_raw,
         "normal_target_raw": normal_target_raw,
         "sensor_stds": sensor_stds,
@@ -992,6 +1057,115 @@ def load_demo_pipeline():
         "g": g,
         "net": net,
     }
+
+
+def build_ctown_topology_figure(g, dma_zones, topology_result=None, anomaly_detected=False):
+    """Render C-Town links, DMA-colored nodes, and an optional affected component."""
+    fig = go.Figure()
+    node_coords = {
+        node: (data["x"], data["y"])
+        for node, data in g.nodes(data=True)
+        if "x" in data and "y" in data
+    }
+
+    if topology_result and "is_detected" in topology_result:
+        anomaly_detected = bool(topology_result["is_detected"])
+
+    edge_styles = {
+        "pipe": ("Pipes", "#9ba3a8", 1),
+        "pump": ("Pumps", "#3f7f83", 2),
+        "valve": ("Valves", "#d39b37", 2),
+    }
+    for edge_type, (label, color, width) in edge_styles.items():
+        x_values, y_values, link_ids = [], [], []
+        for start, end, data in g.edges(data=True):
+            if data.get("type") != edge_type or start not in node_coords or end not in node_coords:
+                continue
+            x_values.extend([node_coords[start][0], node_coords[end][0], None])
+            y_values.extend([node_coords[start][1], node_coords[end][1], None])
+            link_ids.extend([data.get("id", edge_type), data.get("id", edge_type), None])
+        if x_values:
+            fig.add_trace(
+                go.Scatter(
+                    x=x_values,
+                    y=y_values,
+                    customdata=link_ids,
+                    mode="lines",
+                    line=dict(color=color, width=width),
+                    name=label,
+                    hovertemplate="Link %{customdata}<extra></extra>",
+                )
+            )
+
+    zone_colors = {1: "#287271", 2: "#e09f3e", 3: "#577590", 4: "#8f5d5d", 5: "#78a083", -1: "#aeb4b8"}
+    for zone in sorted(set(dma_zones.values())):
+        zone_nodes = [node for node in node_coords if dma_zones.get(node, -1) == zone]
+        if not zone_nodes:
+            continue
+        labels = [f"{node} - DMA {zone if zone > 0 else 'unassigned'} - {g.nodes[node].get('type', 'node')}" for node in zone_nodes]
+        symbols = [
+            "square" if g.nodes[node].get("type") == "tank" else
+            "diamond" if g.nodes[node].get("type") == "reservoir" else "circle"
+            for node in zone_nodes
+        ]
+        fig.add_trace(
+            go.Scatter(
+                x=[node_coords[node][0] for node in zone_nodes],
+                y=[node_coords[node][1] for node in zone_nodes],
+                text=labels,
+                mode="markers",
+                marker=dict(color=zone_colors.get(zone, "#aeb4b8"), size=6, symbol=symbols, line=dict(width=0.5, color="white")),
+                name=f"DMA {zone}" if zone > 0 else "Unassigned nodes",
+                hovertemplate="%{text}<extra></extra>",
+            )
+        )
+
+    if topology_result:
+        comp_id = topology_result["comp_id"]
+        active_color = "#2ca02c" if not anomaly_detected else "#d1495b"
+        status_label = "Normal / Green" if not anomaly_detected else "Affected"
+        if topology_result["is_edge"]:
+            for start, end, data in g.edges(data=True):
+                if data.get("id") == comp_id and start in node_coords and end in node_coords:
+                    fig.add_trace(
+                        go.Scatter(
+                            x=[node_coords[start][0], node_coords[end][0]],
+                            y=[node_coords[start][1], node_coords[end][1]],
+                            mode="lines+markers",
+                            line=dict(color=active_color, width=6),
+                            marker=dict(color=active_color, size=11, symbol="circle"),
+                            name=f"{status_label} {topology_result['comp_type']} {comp_id}",
+                            hovertemplate=f"{status_label} {topology_result['comp_type']} {comp_id}<br>{start} - {end}<extra></extra>",
+                        )
+                    )
+                    break
+        elif comp_id in node_coords:
+            fig.add_trace(
+                go.Scatter(
+                    x=[node_coords[comp_id][0]],
+                    y=[node_coords[comp_id][1]],
+                    mode="markers+text",
+                    text=[f"{topology_result['comp_type']} {comp_id}"],
+                    textposition="top center",
+                    marker=dict(color=active_color, size=16, symbol="star", line=dict(width=1, color="white")),
+                    name=f"{status_label} {topology_result['comp_type']} {comp_id}",
+                    hovertemplate=f"{status_label} {topology_result['comp_type']} {comp_id}<extra></extra>",
+                )
+            )
+
+    fig.update_layout(
+        title="C-Town EPANET Network" if not topology_result else (
+            f"C-Town Network - {'Normal / Green' if not anomaly_detected else 'Affected'} "
+            f"{topology_result['comp_type']} {topology_result['comp_id']} - {topology_result['dma_region']}"
+        ),
+        height=620,
+        hovermode="closest",
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
+        margin=dict(l=10, r=10, t=70, b=10),
+        xaxis=dict(visible=False, scaleanchor="y", scaleratio=1),
+        yaxis=dict(visible=False),
+    )
+    return fig
 
 
 def compute_xai_explanations(demo_pipe, normal_window_raw, disturbed_window, target_sensor):
@@ -1116,7 +1290,7 @@ def compute_xai_explanations(demo_pipe, normal_window_raw, disturbed_window, tar
     }
 
 
-def analyze_topology_and_impact(g, net, target_sensor, sensor_nodes_map, component_map):
+def analyze_topology_and_impact(g, net, target_sensor, sensor_nodes_map, component_map, dma_zones=None):
     """Derive EPANET component, connected graph neighbors, nearby monitored sensors, DMA, and alternative supply path."""
     import networkx as nx
 
@@ -1167,8 +1341,13 @@ def analyze_topology_and_impact(g, net, target_sensor, sensor_nodes_map, compone
         if s_name != target_sensor and any(n in all_target_nodes for n in nodes):
             nearby_sensors.append(s_name)
 
-    dma_region = "DMA / Zone 1"
-    if hasattr(net, "junctions") and "pattern" in net.junctions.columns:
+    dma_region = "Unassigned DMA region"
+    component_zones = sorted({dma_zones[node] for node in endpoints if dma_zones and dma_zones.get(node, -1) > 0})
+    if component_zones:
+        dma_region = " / ".join(f"DMA {zone}" for zone in component_zones)
+        if len(component_zones) > 1:
+            dma_region += " boundary"
+    elif hasattr(net, "junctions") and "pattern" in net.junctions.columns:
         for ep in endpoints:
             j_match = net.junctions[net.junctions["id"] == ep]
             if len(j_match) > 0 and pd.notna(j_match.iloc[0]["pattern"]):

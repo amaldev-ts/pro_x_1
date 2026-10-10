@@ -9,15 +9,22 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+
 import numpy as np
 import pandas as pd
 import pytest
+import yaml
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 CORRECTED_DIR = ROOT_DIR / "results" / "test_inference" / "corrected"
 
 
 class TestDashboardDataIntegrity:
+    def test_forecast_horizon_config_is_h12(self):
+        """Regression test ensuring the project config matches the H=12 production architecture."""
+        config = yaml.safe_load((ROOT_DIR / "configs" / "config.yaml").read_text(encoding="utf-8"))
+        assert config["detection"]["forecast_horizon"] == 12
+
     def test_corrected_test_artifacts_exist(self):
         """Verify all corrected test inference CSVs and JSONs exist."""
         assert (CORRECTED_DIR / "test_anomaly_scores.csv").exists()
@@ -217,6 +224,39 @@ class TestDemoModeIntegrity:
         assert res_node["comp_id"] == "J280"
         assert res_node["comp_type"] == "Junction"
         assert res_node["is_edge"] is False
+
+    def test_ctown_topology_figure_highlights_nodes_and_links(self):
+        import networkx as nx
+        from dashboard.app import build_ctown_topology_figure
+
+        graph = nx.Graph()
+        graph.add_node("J1", x=0.0, y=0.0, type="junction")
+        graph.add_node("J2", x=1.0, y=0.0, type="tank")
+        graph.add_edge("J1", "J2", id="PU1", type="pump")
+        zones = {"J1": 1, "J2": 1}
+
+        node_figure = build_ctown_topology_figure(
+            graph,
+            zones,
+            {"comp_id": "J1", "comp_type": "Junction", "is_edge": False, "dma_region": "DMA 1", "is_detected": True},
+        )
+        edge_figure = build_ctown_topology_figure(
+            graph,
+            zones,
+            {"comp_id": "PU1", "comp_type": "Pump", "is_edge": True, "dma_region": "DMA 1", "is_detected": True},
+        )
+        normal_node_figure = build_ctown_topology_figure(
+            graph,
+            zones,
+            {"comp_id": "J1", "comp_type": "Junction", "is_edge": False, "dma_region": "DMA 1", "is_detected": False},
+        )
+
+        assert node_figure.data[-1].name == "Affected Junction J1"
+        assert list(node_figure.data[-1].x) == [0.0]
+        assert edge_figure.data[-1].name == "Affected Pump PU1"
+        assert list(edge_figure.data[-1].x) == [0.0, 1.0]
+        assert normal_node_figure.data[-1].marker.color == "#2ca02c"
+        assert "DMA 1" in edge_figure.layout.title.text
 
 
 

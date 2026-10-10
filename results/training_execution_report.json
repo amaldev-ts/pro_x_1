@@ -6,131 +6,131 @@
     "test": "data/raw/BATADAL_test_dataset.csv"
   },
   "model_architecture": "SpatioTemporalGNN",
-  "num_trainable_parameters": 64491,
+  "num_trainable_parameters": 95236,
   "mapped_sensors_count": 43,
   "adjacency_nonzero_count": 345,
-  "training_time_seconds": 31.07,
+  "training_time_seconds": 22.81,
   "epochs": 20,
   "checkpoint_path": "models\\detection_gnn.pt",
-  "calibrated_threshold": 0.7030526995658875,
+  "calibrated_threshold": 3.2949929237365723,
   "epoch_losses": [
     {
       "epoch": 1,
-      "train_mse_loss": 0.520466,
-      "calib_mse_loss": 0.294245
+      "train_mse_loss": 0.639213,
+      "calib_mse_loss": 0.435489
     },
     {
       "epoch": 2,
-      "train_mse_loss": 0.368856,
-      "calib_mse_loss": 0.234544
+      "train_mse_loss": 0.504998,
+      "calib_mse_loss": 0.391242
     },
     {
       "epoch": 3,
-      "train_mse_loss": 0.325974,
-      "calib_mse_loss": 0.195136
+      "train_mse_loss": 0.474589,
+      "calib_mse_loss": 0.370916
     },
     {
       "epoch": 4,
-      "train_mse_loss": 0.300297,
-      "calib_mse_loss": 0.186911
+      "train_mse_loss": 0.460518,
+      "calib_mse_loss": 0.363462
     },
     {
       "epoch": 5,
-      "train_mse_loss": 0.285422,
-      "calib_mse_loss": 0.17501
+      "train_mse_loss": 0.452051,
+      "calib_mse_loss": 0.358565
     },
     {
       "epoch": 6,
-      "train_mse_loss": 0.273859,
-      "calib_mse_loss": 0.169006
+      "train_mse_loss": 0.445826,
+      "calib_mse_loss": 0.35565
     },
     {
       "epoch": 7,
-      "train_mse_loss": 0.266947,
-      "calib_mse_loss": 0.161325
+      "train_mse_loss": 0.442659,
+      "calib_mse_loss": 0.351881
     },
     {
       "epoch": 8,
-      "train_mse_loss": 0.257338,
-      "calib_mse_loss": 0.159254
+      "train_mse_loss": 0.43807,
+      "calib_mse_loss": 0.349626
     },
     {
       "epoch": 9,
-      "train_mse_loss": 0.246805,
-      "calib_mse_loss": 0.154993
+      "train_mse_loss": 0.434046,
+      "calib_mse_loss": 0.348246
     },
     {
       "epoch": 10,
-      "train_mse_loss": 0.246112,
-      "calib_mse_loss": 0.156859
+      "train_mse_loss": 0.431681,
+      "calib_mse_loss": 0.345039
     },
     {
       "epoch": 11,
-      "train_mse_loss": 0.237316,
-      "calib_mse_loss": 0.156896
+      "train_mse_loss": 0.428486,
+      "calib_mse_loss": 0.342077
     },
     {
       "epoch": 12,
-      "train_mse_loss": 0.233441,
-      "calib_mse_loss": 0.15639
+      "train_mse_loss": 0.426395,
+      "calib_mse_loss": 0.34381
     },
     {
       "epoch": 13,
-      "train_mse_loss": 0.229702,
-      "calib_mse_loss": 0.149759
+      "train_mse_loss": 0.423394,
+      "calib_mse_loss": 0.338887
     },
     {
       "epoch": 14,
-      "train_mse_loss": 0.225956,
-      "calib_mse_loss": 0.150808
+      "train_mse_loss": 0.421042,
+      "calib_mse_loss": 0.339593
     },
     {
       "epoch": 15,
-      "train_mse_loss": 0.224451,
-      "calib_mse_loss": 0.149645
+      "train_mse_loss": 0.418836,
+      "calib_mse_loss": 0.338898
     },
     {
       "epoch": 16,
-      "train_mse_loss": 0.216264,
-      "calib_mse_loss": 0.148144
+      "train_mse_loss": 0.417091,
+      "calib_mse_loss": 0.340044
     },
     {
       "epoch": 17,
-      "train_mse_loss": 0.216355,
-      "calib_mse_loss": 0.146454
+      "train_mse_loss": 0.413031,
+      "calib_mse_loss": 0.337397
     },
     {
       "epoch": 18,
-      "train_mse_loss": 0.216165,
-      "calib_mse_loss": 0.152091
+      "train_mse_loss": 0.413183,
+      "calib_mse_loss": 0.337465
     },
     {
       "epoch": 19,
-      "train_mse_loss": 0.216368,
-      "calib_mse_loss": 0.1493
+      "train_mse_loss": 0.411976,
+      "calib_mse_loss": 0.341551
     },
     {
       "epoch": 20,
-      "train_mse_loss": 0.203941,
-      "calib_mse_loss": 0.150963
+      "train_mse_loss": 0.409107,
+      "calib_mse_loss": 0.334778
     }
   ],
   "validation_metrics": {
     "metric_category": "DETECTION_METRICS",
-    "threshold": 0.7030526995658875,
-    "samples": 4165,
-    "attack_samples": 219,
-    "precision": 0.5311203319502075,
-    "recall": 0.5844748858447488,
-    "f1_score": 0.5565217391304348,
-    "roc_auc": 0.869066877735271,
-    "pr_auc": 0.5359000157256052,
-    "false_positive_rate": 0.02863659401926001,
+    "threshold": 3.2949929237365723,
+    "samples": 1292,
+    "attack_samples": 0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1_score": 0.0,
+    "roc_auc": null,
+    "pr_auc": null,
+    "false_positive_rate": 0.0,
     "confusion_matrix": {
-      "TN": 3833,
-      "FP": 113,
-      "FN": 91,
-      "TP": 128
+      "TN": 1292,
+      "FP": 0,
+      "FN": 0,
+      "TP": 0
     },
     "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
   }
