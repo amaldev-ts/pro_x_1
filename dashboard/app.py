@@ -5,7 +5,6 @@ Visualizes H=12 SpatioTemporalGNN anomaly detection results on BATADAL benchmark
 Usage:
     streamlit run dashboard/app.py
 """
-
 from __future__ import annotations
 
 import json
@@ -295,6 +294,7 @@ def main():
                 }
             ),
             use_container_width=True,
+            key="topology_map",
         )
 
     # TAB 4: SENSOR ATTRIBUTION & PU3 WARNING
@@ -320,7 +320,7 @@ def main():
 
         if "PU3" in top_sensors_str or ep_row["peak_score"] > 1e6:
             st.error(
-                "⚠️ **EXTREME SCORE & NEAR-ZERO VARIANCE WARNING**\n\n"
+                "**EXTREME SCORE & NEAR-ZERO VARIANCE WARNING**\n\n"
                 "**Condition Detected**: Sensor `F_PU3` / `S_PU3` exhibits near-zero baseline variance during Dataset03 normal calibration "
                 "(mean ~ 0.0, variance ~ 2.91e-8) because pump PU3 was inactive throughout the calibration period.\n\n"
                 "**Mathematical Cause**: When PU3 turns ON during test episodes (e.g. EP-11, EP-12), the normalized forecasting residual "
@@ -608,7 +608,7 @@ def main():
                         preprocessor = demo_pipe["preprocessor"]
                         adj_matrix = demo_pipe["adj_matrix"]
                         mu_sq_h = demo_pipe["mu_sq_h"]
-                        normal_window_raw = demo_pipe["normal_window_raw"].copy()
+                        normal_window_raw = demo_pipe["normal_window_raw"].copy().astype(float)
                         normal_target_raw = demo_pipe["normal_target_raw"].copy()
                         sensor_stds = demo_pipe["sensor_stds"]
 
@@ -827,6 +827,7 @@ def main():
                         anomaly_detected=res["is_detected"],
                     ),
                     use_container_width=True,
+                    key="simulation_topology_impact",
                 )
 
                 tcol1, tcol2 = st.columns(2)
