@@ -198,6 +198,7 @@ def main():
 
         st.subheader("Dataset04 Ground-Truth Validation Summary")
         val_metrics = summary_data.get("final_h12_validation_metrics", {})
+        val_acc = val_metrics.get("accuracy", 0.9567)
         val_p = val_metrics.get("precision", 0.5635)
         val_r = val_metrics.get("recall", 0.7900)
         val_f1 = val_metrics.get("f1_score", 0.6578)
@@ -205,13 +206,14 @@ def main():
         val_pr = val_metrics.get("pr_auc", 0.6769)
         val_fpr = val_metrics.get("fpr", 0.0341)
 
-        vcol1, vcol2, vcol3, vcol4, vcol5, vcol6 = st.columns(6)
-        vcol1.metric("Precision", f"{val_p:.4f}")
-        vcol2.metric("Recall", f"{val_r:.4f}")
-        vcol3.metric("F1 Score", f"{val_f1:.4f}")
-        vcol4.metric("ROC-AUC", f"{val_auc:.4f}")
-        vcol5.metric("PR-AUC", f"{val_pr:.4f}")
-        vcol6.metric("False Positive Rate", f"{val_fpr:.4f}")
+        vcol1, vcol2, vcol3, vcol4, vcol5, vcol6, vcol7 = st.columns(7)
+        vcol1.metric("Accuracy", f"{val_acc:.4f}")
+        vcol2.metric("Precision", f"{val_p:.4f}")
+        vcol3.metric("Recall", f"{val_r:.4f}")
+        vcol4.metric("F1 Score", f"{val_f1:.4f}")
+        vcol5.metric("ROC-AUC", f"{val_auc:.4f}")
+        vcol6.metric("PR-AUC", f"{val_pr:.4f}")
+        vcol7.metric("False Positive Rate", f"{val_fpr:.4f}")
 
     # TAB 2: ANOMALY TIMELINE
     with tab_timeline:
@@ -422,6 +424,7 @@ def main():
 
         val_df = pd.DataFrame(
             [
+                {"Metric": "Accuracy", "Score": 0.9567, "Description": "(True Positive + True Negative) / Total Windows (3,974 / 4,154)"},
                 {"Metric": "Precision", "Score": 0.5635, "Description": "True Positive / (True Positive + False Positive)"},
                 {"Metric": "Recall", "Score": 0.7900, "Description": "True Positive / (True Positive + False Negative)"},
                 {"Metric": "F1 Score", "Score": 0.6578, "Description": "Harmonic Mean of Precision and Recall"},
@@ -867,14 +870,17 @@ def main():
                 for m in mitigations:
                     st.write(f"- {m}")
 
-                # PART 7, 8, 9, 10 — XAI (SHAP & LIME)
+                # PART 7, 8, 9, 10 — XAI (GENUINE SHAP & LIME)
                 st.markdown("---")
-                st.subheader("Explainable AI (XAI) Analysis: SHAP vs LIME")
+                st.subheader("Explainable AI (XAI) Analysis: Genuine SHAP vs LIME")
+                st.caption(
+                    f"Explaining detector: **{xai_res.get('model_title', 'SpatioTemporalGNN')}** using official `shap` (0.54.1) and `lime` libraries."
+                )
 
                 xcol1, xcol2 = st.columns(2)
 
                 with xcol1:
-                    st.markdown("**SHAP Feature Attribution (Top 10 Contributors)**")
+                    st.markdown("**Genuine SHAP Feature Attribution (Top 10 Contributors)**")
                     df_shap_top10 = xai_res["df_shap"].head(10)
                     fig_shap = px.bar(
                         df_shap_top10,
@@ -883,40 +889,67 @@ def main():
                         orientation="h",
                         color="Direction",
                         color_discrete_map={
+                            "Increased anomaly score / attack prob": "#d62728",
+                            "Reduced anomaly score / attack prob": "#1f77b4",
                             "Increased anomaly score": "#d62728",
                             "Reduced anomaly score": "#1f77b4",
                         },
-                        title="SHAP Feature Attribution (2-Player Shapley Values)",
+                        hover_data=["Percent Contribution", "SHAP Value"],
+                        title="SHAP Feature Attribution (Shapley Values)",
                     )
                     fig_shap.update_layout(height=350, yaxis=dict(autorange="reversed"))
                     st.plotly_chart(fig_shap, use_container_width=True)
 
                 with xcol2:
-                    st.markdown("**LIME Local Surrogate Explanation**")
-                    st.caption("Local surrogate model: Ridge regression on N=50 perturbed samples around simulation")
+                    st.markdown("**Genuine LIME Local Surrogate Explanation**")
+                    st.caption("Local surrogate model: Interpretable linear surrogate fitted on local neighborhood perturbations")
                     df_lime_top10 = xai_res["df_lime"].head(10)
                     fig_lime = px.bar(
                         df_lime_top10,
                         x="Abs LIME",
                         y="Sensor",
                         orientation="h",
+                        hover_data=["Percent Contribution", "LIME Weight"],
                         title="LIME Local Surrogate Feature Importance",
                     )
                     fig_lime.update_layout(height=350, yaxis=dict(autorange="reversed"))
                     st.plotly_chart(fig_lime, use_container_width=True)
 
                 # Explainability Agreement & Sensor Mapping
-                st.markdown("#### Explainability Agreement & Physical Mapping")
+                st.markdown("#### Explainability Quality, Agreement & Physical Mapping")
 
                 ag_col1, ag_col2 = st.columns(2)
                 with ag_col1:
                     ag_rating = xai_res["agreement"]
+                    jaccard = xai_res.get("jaccard_similarity", 0.0)
+                    spearman = xai_res.get("spearman_corr", 0.0)
+                    sign_agree = xai_res.get("sign_agreement_rate", 1.0)
+                    overlap = xai_res.get("overlap_count", 0)
+
                     if ag_rating == "High":
-                        st.success(f"**SHAP / LIME Agreement**: HIGH ({xai_res['overlap_count']}/4 Top Sensors Overlap)\n\nBoth SHAP and LIME consistently attribute the statistical anomaly to sensor `{res['target_col']}` and its immediate graph neighbors.")
+                        st.success(
+                            f"**SHAP / LIME Consensus**: HIGH ({overlap}/4 Top Sensors Overlap · Jaccard: {jaccard:.2f})\n\n"
+                            f"Spearman rank correlation: $\\rho = {spearman:.2f}$ · Sign agreement: {sign_agree*100:.0f}%"
+                        )
                     elif ag_rating == "Moderate":
-                        st.info(f"**SHAP / LIME Agreement**: MODERATE ({xai_res['overlap_count']}/4 Top Sensors Overlap)")
+                        st.info(
+                            f"**SHAP / LIME Consensus**: MODERATE ({overlap}/4 Top Sensors Overlap · Jaccard: {jaccard:.2f})\n\n"
+                            f"Spearman rank correlation: $\\rho = {spearman:.2f}$ · Sign agreement: {sign_agree*100:.0f}%"
+                        )
                     else:
-                        st.warning(f"**SHAP / LIME Agreement**: LOW ({xai_res['overlap_count']}/4 Top Sensors Overlap)\n\nSHAP/LIME explanations differ; interpretation should be treated cautiously due to local surrogate non-linearities.")
+                        st.warning(
+                            f"**SHAP / LIME Consensus**: LOW ({overlap}/4 Top Sensors Overlap · Jaccard: {jaccard:.2f})\n\n"
+                            f"Spearman rank correlation: $\\rho = {spearman:.2f}$ · Non-linear local surrogate divergence observed."
+                        )
+
+                    # Perturbation-based fidelity metrics
+                    fid = xai_res.get("fidelity")
+                    if fid:
+                        st.markdown(
+                            f"**Perturbation-Based Fidelity (Score Drop under Top-3 Masking)**:\n"
+                            f"- Explained score drop: **{fid['explained_score_drop']:.4f}**\n"
+                            f"- Random-K mean drop: **{fid['random_k_mean_score_drop']:.4f}** (Advantage: **+{fid['fidelity_advantage_over_random']:.4f}**)"
+                        )
 
                 with ag_col2:
                     st.markdown("**Top XAI Sensor → Physical Component Mapping**")
@@ -1043,6 +1076,32 @@ def load_demo_pipeline():
 
     sensor_stds = train_df[sensor_cols].std().to_dict()
 
+    # Load supervised tree baseline models if available
+    import joblib, xgboost as xgb
+    rf_model, rf_scaler = None, None
+    rf_path = ROOT_DIR / "models" / "rf_detector.pkl"
+    rf_scaler_path = ROOT_DIR / "models" / "rf_scaler.pkl"
+    if rf_path.exists() and rf_scaler_path.exists():
+        try:
+            with open(rf_path, "rb") as f:
+                rf_model = joblib.load(f)
+            with open(rf_scaler_path, "rb") as f:
+                rf_scaler = joblib.load(f)
+        except Exception:
+            pass
+
+    xgb_model, xgb_scaler = None, None
+    xgb_path = ROOT_DIR / "models" / "xgboost_detector.json"
+    xgb_scaler_path = ROOT_DIR / "models" / "xgboost_scaler.pkl"
+    if xgb_path.exists() and xgb_scaler_path.exists():
+        try:
+            xgb_model = xgb.XGBClassifier()
+            xgb_model.load_model(xgb_path)
+            with open(xgb_scaler_path, "rb") as f:
+                xgb_scaler = joblib.load(f)
+        except Exception:
+            pass
+
     return {
         "model": model,
         "preprocessor": preprocessor,
@@ -1057,6 +1116,11 @@ def load_demo_pipeline():
         "all_topology_components": sorted(list(g.nodes())),
         "g": g,
         "net": net,
+        "rf_model": rf_model,
+        "rf_scaler": rf_scaler,
+        "xgb_model": xgb_model,
+        "xgb_scaler": xgb_scaler,
+        "train_df": train_df,
     }
 
 
@@ -1169,10 +1233,12 @@ def build_ctown_topology_figure(g, dma_zones, topology_result=None, anomaly_dete
     return fig
 
 
-def compute_xai_explanations(demo_pipe, normal_window_raw, disturbed_window, target_sensor):
-    """Compute exact 2-player SHAP feature attribution and local surrogate LIME explanations."""
+def compute_xai_explanations(demo_pipe, normal_window_raw, disturbed_window, target_sensor, model_choice="SpatioTemporalGNN"):
+    """Compute genuine SHAP and LIME feature attributions and quality metrics."""
     import torch
-    from sklearn.linear_model import Ridge
+    from src.explainability.shap_explainer import GNNKernelSHAPExplainer, TreeSHAPExplainer
+    from src.explainability.lime_explainer import GNNLIMEExplainer, TabularLIMEExplainer
+    from src.explainability.evaluation import compute_shap_lime_agreement, evaluate_perturbation_fidelity
 
     model = demo_pipe["model"]
     preprocessor = demo_pipe["preprocessor"]
@@ -1196,71 +1262,93 @@ def compute_xai_explanations(demo_pipe, normal_window_raw, disturbed_window, tar
 
     s_dist = float(eval_score_batch(disturbed_X)[0])
     s_norm = float(eval_score_batch(normal_X)[0])
+    delta_arr = (disturbed_X[0, 11, :] - normal_X[0, 11, :]).astype(np.float32)
 
-    # 1. SHAP (2-Player Coalition Shapley Values)
-    N_sensors = len(sensor_cols)
-    X_dist_sub = np.repeat(disturbed_X, N_sensors, axis=0)
-    X_norm_add = np.repeat(normal_X, N_sensors, axis=0)
+    if model_choice == "Random Forest" and demo_pipe.get("rf_model") is not None:
+        rf_model = demo_pipe["rf_model"]
+        rf_scaler = demo_pipe["rf_scaler"]
+        train_bg = rf_scaler.transform(demo_pipe["train_df"][sensor_cols].iloc[:100].values)
+        inst_rf = rf_scaler.transform(disturbed_window[sensor_cols].iloc[11:12])[0]
 
-    for k in range(N_sensors):
-        X_dist_sub[k, :, k] = normal_X[0, :, k]
-        X_norm_add[k, :, k] = disturbed_X[0, :, k]
+        explainer_shap = TreeSHAPExplainer(rf_model, "RandomForest", sensor_cols, background_data=train_bg[:50])
+        res_shap = explainer_shap.explain_instance(inst_rf, top_k=10)
 
-    scores_dist_sub = eval_score_batch(X_dist_sub)
-    scores_norm_add = eval_score_batch(X_norm_add)
+        bin_idx = [i for i, c in enumerate(sensor_cols) if c.startswith("S_")]
+        explainer_lime = TabularLIMEExplainer(train_bg, sensor_cols, rf_model, "RandomForest", categorical_features=bin_idx, random_state=42)
+        res_lime = explainer_lime.explain_instance(inst_rf, top_k=10, num_samples=200)
 
-    shap_vals = 0.5 * (s_dist - scores_dist_sub) + 0.5 * (scores_norm_add - s_norm)
+        fid_fn = lambda x: float(rf_model.predict_proba(x)[0, 1])
+        fidelity_res = evaluate_perturbation_fidelity(fid_fn, inst_rf, res_shap.top_k_features[:3], sensor_cols)
+        model_title = "Random Forest (Supervised)"
+    elif model_choice == "XGBoost" and demo_pipe.get("xgb_model") is not None:
+        xgb_model = demo_pipe["xgb_model"]
+        xgb_scaler = demo_pipe["xgb_scaler"]
+        train_bg = xgb_scaler.transform(demo_pipe["train_df"][sensor_cols].iloc[:100].values)
+        inst_xgb = xgb_scaler.transform(disturbed_window[sensor_cols].iloc[11:12])[0]
 
+        explainer_shap = TreeSHAPExplainer(xgb_model, "XGBoost", sensor_cols, background_data=train_bg[:50])
+        res_shap = explainer_shap.explain_instance(inst_xgb, top_k=10)
+
+        bin_idx = [i for i, c in enumerate(sensor_cols) if c.startswith("S_")]
+        explainer_lime = TabularLIMEExplainer(train_bg, sensor_cols, xgb_model, "XGBoost", categorical_features=bin_idx, random_state=42)
+        res_lime = explainer_lime.explain_instance(inst_xgb, top_k=10, num_samples=200)
+
+        fid_fn = lambda x: float(xgb_model.predict_proba(x)[0, 1])
+        fidelity_res = evaluate_perturbation_fidelity(fid_fn, inst_xgb, res_shap.top_k_features[:3], sensor_cols)
+        model_title = "XGBoost (Supervised)"
+    else:
+        # Default: SpatioTemporalGNN (Operational Anomaly Detector)
+        def gnn_score_fn(deltas):
+            B = len(deltas)
+            X_batched = np.repeat(normal_X, B, axis=0)
+            X_batched[:, 6:, :] += deltas[:, np.newaxis, :]
+            with torch.no_grad():
+                preds = model(torch.from_numpy(X_batched), adj_matrix=adj_matrix).numpy()
+            E = (preds - normal_Y) ** 2
+            Z = E / mu_sq_h
+            return np.mean(Z[:, 11, :], axis=1)
+
+        explainer_shap = GNNKernelSHAPExplainer(gnn_score_fn, sensor_cols, nsamples=44)
+        res_shap = explainer_shap.explain_instance(delta_arr, baseline_score=s_norm, top_k=10)
+
+        explainer_lime = GNNLIMEExplainer(gnn_score_fn, sensor_cols, random_state=42)
+        res_lime = explainer_lime.explain_instance(delta_arr, baseline_score=s_norm, top_k=10, num_samples=120)
+
+        fid_fn = lambda x: float(gnn_score_fn(x)[0])
+        fidelity_res = evaluate_perturbation_fidelity(fid_fn, delta_arr, res_shap.top_k_features[:3], sensor_cols)
+        model_title = "SpatioTemporalGNN (Operational Anomaly Detector)"
+
+    # Agreement
+    agr_res = compute_shap_lime_agreement(res_shap, res_lime, top_k=4)
+
+    # Format DataFrames
     shap_records = []
-    for k, s_name in enumerate(sensor_cols):
-        v = float(shap_vals[k])
-        direction = "Increased anomaly score" if v >= 0 else "Reduced anomaly score"
+    for s_name in sensor_cols:
+        v = res_shap.attributions.get(s_name, 0.0)
+        direction = "Increased anomaly score / attack prob" if v >= 0 else "Reduced anomaly score / attack prob"
         shap_records.append({
             "Sensor": s_name,
             "SHAP Value": v,
             "Abs SHAP": abs(v),
+            "Percent Contribution": res_shap.normalized_attributions.get(s_name, 0.0),
             "Direction": direction,
         })
     df_shap = pd.DataFrame(shap_records).sort_values(by="Abs SHAP", ascending=False).reset_index(drop=True)
 
-    # 2. LIME Local Surrogate (Ridge Regression on perturbed samples)
-    np.random.seed(42)
-    N_samples = 50
-    noise = np.random.normal(0.0, 0.5, size=(N_samples, 12, N_sensors)).astype(np.float32)
-    mask = (np.random.uniform(0, 1, size=(N_samples, 1, N_sensors)) > 0.5).astype(np.float32)
-    X_perturbed = disturbed_X + noise * mask
-
-    scores_pert = eval_score_batch(X_perturbed)
-    X_diff = (X_perturbed[:, 11, :] - normal_X[:, 11, :]).astype(np.float32)
-    dists = np.sqrt(np.mean((X_perturbed - disturbed_X) ** 2, axis=(1, 2)))
-    weights = np.exp(- (dists ** 2) / (2 * (0.5 ** 2)))
-
-    ridge = Ridge(alpha=0.1)
-    ridge.fit(X_diff, scores_pert, sample_weight=weights)
-
-    lime_coefs = ridge.coef_
     lime_records = []
-    for k, s_name in enumerate(sensor_cols):
-        v = float(lime_coefs[k])
+    for s_name in sensor_cols:
+        v = res_lime.attributions.get(s_name, 0.0)
+        direction = "Positive weight" if v >= 0 else "Negative weight"
         lime_records.append({
             "Sensor": s_name,
             "LIME Weight": v,
             "Abs LIME": abs(v),
+            "Percent Contribution": res_lime.normalized_attributions.get(s_name, 0.0),
+            "Direction": direction,
         })
     df_lime = pd.DataFrame(lime_records).sort_values(by="Abs LIME", ascending=False).reset_index(drop=True)
 
-    # Agreement
-    top4_shap = set(df_shap["Sensor"].iloc[:4])
-    top4_lime = set(df_lime["Sensor"].iloc[:4])
-    overlap = len(top4_shap.intersection(top4_lime))
-    if overlap >= 3:
-        agreement = "High"
-    elif overlap == 2:
-        agreement = "Moderate"
-    else:
-        agreement = "Low"
-
-    # Sensor to Physical Component Mapping for top XAI sensors
+    # Physical Component Mapping
     xai_mapping = []
     top_xai_sensors = list(df_shap["Sensor"].iloc[:5])
     for s in top_xai_sensors:
@@ -1274,17 +1362,26 @@ def compute_xai_explanations(demo_pipe, normal_window_raw, disturbed_window, tar
             p_comp = f"Valve {s.split('_')[1]}"
         else:
             p_comp = s
+        loc = component_map.get(s, [s])[0] if component_map else s
         xai_mapping.append({
             "Sensor": s,
-            "Physical Component": p_comp,
-            "Topology Region": f"DMA / Node {component_map.get(s, [s])[0]}",
+            "Component": p_comp,
+            "Associated Location": f"DMA / Node {loc}",
+            "SHAP Contribution (%)": f"{res_shap.normalized_attributions.get(s, 0.0):.1f}%",
+            "LIME Contribution (%)": f"{res_lime.normalized_attributions.get(s, 0.0):.1f}%",
         })
 
     return {
         "df_shap": df_shap,
         "df_lime": df_lime,
-        "agreement": agreement,
-        "overlap_count": overlap,
+        "res_shap": res_shap,
+        "res_lime": res_lime,
+        "agreement": agr_res["agreement_level"],
+        "overlap_count": agr_res["overlap_count"],
+        "jaccard_similarity": agr_res["jaccard_similarity"],
+        "spearman_corr": agr_res["spearman_rank_correlation"],
+        "sign_agreement_rate": agr_res["sign_agreement_rate"],
+        "fidelity": fidelity_res,
         "xai_mapping": xai_mapping,
         "s_dist": s_dist,
         "s_norm": s_norm,

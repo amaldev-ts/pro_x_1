@@ -1,0 +1,592 @@
+{
+  "calibration_audit": [
+    {
+      "seq_id": 1,
+      "timestep": 1740,
+      "desc": "Attack 1 (Tank T1 deception)",
+      "total_score": 12278.521484375,
+      "category_breakdown": {
+        "status_score": 5398.46533203125,
+        "status_pct": 43.96673768011118,
+        "flow_score": 6879.201171875,
+        "flow_pct": 56.026299099847726,
+        "pressure_score": 0.6152389049530029,
+        "pressure_pct": 0.005010692091355817,
+        "tank_score": 0.2394811511039734,
+        "tank_pct": 0.0019504070698473305
+      },
+      "top_sensors": [
+        {
+          "sensor": "F_PU11",
+          "E_sq_residual": 2181.342529296875,
+          "mu_sq_denom": 0.0073744202964007854,
+          "Z_standardized": 295798.5,
+          "score_contribution": 6879.03466796875,
+          "pct_of_total": 56.024940490722656
+        },
+        {
+          "sensor": "S_PU11",
+          "E_sq_residual": 1763.8712158203125,
+          "mu_sq_denom": 0.007598670665174723,
+          "Z_standardized": 232128.921875,
+          "score_contribution": 5398.34716796875,
+          "pct_of_total": 43.96577453613281
+        },
+        {
+          "sensor": "P_J307",
+          "E_sq_residual": 3.7781920433044434,
+          "mu_sq_denom": 0.46090418100357056,
+          "Z_standardized": 8.197348594665527,
+          "score_contribution": 0.19063600897789001,
+          "pct_of_total": 0.0015525973867624998
+        }
+      ]
+    },
+    {
+      "seq_id": 2,
+      "timestep": 2360,
+      "desc": "Attack 2 (Tank T2 overflow)",
+      "total_score": 5.0193867683410645,
+      "category_breakdown": {
+        "status_score": 0.9001388549804688,
+        "status_pct": 17.933243571863056,
+        "flow_score": 1.685677409172058,
+        "flow_pct": 33.58333372124627,
+        "pressure_score": 1.7048099040985107,
+        "pressure_pct": 33.96450568127788,
+        "tank_score": 0.7287607789039612,
+        "tank_pct": 14.518920588078545
+      },
+      "top_sensors": [
+        {
+          "sensor": "P_J269",
+          "E_sq_residual": 9.770630836486816,
+          "mu_sq_denom": 0.2967575192451477,
+          "Z_standardized": 32.92462921142578,
+          "score_contribution": 0.7656890749931335,
+          "pct_of_total": 15.254633903503418
+        },
+        {
+          "sensor": "F_PU1",
+          "E_sq_residual": 9.732743263244629,
+          "mu_sq_denom": 0.29784640669822693,
+          "Z_standardized": 32.67705535888672,
+          "score_contribution": 0.7599315047264099,
+          "pct_of_total": 15.13992691040039
+        },
+        {
+          "sensor": "S_PU2",
+          "E_sq_residual": 8.814437866210938,
+          "mu_sq_denom": 0.29030919075012207,
+          "Z_standardized": 30.362241744995117,
+          "score_contribution": 0.7060986161231995,
+          "pct_of_total": 14.067428588867188
+        }
+      ]
+    },
+    {
+      "seq_id": 3,
+      "timestep": 2865,
+      "desc": "Attack 3 (Valve V2 closed)",
+      "total_score": 2.7828097343444824,
+      "category_breakdown": {
+        "status_score": 0.5306923389434814,
+        "status_pct": 19.07037812876169,
+        "flow_score": 1.011250376701355,
+        "flow_pct": 36.33918496909257,
+        "pressure_score": 1.107630968093872,
+        "pressure_pct": 39.80261224559735,
+        "tank_score": 0.13323627412319183,
+        "tank_pct": 4.7878326886252935
+      },
+      "top_sensors": [
+        {
+          "sensor": "F_PU1",
+          "E_sq_residual": 6.013092994689941,
+          "mu_sq_denom": 0.29784640669822693,
+          "Z_standardized": 20.188570022583008,
+          "score_contribution": 0.4695016145706177,
+          "pct_of_total": 16.87149429321289
+        },
+        {
+          "sensor": "P_J269",
+          "E_sq_residual": 5.986964225769043,
+          "mu_sq_denom": 0.2967575192451477,
+          "Z_standardized": 20.17460060119629,
+          "score_contribution": 0.4691767692565918,
+          "pct_of_total": 16.85982322692871
+        },
+        {
+          "sensor": "S_PU2",
+          "E_sq_residual": 4.236318111419678,
+          "mu_sq_denom": 0.29030919075012207,
+          "Z_standardized": 14.592435836791992,
+          "score_contribution": 0.33935898542404175,
+          "pct_of_total": 12.194831848144531
+        }
+      ]
+    },
+    {
+      "seq_id": 4,
+      "timestep": 3511,
+      "desc": "Attack 4 (Pumps PU4/PU5 altered)",
+      "total_score": 51.128726959228516,
+      "category_breakdown": {
+        "status_score": 20.421642303466797,
+        "status_pct": 39.94162092037141,
+        "flow_score": 29.939172744750977,
+        "flow_pct": 58.55646038014073,
+        "pressure_score": 0.5360504984855652,
+        "pressure_pct": 1.0484331028093599,
+        "tank_score": 0.2318660169839859,
+        "tank_pct": 0.45349460229839555
+      },
+      "top_sensors": [
+        {
+          "sensor": "F_PU6",
+          "E_sq_residual": 713.8473510742188,
+          "mu_sq_denom": 0.5592111349105835,
+          "Z_standardized": 1276.525634765625,
+          "score_contribution": 29.686643600463867,
+          "pct_of_total": 58.06254959106445
+        },
+        {
+          "sensor": "S_PU6",
+          "E_sq_residual": 491.7467346191406,
+          "mu_sq_denom": 0.5660969018936157,
+          "Z_standardized": 868.6617431640625,
+          "score_contribution": 20.201435089111328,
+          "pct_of_total": 39.510929107666016
+        },
+        {
+          "sensor": "L_T4",
+          "E_sq_residual": 3.49967360496521,
+          "mu_sq_denom": 0.8102306723594666,
+          "Z_standardized": 4.31935453414917,
+          "score_contribution": 0.10045010596513748,
+          "pct_of_total": 0.19646510481834412
+        }
+      ]
+    },
+    {
+      "seq_id": 5,
+      "timestep": 3770,
+      "desc": "Attack 5 (Tank T7 level attack)",
+      "total_score": 5.410734176635742,
+      "category_breakdown": {
+        "status_score": 1.2686903476715088,
+        "status_pct": 23.447656200703403,
+        "flow_score": 1.5638132095336914,
+        "flow_pct": 28.902052078005262,
+        "pressure_score": 1.6964762210845947,
+        "pressure_pct": 31.35390070371967,
+        "tank_score": 0.8817546367645264,
+        "tank_pct": 16.29639542397145
+      },
+      "top_sensors": [
+        {
+          "sensor": "F_V2",
+          "E_sq_residual": 13.506351470947266,
+          "mu_sq_denom": 0.39532631635665894,
+          "Z_standardized": 34.165069580078125,
+          "score_contribution": 0.7945365309715271,
+          "pct_of_total": 14.684449195861816
+        },
+        {
+          "sensor": "P_J14",
+          "E_sq_residual": 12.774186134338379,
+          "mu_sq_denom": 0.3914632201194763,
+          "Z_standardized": 32.631893157958984,
+          "score_contribution": 0.7588812112808228,
+          "pct_of_total": 14.025476455688477
+        },
+        {
+          "sensor": "S_V2",
+          "E_sq_residual": 10.722443580627441,
+          "mu_sq_denom": 0.3746202886104584,
+          "Z_standardized": 28.622163772583008,
+          "score_contribution": 0.6656317114830017,
+          "pct_of_total": 12.302059173583984
+        }
+      ]
+    }
+  ],
+  "naive_vs_fixed_root_cause": {
+    "seq4": {
+      "naive_r2": 0.0,
+      "naive_top5": [
+        "S_V2",
+        "P_J280",
+        "P_J307",
+        "S_PU2",
+        "P_J306"
+      ],
+      "naive_all_weights_zero": true,
+      "fixed_r2": 0.854572520656127,
+      "fixed_top5": [
+        "F_PU1",
+        "S_PU6",
+        "F_PU6",
+        "L_T6",
+        "L_T1"
+      ],
+      "fixed_weights": {
+        "F_PU1": -1.0976211718880418,
+        "S_PU6": -0.5120207968507499,
+        "F_PU6": -0.4454461235437031,
+        "L_T6": -0.38234725649304635,
+        "L_T1": -0.3658753726569687
+      }
+    },
+    "seq5": {
+      "naive_r2": 0.0,
+      "naive_top5": [
+        "S_V2",
+        "P_J280",
+        "P_J307",
+        "S_PU2",
+        "P_J306"
+      ],
+      "naive_all_weights_zero": true,
+      "fixed_r2": 0.7207236825841303,
+      "fixed_top5": [
+        "F_PU6",
+        "S_PU6",
+        "F_PU7",
+        "S_PU11",
+        "L_T6"
+      ],
+      "fixed_weights": {
+        "F_PU6": 1.538481894951866,
+        "S_PU6": 0.9483655115780754,
+        "F_PU7": 0.6047488733986375,
+        "S_PU11": -0.4416024912955761,
+        "L_T6": 0.4265410426903593
+      }
+    },
+    "seq1": {
+      "naive_r2": 1.0,
+      "naive_top5": [
+        "L_T1",
+        "L_T2",
+        "L_T3",
+        "L_T4",
+        "L_T5"
+      ],
+      "naive_all_weights_zero": true,
+      "fixed_r2": 0.566932414225595,
+      "fixed_top5": [
+        "F_PU11",
+        "L_T7",
+        "S_PU11",
+        "S_PU4",
+        "L_T3"
+      ],
+      "fixed_weights": {
+        "F_PU11": 20.489251993975095,
+        "L_T7": 18.78439443224082,
+        "S_PU11": 17.676877797282884,
+        "S_PU4": 16.56316248855967,
+        "L_T3": -14.957187526836721
+      }
+    }
+  },
+  "incident_lime_records": [
+    {
+      "seq_id": 1,
+      "timestep": 1740,
+      "target_comp": "T1",
+      "desc": "Attack 1 (Tank T1 deception)",
+      "anomaly_score": 12278.521484375,
+      "explained_input_shape": [
+        1,
+        12,
+        43
+      ],
+      "explained_input_norm": 125.4875717163086,
+      "explained_input_min": -2.5521371364593506,
+      "explained_input_max": 50.294158935546875,
+      "surrogate_r2": 0.5329435089556736,
+      "top5_sensors": [
+        "S_PU11",
+        "L_T7",
+        "F_PU11",
+        "P_J289",
+        "P_J300"
+      ],
+      "top5_weights": {
+        "S_PU11": 23.784930483273715,
+        "L_T7": 20.764116964192755,
+        "F_PU11": 16.460798702403228,
+        "P_J289": 14.240924670583171,
+        "P_J300": 12.668830505794645
+      },
+      "top5_abs_weights": {
+        "S_PU11": 23.784930483273715,
+        "L_T7": 20.764116964192755,
+        "F_PU11": 16.460798702403228,
+        "P_J289": 14.240924670583171,
+        "P_J300": 12.668830505794645
+      },
+      "num_samples": 150
+    },
+    {
+      "seq_id": 2,
+      "timestep": 2360,
+      "target_comp": "T2",
+      "desc": "Attack 2 (Tank T2 overflow)",
+      "anomaly_score": 5.019387245178223,
+      "explained_input_shape": [
+        1,
+        12,
+        43
+      ],
+      "explained_input_norm": 19.058406829833984,
+      "explained_input_min": -2.475513219833374,
+      "explained_input_max": 2.3648629188537598,
+      "surrogate_r2": 0.8058490304547906,
+      "top5_sensors": [
+        "F_PU1",
+        "L_T1",
+        "L_T3",
+        "P_J302",
+        "S_PU2"
+      ],
+      "top5_weights": {
+        "F_PU1": 0.9433467598245003,
+        "L_T1": 0.5533610960510538,
+        "L_T3": -0.45689768720516344,
+        "P_J302": 0.4283434760753392,
+        "S_PU2": 0.35367326708083013
+      },
+      "top5_abs_weights": {
+        "F_PU1": 0.9433467598245003,
+        "L_T1": 0.5533610960510538,
+        "L_T3": 0.45689768720516344,
+        "P_J302": 0.4283434760753392,
+        "S_PU2": 0.35367326708083013
+      },
+      "num_samples": 150
+    },
+    {
+      "seq_id": 3,
+      "timestep": 2865,
+      "target_comp": "V2",
+      "desc": "Attack 3 (Valve V2 closed)",
+      "anomaly_score": 2.7828099727630615,
+      "explained_input_shape": [
+        1,
+        12,
+        43
+      ],
+      "explained_input_norm": 19.843860626220703,
+      "explained_input_min": -2.4246041774749756,
+      "explained_input_max": 2.2753612995147705,
+      "surrogate_r2": 0.7501244830200429,
+      "top5_sensors": [
+        "L_T1",
+        "F_PU1",
+        "P_J302",
+        "L_T2",
+        "L_T6"
+      ],
+      "top5_weights": {
+        "L_T1": -0.584366304895187,
+        "F_PU1": 0.5702060654007939,
+        "P_J302": 0.30728718412478456,
+        "L_T2": 0.23441849951636134,
+        "L_T6": 0.22145058577435967
+      },
+      "top5_abs_weights": {
+        "L_T1": 0.584366304895187,
+        "F_PU1": 0.5702060654007939,
+        "P_J302": 0.30728718412478456,
+        "L_T2": 0.23441849951636134,
+        "L_T6": 0.22145058577435967
+      },
+      "num_samples": 150
+    },
+    {
+      "seq_id": 4,
+      "timestep": 3511,
+      "target_comp": "PU4",
+      "desc": "Attack 4 (Pumps PU4/PU5 altered)",
+      "anomaly_score": 51.12873458862305,
+      "explained_input_shape": [
+        1,
+        12,
+        43
+      ],
+      "explained_input_norm": 62.798423767089844,
+      "explained_input_min": -2.811046838760376,
+      "explained_input_max": 26.97075843811035,
+      "surrogate_r2": 0.8288115414550382,
+      "top5_sensors": [
+        "F_PU1",
+        "S_PU6",
+        "L_T3",
+        "F_PU6",
+        "L_T6"
+      ],
+      "top5_weights": {
+        "F_PU1": -1.0707049345041941,
+        "S_PU6": -0.5426449279889051,
+        "L_T3": 0.4944710029910032,
+        "F_PU6": -0.4451591302942743,
+        "L_T6": -0.3383345625797768
+      },
+      "top5_abs_weights": {
+        "F_PU1": 1.0707049345041941,
+        "S_PU6": 0.5426449279889051,
+        "L_T3": 0.4944710029910032,
+        "F_PU6": 0.4451591302942743,
+        "L_T6": 0.3383345625797768
+      },
+      "num_samples": 150
+    },
+    {
+      "seq_id": 5,
+      "timestep": 3770,
+      "target_comp": "T7",
+      "desc": "Attack 5 (Tank T7 level attack)",
+      "anomaly_score": 5.410734176635742,
+      "explained_input_shape": [
+        1,
+        12,
+        43
+      ],
+      "explained_input_norm": 121.90794372558594,
+      "explained_input_min": -2.5591557025909424,
+      "explained_input_max": 31.20907974243164,
+      "surrogate_r2": 0.8427228642239777,
+      "top5_sensors": [
+        "F_PU6",
+        "S_PU6",
+        "L_T6",
+        "L_T1",
+        "L_T4"
+      ],
+      "top5_weights": {
+        "F_PU6": 1.4923783724139947,
+        "S_PU6": 1.0951876660124018,
+        "L_T6": 0.3352819668608137,
+        "L_T1": -0.3032537103758497,
+        "L_T4": -0.2981211084677411
+      },
+      "top5_abs_weights": {
+        "F_PU6": 1.4923783724139947,
+        "S_PU6": 1.0951876660124018,
+        "L_T6": 0.3352819668608137,
+        "L_T1": 0.3032537103758497,
+        "L_T4": 0.2981211084677411
+      },
+      "num_samples": 150
+    }
+  ],
+  "multi_seed_results": {
+    "Input_A_Seq1": {
+      "42": {
+        "top5": [
+          "S_PU11",
+          "L_T7",
+          "F_PU11",
+          "P_J289",
+          "P_J300"
+        ],
+        "r2": 0.5329435089556736
+      },
+      "100": {
+        "top5": [
+          "F_PU11",
+          "L_T7",
+          "S_PU11",
+          "F_PU1",
+          "F_PU2"
+        ],
+        "r2": 0.8607809148510726
+      },
+      "123": {
+        "top5": [
+          "S_PU11",
+          "F_PU11",
+          "L_T7",
+          "L_T5",
+          "F_V2"
+        ],
+        "r2": 0.8220008449240153
+      },
+      "777": {
+        "top5": [
+          "S_PU11",
+          "F_PU11",
+          "P_J289",
+          "L_T2",
+          "L_T5"
+        ],
+        "r2": 0.45937677050961023
+      },
+      "999": {
+        "top5": [
+          "F_PU11",
+          "S_PU11",
+          "P_J302",
+          "F_PU2",
+          "F_V2"
+        ],
+        "r2": 0.40146327471986987
+      }
+    },
+    "Input_B_Seq4": {
+      "42": {
+        "top5": [
+          "F_PU1",
+          "S_PU6",
+          "L_T3",
+          "F_PU6",
+          "L_T6"
+        ],
+        "r2": 0.8288115414550382
+      },
+      "100": {
+        "top5": [
+          "F_PU1",
+          "S_PU6",
+          "F_PU6",
+          "L_T3",
+          "P_J302"
+        ],
+        "r2": 0.7936687770212765
+      },
+      "123": {
+        "top5": [
+          "F_PU1",
+          "F_PU6",
+          "S_PU6",
+          "L_T3",
+          "P_J422"
+        ],
+        "r2": 0.829739404667573
+      },
+      "777": {
+        "top5": [
+          "F_PU1",
+          "F_PU6",
+          "S_PU6",
+          "P_J300",
+          "F_V2"
+        ],
+        "r2": 0.835414856484997
+      },
+      "999": {
+        "top5": [
+          "F_PU1",
+          "F_PU6",
+          "S_PU6",
+          "P_J302",
+          "L_T2"
+        ],
+        "r2": 0.8320764529841267
+      }
+    }
+  }
+}

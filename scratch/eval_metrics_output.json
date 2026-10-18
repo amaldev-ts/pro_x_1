@@ -1,0 +1,177 @@
+{
+  "tree_models": {},
+  "gnn_model": {},
+  "agreement": [
+    {
+      "model": "RandomForest",
+      "step": 1736,
+      "jaccard": 0.42857142857142855,
+      "spearman": 0.11867774412113404,
+      "overlap_count": 3,
+      "sign_agreement": 1.0
+    },
+    {
+      "model": "RandomForest",
+      "step": 1771,
+      "jaccard": 0.42857142857142855,
+      "spearman": 0.36864825957700204,
+      "overlap_count": 3,
+      "sign_agreement": 1.0
+    },
+    {
+      "model": "RandomForest",
+      "step": 2375,
+      "jaccard": 0.42857142857142855,
+      "spearman": 0.3118535164785609,
+      "overlap_count": 3,
+      "sign_agreement": 0.6666666666666666
+    },
+    {
+      "model": "SpatioTemporalGNN",
+      "step": 1736,
+      "jaccard": 0.0,
+      "spearman": -0.24821512025843462,
+      "overlap_count": 0,
+      "sign_agreement": 1.0
+    },
+    {
+      "model": "SpatioTemporalGNN",
+      "step": 1771,
+      "jaccard": 0.0,
+      "spearman": 0.19230805659151223,
+      "overlap_count": 0,
+      "sign_agreement": 1.0
+    },
+    {
+      "model": "SpatioTemporalGNN",
+      "step": 2375,
+      "jaccard": 0.1111111111111111,
+      "spearman": 0.22281209315430386,
+      "overlap_count": 1,
+      "sign_agreement": 1.0
+    }
+  ],
+  "fidelity": [
+    {
+      "model": "RandomForest",
+      "step": 1736,
+      "shap_score_drop": 0.07500000000000018,
+      "lime_score_drop": 0.028333333333333433,
+      "random_score_drop": -0.0008321428571426481,
+      "raw_dev_score_drop": 0.054047619047619344
+    },
+    {
+      "model": "RandomForest",
+      "step": 1771,
+      "shap_score_drop": 0.06421428571428578,
+      "lime_score_drop": 0.017547619047619145,
+      "random_score_drop": -0.008852380952380955,
+      "raw_dev_score_drop": 0.025833333333333375
+    },
+    {
+      "model": "RandomForest",
+      "step": 2375,
+      "shap_score_drop": -0.018500000000000183,
+      "lime_score_drop": -0.033500000000000196,
+      "random_score_drop": -0.012445238095238198,
+      "raw_dev_score_drop": 0.014523809523809383
+    },
+    {
+      "model": "SpatioTemporalGNN",
+      "step": 1736,
+      "shap_score_drop": 100903.03565812111,
+      "lime_score_drop": -447.78125,
+      "random_score_drop": -3897.79296875,
+      "raw_dev_score_drop": 100903.39328145981
+    },
+    {
+      "model": "SpatioTemporalGNN",
+      "step": 1771,
+      "shap_score_drop": -0.012595295906066895,
+      "lime_score_drop": 0.00015246868133544922,
+      "random_score_drop": 0.007847428321838379,
+      "raw_dev_score_drop": 0.41966569423675537
+    },
+    {
+      "model": "SpatioTemporalGNN",
+      "step": 2375,
+      "shap_score_drop": 0.8057575225830078,
+      "lime_score_drop": 0.49347972869873047,
+      "random_score_drop": -4.302022337913513,
+      "raw_dev_score_drop": 1.1245925426483154
+    }
+  ],
+  "stability": [
+    {
+      "model": "RandomForest",
+      "mean_jaccard": 1.0,
+      "mean_spearman": 0.9999999999999998
+    },
+    {
+      "model": "RandomForest",
+      "mean_jaccard": 1.0,
+      "mean_spearman": 0.9999999999999998
+    },
+    {
+      "model": "RandomForest",
+      "mean_jaccard": 1.0,
+      "mean_spearman": 0.9599999999999997
+    }
+  ],
+  "ground_truth": [
+    {
+      "model": "RandomForest",
+      "step": 1736,
+      "target_component": "T1",
+      "shap_hit": false,
+      "shap_precision_at_k": 0.0,
+      "lime_hit": false,
+      "lime_precision_at_k": 0.0
+    },
+    {
+      "model": "RandomForest",
+      "step": 1771,
+      "target_component": "T2",
+      "shap_hit": true,
+      "shap_precision_at_k": 0.2,
+      "lime_hit": true,
+      "lime_precision_at_k": 0.2
+    },
+    {
+      "model": "RandomForest",
+      "step": 2375,
+      "target_component": "V2",
+      "shap_hit": true,
+      "shap_precision_at_k": 0.2,
+      "lime_hit": false,
+      "lime_precision_at_k": 0.0
+    },
+    {
+      "model": "SpatioTemporalGNN",
+      "step": 1736,
+      "target_component": "T1",
+      "shap_hit": true,
+      "shap_precision_at_k": 0.2,
+      "lime_hit": false,
+      "lime_precision_at_k": 0.0
+    },
+    {
+      "model": "SpatioTemporalGNN",
+      "step": 1771,
+      "target_component": "T2",
+      "shap_hit": true,
+      "shap_precision_at_k": 0.2,
+      "lime_hit": false,
+      "lime_precision_at_k": 0.0
+    },
+    {
+      "model": "SpatioTemporalGNN",
+      "step": 2375,
+      "target_component": "V2",
+      "shap_hit": true,
+      "shap_precision_at_k": 0.2,
+      "lime_hit": false,
+      "lime_precision_at_k": 0.0
+    }
+  ]
+}

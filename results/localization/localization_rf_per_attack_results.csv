@@ -1,0 +1,15 @@
+attack_id,dataset,is_concealed,true_target,true_dma,b1_raw_top1,b1_top1_match,b1_top3_match,b1_hop_distance,b1_dma_match,b2_shap_top1,b2_top1_match,b2_top3_match,b2_hop_distance,b2_dma_match,proposed_top1,proposed_top3,proposed_top1_match,proposed_top3_match,proposed_hop_distance,proposed_dma_match
+1,train,True,T7,DMA 4,PU11,False,False,11,False,PU11,False,False,11,False,PU10,"['PU10', 'PU11', 'PU9']",False,False,10,False
+2,train,True,T7,DMA 4,PU1,False,False,38,False,PU10,False,False,10,False,PU10,"['PU10', 'PU2', 'PU8']",False,False,10,False
+3,train,True,T1,DMA 1,T1,True,True,0,True,PU2,False,False,25,True,PU2,"['PU2', 'PU1', 'PU10']",False,False,25,True
+4,train,True,T1,DMA 1,PU9,False,False,10,True,PU2,False,False,25,True,PU2,"['PU2', 'PU10', 'PU8']",False,False,25,True
+5,train,False,PU7,DMA 1,PU6,False,True,1,True,PU2,False,False,26,True,PU2,"['PU2', 'PU10', 'PU8']",False,False,26,True
+6,train,True,PU7,DMA 1,PU6,False,True,1,True,PU2,False,False,26,True,PU2,"['PU2', 'PU10', 'PU9']",False,False,26,True
+7,train,True,T1,DMA 1,PU11,False,True,12,True,PU2,False,False,25,True,PU2,"['PU2', 'PU10', 'PU8']",False,False,25,True
+8,test,True,T3,DMA 3,T1,False,False,26,False,PU2,False,False,31,False,PU2,"['PU2', 'PU10', 'PU8']",False,False,31,False
+9,test,True,T2,DMA 1,V2,False,False,3,True,PU2,False,False,25,True,PU2,"['PU2', 'PU10', 'PU8']",False,False,25,True
+10,test,False,PU3,DMA 1,PU3,True,True,0,True,PU2,False,False,1,True,PU2,"['PU2', 'PU1', 'PU10']",False,False,1,True
+11,test,False,PU3,DMA 1,PU3,True,True,0,True,PU2,False,False,1,True,PU2,"['PU2', 'PU10', 'PU1']",False,False,1,True
+12,test,True,T2,DMA 1,V2,False,False,3,True,PU2,False,False,25,True,PU2,"['PU2', 'PU10', 'T6']",False,False,25,True
+13,test,True,T7,DMA 4,PU2,False,False,37,False,PU2,False,False,37,False,PU2,"['PU2', 'PU10', 'PU8']",False,False,37,False
+14,test,False,T4,DMA 2,PU6,False,True,24,False,PU2,False,False,50,False,PU2,"['PU2', 'PU10', 'PU8']",False,False,50,False

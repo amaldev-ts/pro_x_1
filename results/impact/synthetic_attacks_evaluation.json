@@ -1,0 +1,144 @@
+{
+  "metadata": {
+    "total_synthetic_scenarios": 60,
+    "simulator": "WNTR EPANET PDD Mode",
+    "epanetCPA_used": false,
+    "provenance_statement": "Synthetic attack scenarios generated using WNTR Python API on C-Town EPANET model. epanetCPA toolbox was not used; all attacks simulated with calibrated WNTR controls."
+  },
+  "target_distribution": {
+    "PU10": 11,
+    "PU6": 8,
+    "PU2": 6,
+    "PU11": 6,
+    "PU4": 5,
+    "PU9": 4,
+    "V2": 4,
+    "PU3": 4,
+    "PU7": 3,
+    "PU8": 3,
+    "PU5": 3,
+    "PU1": 3
+  },
+  "attack_type_distribution": {
+    "PUMP_FORCE_CLOSE": 31,
+    "PUMP_SPEED_TAMPER": 25,
+    "VALVE_FORCE_CLOSE": 4
+  },
+  "dma_distribution": {
+    "DMA1": 17,
+    "DMA5": 17,
+    "DMA3": 11,
+    "DMA2": 8,
+    "DMA4": 7
+  },
+  "simulated_sample": [
+    {
+      "scenario_id": "SYN_ATK_001",
+      "target": "PU2",
+      "type": "PUMP_SPEED_TAMPER",
+      "duration_hr": 24,
+      "simulation_status": "CONVERGED",
+      "min_pressure_m": 0.0,
+      "unmet_demand_m3": 27121.55
+    },
+    {
+      "scenario_id": "SYN_ATK_006",
+      "target": "PU6",
+      "type": "PUMP_FORCE_CLOSE",
+      "duration_hr": 24,
+      "simulation_status": "CONVERGED",
+      "min_pressure_m": 0.0,
+      "unmet_demand_m3": 16328.37
+    },
+    {
+      "scenario_id": "SYN_ATK_037",
+      "target": "PU10",
+      "type": "PUMP_FORCE_CLOSE",
+      "duration_hr": 18,
+      "simulation_status": "CONVERGED",
+      "min_pressure_m": 0.0,
+      "unmet_demand_m3": 25733.05
+    },
+    {
+      "scenario_id": "SYN_ATK_046",
+      "target": "PU6",
+      "type": "PUMP_FORCE_CLOSE",
+      "duration_hr": 24,
+      "simulation_status": "CONVERGED",
+      "min_pressure_m": 0.0,
+      "unmet_demand_m3": 25733.05
+    },
+    {
+      "scenario_id": "SYN_ATK_014",
+      "target": "PU4",
+      "type": "PUMP_FORCE_CLOSE",
+      "duration_hr": 36,
+      "simulation_status": "CONVERGED",
+      "min_pressure_m": 0.0,
+      "unmet_demand_m3": 30508.86
+    },
+    {
+      "scenario_id": "SYN_ATK_055",
+      "target": "PU4",
+      "type": "PUMP_FORCE_CLOSE",
+      "duration_hr": 48,
+      "simulation_status": "CONVERGED",
+      "min_pressure_m": 0.0,
+      "unmet_demand_m3": 34252.66
+    },
+    {
+      "scenario_id": "SYN_ATK_034",
+      "target": "PU5",
+      "type": "PUMP_FORCE_CLOSE",
+      "duration_hr": 18,
+      "simulation_status": "CONVERGED",
+      "min_pressure_m": 0.0,
+      "unmet_demand_m3": 14079.15
+    },
+    {
+      "scenario_id": "SYN_ATK_049",
+      "target": "PU6",
+      "type": "PUMP_SPEED_TAMPER",
+      "duration_hr": 24,
+      "simulation_status": "CONVERGED",
+      "min_pressure_m": 0.0,
+      "unmet_demand_m3": 18116.22
+    },
+    {
+      "scenario_id": "SYN_ATK_013",
+      "target": "PU10",
+      "type": "PUMP_FORCE_CLOSE",
+      "duration_hr": 12,
+      "simulation_status": "CONVERGED",
+      "min_pressure_m": 0.0,
+      "unmet_demand_m3": 18116.21
+    },
+    {
+      "scenario_id": "SYN_ATK_058",
+      "target": "PU3",
+      "type": "PUMP_SPEED_TAMPER",
+      "duration_hr": 18,
+      "simulation_status": "CONVERGED",
+      "min_pressure_m": 0.0,
+      "unmet_demand_m3": 25733.05
+    },
+    {
+      "scenario_id": "SYN_ATK_047",
+      "target": "PU2",
+      "type": "PUMP_SPEED_TAMPER",
+      "duration_hr": 24,
+      "simulation_status": "CONVERGED",
+      "min_pressure_m": 0.0,
+      "unmet_demand_m3": 23749.97
+    },
+    {
+      "scenario_id": "SYN_ATK_051",
+      "target": "PU11",
+      "type": "PUMP_FORCE_CLOSE",
+      "duration_hr": 12,
+      "simulation_status": "CONVERGED",
+      "min_pressure_m": 0.0,
+      "unmet_demand_m3": 16328.37
+    }
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "actual_incident_gnn": [
+    {
+      "seq_id": 1,
+      "timestep": 1740,
+      "target_component": "T1",
+      "description": "Attack 1 (Tank T1 deception)",
+      "actual_anomaly_score": 12278.521484375,
+      "top_shap_sensors": [
+        "F_PU11",
+        "S_PU5",
+        "S_PU11",
+        "P_J14",
+        "F_PU6"
+      ],
+      "top_lime_sensors": [
+        "S_PU11",
+        "L_T7",
+        "F_PU11",
+        "P_J289",
+        "P_J300"
+      ],
+      "shap_lime_overlap": 2,
+      "shap_lime_jaccard": 0.25,
+      "spearman_rho": 0.057925586443885804,
+      "fidelity_shap_drop": 5.162109375,
+      "fidelity_random_drop": 0.93427734375,
+      "fidelity_advantage": 4.22783203125,
+      "ground_truth_hit_shap": false,
+      "ground_truth_hit_lime": false,
+      "ground_truth_precision_shap": 0.0
+    },
+    {
+      "seq_id": 2,
+      "timestep": 2360,
+      "target_component": "T2",
+      "description": "Attack 2 (Tank T2 overflow)",
+      "actual_anomaly_score": 5.019387245178223,
+      "top_shap_sensors": [
+        "L_T5",
+        "S_V2",
+        "F_PU2",
+        "S_PU2",
+        "P_J302"
+      ],
+      "top_lime_sensors": [
+        "F_PU1",
+        "L_T1",
+        "L_T3",
+        "P_J302",
+        "S_PU2"
+      ],
+      "shap_lime_overlap": 2,
+      "shap_lime_jaccard": 0.25,
+      "spearman_rho": 0.3524710958511576,
+      "fidelity_shap_drop": 1.5976130962371826,
+      "fidelity_random_drop": 0.28385043144226074,
+      "fidelity_advantage": 1.3137626647949219,
+      "ground_truth_hit_shap": true,
+      "ground_truth_hit_lime": false,
+      "ground_truth_precision_shap": 0.2
+    },
+    {
+      "seq_id": 3,
+      "timestep": 2865,
+      "target_component": "V2",
+      "description": "Attack 3 (Valve V2 closed)",
+      "actual_anomaly_score": 2.7828099727630615,
+      "top_shap_sensors": [
+        "P_J317",
+        "P_J14",
+        "L_T1",
+        "F_PU11",
+        "P_J422"
+      ],
+      "top_lime_sensors": [
+        "L_T1",
+        "F_PU1",
+        "P_J302",
+        "L_T2",
+        "L_T6"
+      ],
+      "shap_lime_overlap": 1,
+      "shap_lime_jaccard": 0.1111111111111111,
+      "spearman_rho": 0.07709813970348181,
+      "fidelity_shap_drop": -0.9193110466003418,
+      "fidelity_random_drop": 0.010910344123840333,
+      "fidelity_advantage": -0.9302213907241821,
+      "ground_truth_hit_shap": false,
+      "ground_truth_hit_lime": false,
+      "ground_truth_precision_shap": 0.0
+    },
+    {
+      "seq_id": 4,
+      "timestep": 3511,
+      "target_component": "PU4",
+      "description": "Attack 4 (Pumps PU4/PU5 altered)",
+      "actual_anomaly_score": 51.12873458862305,
+      "top_shap_sensors": [
+        "F_PU6",
+        "F_PU1",
+        "F_V2",
+        "S_PU6",
+        "P_J269"
+      ],
+      "top_lime_sensors": [
+        "F_PU1",
+        "S_PU6",
+        "L_T3",
+        "F_PU6",
+        "L_T6"
+      ],
+      "shap_lime_overlap": 3,
+      "shap_lime_jaccard": 0.42857142857142855,
+      "spearman_rho": 0.5233699113204612,
+      "fidelity_shap_drop": -0.8579788208007812,
+      "fidelity_random_drop": -0.122076416015625,
+      "fidelity_advantage": -0.7359024047851562,
+      "ground_truth_hit_shap": false,
+      "ground_truth_hit_lime": false,
+      "ground_truth_precision_shap": 0.0
+    },
+    {
+      "seq_id": 5,
+      "timestep": 3770,
+      "target_component": "T7",
+      "description": "Attack 5 (Tank T7 level attack)",
+      "actual_anomaly_score": 5.410734176635742,
+      "top_shap_sensors": [
+        "F_PU6",
+        "S_PU6",
+        "L_T6",
+        "S_PU10",
+        "F_PU10"
+      ],
+      "top_lime_sensors": [
+        "F_PU6",
+        "S_PU6",
+        "L_T6",
+        "L_T1",
+        "L_T4"
+      ],
+      "shap_lime_overlap": 3,
+      "shap_lime_jaccard": 0.42857142857142855,
+      "spearman_rho": 0.394386356785215,
+      "fidelity_shap_drop": 3.3669209480285645,
+      "fidelity_random_drop": 0.1105928897857666,
+      "fidelity_advantage": 3.256328058242798,
+      "ground_truth_hit_shap": false,
+      "ground_truth_hit_lime": false,
+      "ground_truth_precision_shap": 0.0
+    }
+  ],
+  "synthetic_disturbance_gnn": {
+    "target_sensor": "F_PU1",
+    "score_dist": 2.967999219894409,
+    "score_norm": 2.184095859527588,
+    "top_shap_sensor": "F_PU1",
+    "top_shap_abs": 0.7839033603668213,
+    "agreement": "Low",
+    "jaccard": 0.0,
+    "spearman": -0.18651177423824766,
+    "fidelity_drop": 0.7839033603668213
+  },
+  "supervised_rf": [
+    {
+      "seq_id": 1,
+      "timestep": 1740,
+      "target_comp": "T1",
+      "attack_prob": 0.6457142857142857,
+      "top_shap_sensors": [
+        "F_PU4",
+        "F_PU2",
+        "F_PU7",
+        "F_PU8",
+        "F_PU10"
+      ],
+      "top_lime_sensors": [
+        "F_PU8",
+        "F_PU7",
+        "F_PU2",
+        "F_PU4",
+        "S_PU10"
+      ],
+      "overlap": 4,
+      "jaccard": 0.6666666666666666,
+      "spearman": 0.1353964592456155,
+      "fidelity_drop": 0.004047619047618967,
+      "fidelity_advantage": 0.01593333333333331,
+      "ground_truth_hit": false,
+      "stability_jaccard": 0.9333333333333333,
+      "stability_spearman": 0.9999999999999998
+    },
+    {
+      "seq_id": 2,
+      "timestep": 2360,
+      "target_comp": "T2",
+      "attack_prob": 0.6679166666666666,
+      "top_shap_sensors": [
+        "F_PU10",
+        "F_PU8",
+        "F_PU7",
+        "F_PU2",
+        "F_V2"
+      ],
+      "top_lime_sensors": [
+        "F_PU4",
+        "F_PU8",
+        "F_PU7",
+        "S_PU7",
+        "P_J307"
+      ],
+      "overlap": 2,
+      "jaccard": 0.25,
+      "spearman": 0.1525798019327502,
+      "fidelity_drop": 0.03708333333333336,
+      "fidelity_advantage": 0.04577857142857154,
+      "ground_truth_hit": true,
+      "stability_jaccard": 1.0,
+      "stability_spearman": 0.9999999999999998
+    },
+    {
+      "seq_id": 3,
+      "timestep": 2865,
+      "target_comp": "V2",
+      "attack_prob": 0.63125,
+      "top_shap_sensors": [
+        "F_PU8",
+        "F_PU2",
+        "F_PU10",
+        "F_PU7",
+        "F_V2"
+      ],
+      "top_lime_sensors": [
+        "F_PU8",
+        "F_PU4",
+        "F_PU10",
+        "F_PU2",
+        "P_J289"
+      ],
+      "overlap": 3,
+      "jaccard": 0.42857142857142855,
+      "spearman": 0.4131593279834353,
+      "fidelity_drop": -0.05625000000000002,
+      "fidelity_advantage": -0.031521428571428534,
+      "ground_truth_hit": true,
+      "stability_jaccard": 1.0,
+      "stability_spearman": 0.9999999999999998
+    },
+    {
+      "seq_id": 4,
+      "timestep": 3511,
+      "target_comp": "PU4",
+      "attack_prob": 0.5483333333333333,
+      "top_shap_sensors": [
+        "F_PU2",
+        "F_PU10",
+        "F_PU7",
+        "F_PU8",
+        "F_PU4"
+      ],
+      "top_lime_sensors": [
+        "F_PU2",
+        "F_PU7",
+        "F_PU8",
+        "F_PU4",
+        "L_T6"
+      ],
+      "overlap": 4,
+      "jaccard": 0.6666666666666666,
+      "spearman": 0.0066939126130605014,
+      "fidelity_drop": -0.04083333333333339,
+      "fidelity_advantage": -0.03688333333333338,
+      "ground_truth_hit": true,
+      "stability_jaccard": 0.8666666666666666,
+      "stability_spearman": 0.8199999999999997
+    },
+    {
+      "seq_id": 5,
+      "timestep": 3770,
+      "target_comp": "T7",
+      "attack_prob": 0.6179166666666667,
+      "top_shap_sensors": [
+        "F_PU7",
+        "F_PU10",
+        "F_PU4",
+        "F_PU2",
+        "F_PU8"
+      ],
+      "top_lime_sensors": [
+        "F_PU7",
+        "F_PU4",
+        "F_PU8",
+        "F_PU2",
+        "P_J289"
+      ],
+      "overlap": 4,
+      "jaccard": 0.6666666666666666,
+      "spearman": 0.13677664741325685,
+      "fidelity_drop": -0.004583333333333384,
+      "fidelity_advantage": -0.01803636363636373,
+      "ground_truth_hit": true,
+      "stability_jaccard": 0.7333333333333332,
+      "stability_spearman": 0.9799999999999999
+    }
+  ],
+  "investigation_notes": {
+    "large_gnn_score_explanation": "Near-zero calibration variance on inactive actuators (e.g. F_PU3, S_PU3, F_PU5) causes mu_sq_h = mean(E_cal) + 1e-8 to be approximately 1e-8. When actuators activate or experience minor residuals (e.g. E = 0.004), dividing by 1e-8 yields Z-scores exceeding 300,000, inflating the mean score S to 10,000-125,000. Masking these dominant sensors in fidelity/SHAP naturally eliminates hundreds of thousands in score.",
+    "negative_fidelity_explanation": "In residual forecasting S = mean((Y_hat(X) - Y_obs)^2 / mu_sq), if an attack abruptly corrupts the future observed target Y_obs while history X was normal, masking X cannot reconcile the forecast with the corrupted observation Y_obs. Shifting X to normal baseline can slightly increase forecasting error against Y_obs, yielding a genuine negative score drop. This reflects the fundamental difference between predictive anomaly detection and supervised classification.",
+    "low_gnn_agreement_explanation": "KernelSHAP evaluates exponential coalition game theory over the graph neural network, whereas LIME fits a local linear hyperplane over Gaussian perturbations in 43D space. In the presence of extreme variance disparities across sensor channels (1e-8 vs 1e1), linear regression slopes diverge from Shapley values, resulting in low top-5 set overlap."
+  }
+}

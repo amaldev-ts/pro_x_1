@@ -1,0 +1,348 @@
+{
+  "metadata": {
+    "framework": "X-Resilience-WDS Recovery Engine",
+    "simulator": "WNTR EPANET PDD Mode",
+    "pressure_thresholds": {
+      "p_min": 15.0,
+      "p_nom": 30.0
+    },
+    "num_scenarios": 4
+  },
+  "strategy_performance_summary": {
+    "naive_shap": {
+      "mean_composite_score": 0.11,
+      "mean_unmet_demand_reduction_pct": 0.01,
+      "mean_pressure_deficit_m_hr": 1699.77,
+      "mean_min_pressure_m": 2.97
+    },
+    "no_action": {
+      "mean_composite_score": 0.0,
+      "mean_unmet_demand_reduction_pct": 0.0,
+      "mean_pressure_deficit_m_hr": 1705.62,
+      "mean_min_pressure_m": 2.97
+    },
+    "proposed_root_cause": {
+      "mean_composite_score": 0.09,
+      "mean_unmet_demand_reduction_pct": 0.01,
+      "mean_pressure_deficit_m_hr": 1700.62,
+      "mean_min_pressure_m": 2.97
+    },
+    "random_feasible": {
+      "mean_composite_score": 0.22,
+      "mean_unmet_demand_reduction_pct": 0.03,
+      "mean_pressure_deficit_m_hr": 1693.85,
+      "mean_min_pressure_m": 2.97
+    }
+  },
+  "scenarios": {
+    "SCEN_01_PU1_ATTACK": {
+      "name": "Station 1 Primary Pump (PU1) Malicious Shutdown",
+      "target": "PU1",
+      "ranked_actions": [
+        {
+          "action_id": "ACT_PROPOSED_SWITCH_PU1_PU2",
+          "strategy": "proposed_root_cause",
+          "target_component": "PU1",
+          "action_type": "SWITCH_TO_BACKUP",
+          "description": "Root-cause guided: Isolate compromised pump PU1 and activate parallel redundant pump PU2 in Station 1.",
+          "simulation_success": true,
+          "total_unmet_demand_m3": 11077.495,
+          "unmet_demand_reduction_pct": 0.03,
+          "min_pressure_m": 2.97,
+          "pressure_deficit_m_hr": 1693.84,
+          "restoration_time_hr": null,
+          "composite_recovery_score": 0.22,
+          "status_summary": "Simulation converged successfully."
+        },
+        {
+          "action_id": "ACT_PROPOSED_ISOLATE_PU1",
+          "strategy": "proposed_root_cause",
+          "target_component": "PU1",
+          "action_type": "FORCE_CLOSE",
+          "description": "Root-cause guided: Emergency shutdown and isolation of PU1.",
+          "simulation_success": true,
+          "total_unmet_demand_m3": 11077.495,
+          "unmet_demand_reduction_pct": 0.03,
+          "min_pressure_m": 2.97,
+          "pressure_deficit_m_hr": 1693.84,
+          "restoration_time_hr": null,
+          "composite_recovery_score": 0.22,
+          "status_summary": "Simulation converged successfully."
+        },
+        {
+          "action_id": "ACT_NAIVE_SHUTDOWN_PU1",
+          "strategy": "naive_shap",
+          "target_component": "PU1",
+          "action_type": "FORCE_CLOSE",
+          "description": "Naive SHAP baseline: Blindly shut down top-SHAP pump PU1.",
+          "simulation_success": true,
+          "total_unmet_demand_m3": 11077.495,
+          "unmet_demand_reduction_pct": 0.03,
+          "min_pressure_m": 2.97,
+          "pressure_deficit_m_hr": 1693.84,
+          "restoration_time_hr": null,
+          "composite_recovery_score": 0.22,
+          "status_summary": "Simulation converged successfully."
+        },
+        {
+          "action_id": "ACT_RANDOM_PU1",
+          "strategy": "random_feasible",
+          "target_component": "PU1",
+          "action_type": "FORCE_CLOSE",
+          "description": "Random baseline: Arbitrarily toggled pump PU1.",
+          "simulation_success": true,
+          "total_unmet_demand_m3": 11077.495,
+          "unmet_demand_reduction_pct": 0.03,
+          "min_pressure_m": 2.97,
+          "pressure_deficit_m_hr": 1693.84,
+          "restoration_time_hr": null,
+          "composite_recovery_score": 0.22,
+          "status_summary": "Simulation converged successfully."
+        },
+        {
+          "action_id": "ACT_NO_ACTION",
+          "strategy": "no_action",
+          "target_component": "NONE",
+          "action_type": "NO_OP",
+          "description": "Continue without intervention (unmitigated attack baseline).",
+          "simulation_success": true,
+          "total_unmet_demand_m3": 11081.07,
+          "unmet_demand_reduction_pct": 0.0,
+          "min_pressure_m": 2.97,
+          "pressure_deficit_m_hr": 1705.61,
+          "restoration_time_hr": null,
+          "composite_recovery_score": 0.0,
+          "status_summary": "Simulation converged successfully."
+        }
+      ]
+    },
+    "SCEN_02_V2_ATTACK": {
+      "name": "Controllable Pressure Valve (V2) Malicious Closure",
+      "target": "V2",
+      "ranked_actions": [
+        {
+          "action_id": "ACT_PROPOSED_RESET_V2",
+          "strategy": "proposed_root_cause",
+          "target_component": "V2",
+          "action_type": "FORCE_OPEN",
+          "description": "Root-cause guided: Override malicious closure of valve V2 to OPEN.",
+          "simulation_success": true,
+          "total_unmet_demand_m3": 11078.043,
+          "unmet_demand_reduction_pct": 0.03,
+          "min_pressure_m": 2.97,
+          "pressure_deficit_m_hr": 1693.84,
+          "restoration_time_hr": null,
+          "composite_recovery_score": 0.22,
+          "status_summary": "Simulation converged successfully."
+        },
+        {
+          "action_id": "ACT_NAIVE_TOGGLE_V2",
+          "strategy": "naive_shap",
+          "target_component": "V2",
+          "action_type": "FORCE_OPEN",
+          "description": "Naive SHAP baseline: Blindly override top-SHAP valve V2.",
+          "simulation_success": true,
+          "total_unmet_demand_m3": 11078.043,
+          "unmet_demand_reduction_pct": 0.03,
+          "min_pressure_m": 2.97,
+          "pressure_deficit_m_hr": 1693.84,
+          "restoration_time_hr": null,
+          "composite_recovery_score": 0.22,
+          "status_summary": "Simulation converged successfully."
+        },
+        {
+          "action_id": "ACT_RANDOM_PU1",
+          "strategy": "random_feasible",
+          "target_component": "PU1",
+          "action_type": "FORCE_CLOSE",
+          "description": "Random baseline: Arbitrarily toggled pump PU1.",
+          "simulation_success": true,
+          "total_unmet_demand_m3": 11077.495,
+          "unmet_demand_reduction_pct": 0.03,
+          "min_pressure_m": 2.97,
+          "pressure_deficit_m_hr": 1693.84,
+          "restoration_time_hr": null,
+          "composite_recovery_score": 0.22,
+          "status_summary": "Simulation converged successfully."
+        },
+        {
+          "action_id": "ACT_NO_ACTION",
+          "strategy": "no_action",
+          "target_component": "NONE",
+          "action_type": "NO_OP",
+          "description": "Continue without intervention (unmitigated attack baseline).",
+          "simulation_success": true,
+          "total_unmet_demand_m3": 11081.07,
+          "unmet_demand_reduction_pct": 0.0,
+          "min_pressure_m": 2.97,
+          "pressure_deficit_m_hr": 1705.61,
+          "restoration_time_hr": null,
+          "composite_recovery_score": 0.0,
+          "status_summary": "Simulation converged successfully."
+        }
+      ]
+    },
+    "SCEN_03_PU4_ATTACK": {
+      "name": "Station 2 Pump (PU4) Malicious Shutdown",
+      "target": "PU4",
+      "ranked_actions": [
+        {
+          "action_id": "ACT_RANDOM_PU1",
+          "strategy": "random_feasible",
+          "target_component": "PU1",
+          "action_type": "FORCE_CLOSE",
+          "description": "Random baseline: Arbitrarily toggled pump PU1.",
+          "simulation_success": true,
+          "total_unmet_demand_m3": 11077.257,
+          "unmet_demand_reduction_pct": 0.04,
+          "min_pressure_m": 2.97,
+          "pressure_deficit_m_hr": 1693.86,
+          "restoration_time_hr": null,
+          "composite_recovery_score": 0.23,
+          "status_summary": "Simulation converged successfully."
+        },
+        {
+          "action_id": "ACT_NO_ACTION",
+          "strategy": "no_action",
+          "target_component": "NONE",
+          "action_type": "NO_OP",
+          "description": "Continue without intervention (unmitigated attack baseline).",
+          "simulation_success": true,
+          "total_unmet_demand_m3": 11081.241,
+          "unmet_demand_reduction_pct": 0.0,
+          "min_pressure_m": 2.97,
+          "pressure_deficit_m_hr": 1705.65,
+          "restoration_time_hr": null,
+          "composite_recovery_score": 0.0,
+          "status_summary": "Simulation converged successfully."
+        },
+        {
+          "action_id": "ACT_PROPOSED_SWITCH_PU4_PU5",
+          "strategy": "proposed_root_cause",
+          "target_component": "PU4",
+          "action_type": "SWITCH_TO_BACKUP",
+          "description": "Root-cause guided: Isolate compromised pump PU4 and activate parallel redundant pump PU5 in Station 2.",
+          "simulation_success": true,
+          "total_unmet_demand_m3": 11081.828,
+          "unmet_demand_reduction_pct": 0.0,
+          "min_pressure_m": 2.97,
+          "pressure_deficit_m_hr": 1705.79,
+          "restoration_time_hr": null,
+          "composite_recovery_score": 0.0,
+          "status_summary": "Simulation converged successfully."
+        },
+        {
+          "action_id": "ACT_PROPOSED_ISOLATE_PU4",
+          "strategy": "proposed_root_cause",
+          "target_component": "PU4",
+          "action_type": "FORCE_CLOSE",
+          "description": "Root-cause guided: Emergency shutdown and isolation of PU4.",
+          "simulation_success": true,
+          "total_unmet_demand_m3": 11081.828,
+          "unmet_demand_reduction_pct": 0.0,
+          "min_pressure_m": 2.97,
+          "pressure_deficit_m_hr": 1705.79,
+          "restoration_time_hr": null,
+          "composite_recovery_score": 0.0,
+          "status_summary": "Simulation converged successfully."
+        },
+        {
+          "action_id": "ACT_NAIVE_SHUTDOWN_PU4",
+          "strategy": "naive_shap",
+          "target_component": "PU4",
+          "action_type": "FORCE_CLOSE",
+          "description": "Naive SHAP baseline: Blindly shut down top-SHAP pump PU4.",
+          "simulation_success": true,
+          "total_unmet_demand_m3": 11081.828,
+          "unmet_demand_reduction_pct": 0.0,
+          "min_pressure_m": 2.97,
+          "pressure_deficit_m_hr": 1705.79,
+          "restoration_time_hr": null,
+          "composite_recovery_score": 0.0,
+          "status_summary": "Simulation converged successfully."
+        }
+      ]
+    },
+    "SCEN_04_PU6_ATTACK": {
+      "name": "Station 3 Pump (PU6) Malicious Shutdown",
+      "target": "PU6",
+      "ranked_actions": [
+        {
+          "action_id": "ACT_RANDOM_PU1",
+          "strategy": "random_feasible",
+          "target_component": "PU1",
+          "action_type": "FORCE_CLOSE",
+          "description": "Random baseline: Arbitrarily toggled pump PU1.",
+          "simulation_success": true,
+          "total_unmet_demand_m3": 11077.495,
+          "unmet_demand_reduction_pct": 0.03,
+          "min_pressure_m": 2.97,
+          "pressure_deficit_m_hr": 1693.84,
+          "restoration_time_hr": null,
+          "composite_recovery_score": 0.22,
+          "status_summary": "Simulation converged successfully."
+        },
+        {
+          "action_id": "ACT_NO_ACTION",
+          "strategy": "no_action",
+          "target_component": "NONE",
+          "action_type": "NO_OP",
+          "description": "Continue without intervention (unmitigated attack baseline).",
+          "simulation_success": true,
+          "total_unmet_demand_m3": 11081.07,
+          "unmet_demand_reduction_pct": 0.0,
+          "min_pressure_m": 2.97,
+          "pressure_deficit_m_hr": 1705.61,
+          "restoration_time_hr": null,
+          "composite_recovery_score": 0.0,
+          "status_summary": "Simulation converged successfully."
+        },
+        {
+          "action_id": "ACT_PROPOSED_SWITCH_PU6_PU7",
+          "strategy": "proposed_root_cause",
+          "target_component": "PU6",
+          "action_type": "SWITCH_TO_BACKUP",
+          "description": "Root-cause guided: Isolate compromised pump PU6 and activate parallel redundant pump PU7 in Station 3.",
+          "simulation_success": true,
+          "total_unmet_demand_m3": 11081.07,
+          "unmet_demand_reduction_pct": 0.0,
+          "min_pressure_m": 2.97,
+          "pressure_deficit_m_hr": 1705.61,
+          "restoration_time_hr": null,
+          "composite_recovery_score": 0.0,
+          "status_summary": "Simulation converged successfully."
+        },
+        {
+          "action_id": "ACT_PROPOSED_ISOLATE_PU6",
+          "strategy": "proposed_root_cause",
+          "target_component": "PU6",
+          "action_type": "FORCE_CLOSE",
+          "description": "Root-cause guided: Emergency shutdown and isolation of PU6.",
+          "simulation_success": true,
+          "total_unmet_demand_m3": 11081.07,
+          "unmet_demand_reduction_pct": 0.0,
+          "min_pressure_m": 2.97,
+          "pressure_deficit_m_hr": 1705.61,
+          "restoration_time_hr": null,
+          "composite_recovery_score": 0.0,
+          "status_summary": "Simulation converged successfully."
+        },
+        {
+          "action_id": "ACT_NAIVE_SHUTDOWN_PU6",
+          "strategy": "naive_shap",
+          "target_component": "PU6",
+          "action_type": "FORCE_CLOSE",
+          "description": "Naive SHAP baseline: Blindly shut down top-SHAP pump PU6.",
+          "simulation_success": true,
+          "total_unmet_demand_m3": 11081.07,
+          "unmet_demand_reduction_pct": 0.0,
+          "min_pressure_m": 2.97,
+          "pressure_deficit_m_hr": 1705.61,
+          "restoration_time_hr": null,
+          "composite_recovery_score": 0.0,
+          "status_summary": "Simulation converged successfully."
+        }
+      ]
+    }
+  }
+}

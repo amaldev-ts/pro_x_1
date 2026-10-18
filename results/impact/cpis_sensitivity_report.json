@@ -1,0 +1,47 @@
+{
+  "analysis": "CPIS Weight Sensitivity & Physical Correlation Validation",
+  "num_attacks_evaluated": 14,
+  "weight_profiles_evaluated": {
+    "balanced_baseline": {
+      "pressure_impact": 0.3,
+      "flow_unmet_demand": 0.3,
+      "tank_depletion": 0.25,
+      "zone_criticality": 0.15
+    },
+    "equal_weights": {
+      "pressure_impact": 0.25,
+      "flow_unmet_demand": 0.25,
+      "tank_depletion": 0.25,
+      "zone_criticality": 0.25
+    },
+    "demand_centric": {
+      "pressure_impact": 0.15,
+      "flow_unmet_demand": 0.5,
+      "tank_depletion": 0.2,
+      "zone_criticality": 0.15
+    },
+    "pressure_centric": {
+      "pressure_impact": 0.5,
+      "flow_unmet_demand": 0.2,
+      "tank_depletion": 0.15,
+      "zone_criticality": 0.15
+    },
+    "storage_centric": {
+      "pressure_impact": 0.2,
+      "flow_unmet_demand": 0.2,
+      "tank_depletion": 0.4,
+      "zone_criticality": 0.2
+    }
+  },
+  "rank_correlations": {
+    "rank_corr_vs_equal_weights": 1.0,
+    "rank_corr_vs_demand_centric": 1.0,
+    "rank_corr_vs_pressure_centric": 1.0,
+    "rank_corr_vs_storage_centric": 1.0,
+    "rank_corr_with_unmet_demand": 0.0,
+    "p_value_unmet_demand": 1.0
+  },
+  "mean_severity_score_baseline": 0.09479517096291,
+  "std_severity_score_baseline": 0.013573493054992154,
+  "generated_figure": "results\\impact\\cpis_weight_sensitivity.png"
+}

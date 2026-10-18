@@ -1,0 +1,72 @@
+{
+  "topological_graph": {
+    "metric_category": "DETECTION_METRICS",
+    "threshold": 4.474915504455566,
+    "samples": 4154,
+    "attack_samples": 219,
+    "accuracy": 0.95739046701974,
+    "precision": 0.6060606060606061,
+    "recall": 0.547945205479452,
+    "specificity": 0.9801778907242694,
+    "f1_score": 0.5755395683453237,
+    "roc_auc": 0.8627259171583901,
+    "pr_auc": 0.5586957040305802,
+    "false_positive_rate": 0.019822109275730623,
+    "confusion_matrix": {
+      "TN": 3857,
+      "FP": 78,
+      "FN": 99,
+      "TP": 120
+    },
+    "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
+  },
+  "topology_matrix": {
+    "metric_category": "DETECTION_METRICS",
+    "threshold": 4.474915504455566,
+    "samples": 4154,
+    "attack_samples": 219,
+    "accuracy": 0.95739046701974,
+    "precision": 0.6060606060606061,
+    "recall": 0.547945205479452,
+    "specificity": 0.9801778907242694,
+    "f1_score": 0.5755395683453237,
+    "roc_auc": 0.8627259171583901,
+    "pr_auc": 0.5586957040305802,
+    "false_positive_rate": 0.019822109275730623,
+    "confusion_matrix": {
+      "TN": 3857,
+      "FP": 78,
+      "FN": 99,
+      "TP": 120
+    }
+  },
+  "identity_control": {
+    "metric_category": "DETECTION_METRICS",
+    "threshold": 9.406538009643555,
+    "samples": 4154,
+    "attack_samples": 219,
+    "accuracy": 0.9540202214732788,
+    "precision": 0.5707070707070707,
+    "recall": 0.5159817351598174,
+    "specificity": 0.9783989834815756,
+    "f1_score": 0.5419664268585132,
+    "roc_auc": 0.7909557710048563,
+    "pr_auc": 0.506998369518806,
+    "false_positive_rate": 0.021601016518424398,
+    "confusion_matrix": {
+      "TN": 3850,
+      "FP": 85,
+      "FN": 106,
+      "TP": 113
+    },
+    "localization_note": "These metrics evaluate window-level binary attack detection. Component-level localization precision/recall is a separate metric category evaluated in Phase 3 (Multi-level Localization)."
+  },
+  "gain_over_identity": {
+    "f1_gain": 0.033573141486810565,
+    "roc_auc_gain": 0.07177014615353383,
+    "recall_gain": 0.031963470319634646
+  },
+  "delta_f1": 0.033573141486810565,
+  "delta_recall": 0.031963470319634646,
+  "delta_roc_auc": 0.07177014615353383
+}
